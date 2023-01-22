@@ -1,0 +1,485 @@
+\documentclass[12pt]{beamer}
+
+\usetheme[sectionpage=none, subsectionpage=progressbar, progressbar=foot, numbering=fraction]{metropolis}
+
+\usepackage{tabularx}
+
+\makeatletter
+\setlength{\metropolis@frametitle@padding}{1.6ex}% <- default 2.2 ex
+
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\textwidth, sep=1.5ex]{footline}% <- default 3ex
+    \usebeamerfont{page number in head/foot}%
+    \usebeamertemplate*{frame footer}
+    \hfill%
+    \usebeamertemplate*{frame numbering}
+  \end{beamercolorbox}%
+}
+\makeatother
+
+\AtBeginSubsection
+{
+  \begin{frame}{Where are we?}
+    \tableofcontents[sectionstyle=show/shaded, subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+
+\makeatletter
+\setbeamertemplate{headline}{
+  \begin{beamercolorbox}{upper separation line head}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}{section in head/foot}
+    \vskip2pt\insertsectionnavigationhorizontal{\paperwidth}{}{}\vskip2pt
+  \end{beamercolorbox}
+  \begin{beamercolorbox}{lower separation line head}
+  \end{beamercolorbox}
+}
+\makeatother
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+\setbeamertemplate{itemize items}[square]
+
+
+\usepackage{menukeys}
+\usepackage{minted}
+\setminted[bash]{fontsize=\small, tabsize=2, breaklines}
+
+\title{Hacker Tools: \\Data Wrangling \\ (Resources developed by Julius)}
+\author{Noel Kwan}
+\date{06 September 2022 \\ Resources at \url{https://bit.ly/3BeEJvg}}
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+\section{Introduction}
+\subsection{}
+
+\begin{frame}{NUS Hackers}
+
+  \begin{center}
+    \includegraphics[width=0.5\linewidth]{../NUSHackers}
+
+    \url{http://nushackers.org}
+  \end{center}
+
+  \begin{center}
+    \textbf{hacker}school
+
+    Friday \textbf{Hacks}
+
+    \textbf{Hack} \& Roll
+
+    \textbf{Hacker} Tools
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{About Me}
+  Hi! I'm Noel. My GitHub is \url{https://github.com/kwannoel}
+
+  A Year 4 Computer Science Undergraduate who loves hacking and building systems.
+
+  I enjoy retro gaming, board games and learning about programming languages.
+
+\end{frame}
+
+\begin{frame}{Required Software}
+  Unix-like environment, either one of these:
+  \begin{itemize}
+    \item Linux (you're good if you attended and installed Linux during our Linux Install Fest)
+    \item macOS\footnote{Open Terminal, and run \mintinline{bash}{xcode-select --install} first}
+    \item BSD
+    \item Other Unix-like OS'es (Minix, Solaris, AIX, HP-UX, etc.)
+    \item WSL (Windows Subsystem for Linux) should also be alright, but no guarantee
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What is Data Wrangling?}
+  \begin{itemize}
+    \item Have you ever had a bunch of text and wanted to do something with it?
+    \item Great! That's \textbf{Data Wrangling}
+    \item Adapting data from one format to another, until you end up with exactly what you wanted.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{The Unix Philosophy}
+  \begin{enumerate}
+    \item Write programs that do one thing and do it well.
+    \item Write programs to work together.
+    \item Write programs to handle text streams, because that is a universal interface.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Basic Data Wrangling (1/2)}
+  Linux:
+  \begin{minted}{bash}
+cat log | grep -i "Mar 21 13:01"
+  \end{minted}
+  \begin{itemize}
+    \item This is an example of basic data wrangling: finding all system log entries that mentions Intel
+    \item Most of data wrangling is just about knowing what tools you have, and how to combine them.
+    \item Remember \textbf{The Unix Philosophy}!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Basic Data Wrangling (2/2)}
+  \begin{itemize}
+    \item Let's start from the beginning:
+          \begin{enumerate}
+            \item We need a data source
+            \item Something to do with it.
+          \end{enumerate}
+    \item A good use case is for logs, because you often want to investigate them, but reading the whole thing is not feasible.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Data Wrangling Example (1/2)}
+  Let's try to figure out who is trying to log into my server.
+  \begin{itemize}
+    \item First, I try to look into my server's log: \\\mintinline{bash}{cat log}
+    \item That's far too much stuffs!
+    \item Let's limit it to \texttt{ssh} stuffs: \\\mintinline{bash}{cat log | grep sshd}
+    \item That is still way more stuffs than what we wanted, and it's pretty hard to read.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Data Wrangling Example (2/2)}
+  We can do better!
+  \begin{minted}{bash}
+cat log
+| grep sshd
+| grep "Accepted publickey for"
+  \end{minted}
+  There's still a lot of noise here.
+
+  There are \emph{a lot} of ways to get rid of that, but let’s look at one of the most powerful tools in your toolkit: \texttt{sed}.
+\end{frame}
+
+\begin{frame}{Exploring Codebase}
+\end{frame}
+
+\section{sed and Regular Expression (regex)}
+\subsection{}
+\begin{frame}{sed? Isn't that the adjective to describe my life?}
+  \begin{itemize}
+    \item \texttt{sed} is a stream editor that builds on top of the old \texttt{ed}\footnote{If you're into lame computing jokes, here's a joke about \texttt{ed}: \url{https://www.gnu.org/fun/jokes/ed-msg.html}} editor
+    \item In it, you basically give short commands for how to modify the file.
+    \item If you use \texttt{vim}, you should be familiar with some of the commands (\texttt{ed} -> \texttt{vi} -> \texttt{vim})
+    \item There are tonnes of commands, but the most common one is \texttt{s} for substitution.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Back to Our Example}
+  \begin{minted}{bash}
+cat log
+| grep sshd
+| grep "Accepted publickey for"
+| sed 's/.*Accepted publickey for //'
+  \end{minted}
+  \begin{itemize}
+    \item Wow! It's a lot cleaner.
+    \item What we just wrote was a simple \textbf{Regular Expression}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The s Command in sed}
+  Syntax: \texttt{s/REGEX/SUBSTITUTION/}
+  \begin{itemize}
+    \item \texttt{REGEX} is the regular expression you want to search for.
+    \item \texttt{SUBSTITUTION} is the text you want to substitute matching text with.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What is Regular Expression}
+  \begin{itemize}
+    \item It's a powerful construct that lets you match text against patterns.
+    \item They are common and useful enough that it’s worthwhile to take some time to understand how they work.
+    \item Usually (though not always) surrounded by \texttt{/}
+    \item Most characters just carry their normal meaning, but some characters have special matching behaviour.
+    \item Exactly which characters do what vary somewhat between different implementations of regular expressions, which is a source of great frustration.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{List of Regex Special Characters}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Character} & \textbf{Meaning}                                            \\ \hline
+    \texttt{.}         & Any single character except newline                         \\ \hline
+    \texttt{*}         & Zero or more of the preceding match                         \\ \hline
+    \texttt{?}         & One or more of the preceding match                          \\ \hline
+    \texttt{[abc]}     & Any one character of \texttt{a}, \texttt{b}, and \texttt{c} \\ \hline
+    \texttt{(RX1|RX2)} & Either something that matches \texttt{RX1} or \texttt{RX2}  \\ \hline
+    \texttt{\^{}}      & The start of the line                                       \\ \hline
+    \texttt{\$}        & The end of the line                                         \\ \hline
+  \end{tabular}
+
+  If you are unfamiliar with regex, there is a nice tutorial at \url{https://regexone.com/}
+\end{frame}
+
+\begin{frame}{Obsolete vs Modern Regex}
+  \begin{itemize}
+    \item Note that \texttt{sed}'s regex is somewhat weird and will require you to put a \texttt{\textbackslash} before most of these to give them special meaning.
+    \item This is because by default \texttt{sed} is using the \emph{obsolete} regex format.
+    \item You can avoid this problem by passing \texttt{-E} flag to \texttt{sed}, which tells it to switch to the \emph{modern} regex format.
+    \item You can explore the differences by running \\\mintinline{bash}{man re_format}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Looking at our regex just now}
+  \texttt{/.*Accepted publickey for /}
+
+  \begin{itemize}
+    \item It means any text that starts with any number of characters, followed by the literal string \texttt{"Accepted publickey for "}
+    \item However, regexes are tricky.
+    \item What if the username is also \texttt{"Accepted publickey for "}?
+    \item Why? By default, \texttt{*} and \texttt{+} are ``greedy'' -- they will match as much text as they can
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Solution: Match the whole line}
+  \begin{minted}{bash}
+| sed -E 's/.*Accepted publickey for (.*) from ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}) port ([0-9]+) ssh2: RSA SHA256:.*//'
+  \end{minted}
+  Let's look at what's going on with a regex debugger\footnote{\url{https://regex101.com/r/wPc8Ii/3}}
+\end{frame}
+
+\begin{frame}{Explanation}
+  \begin{itemize}
+    \item The start is still as before.
+    \item Then on any string of characters (username).
+    \item Then on \texttt{from} followed by an IP address\footnote{This matches \texttt{999.999.999.999} which is not a valid IPv4 address. A regex that only matches valid address is left as an exercise}
+    \item Then on \texttt{port} followed by a sequence of digits.
+    \item Finally, we try to match on the suffix \texttt{ssh2: RSA SHA256:} followed by any string of characters.
+    \item Notice that with this technique, a username of \texttt{Accepted publickey for} will not confuse us anymore. Can you see why?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Capture Groups}
+  \begin{itemize}
+    \item Oh no, the entire log is now empty.
+    \item We want to keep the username
+    \item Use \textbf{Capture Groups}!
+    \item Any text matched by a regex surrounded by parentheses is stored in a numbered capture group.
+    \item Capture group 0 is special. It is the whole text matched by the regex.
+    \item These are available in the \texttt{SUBSTITUTION}\footnote{In some engines, even in the pattern itself!} as \texttt{\textbackslash 1}, \texttt{\textbackslash 2}, \texttt{\textbackslash 3}, etc.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Using Capture Groups in sed}
+  \begin{minted}{bash}
+| sed -E 's/.*Accepted publickey for (.*) from ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}) port ([0-9]+) ssh2: RSA SHA256:.*/\1/'
+  \end{minted}
+  \begin{itemize}
+    \item Note that in our current regex, capture group 1 is username, capture group 2 is IP address, capture group 3 is port number.
+    \item You can try out using \texttt{\textbackslash 2} and \texttt{\textbackslash 3} instead of \texttt{\textbackslash 1}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{More on Regular Expressions}
+  \begin{itemize}
+    \item As you can probably imagine, you can come up with \emph{really} complicated regex.
+    \item For example, there is an article on how you might match an email address\footnote{\url{https://www.regular-expressions.info/email.html}}. It's not easy\footnote{\url{http://emailregex.com/}}. People have even written tests\footnote{\url{https://fightingforalostcause.net/content/misc/2006/compare-email-regex.php}} and test matrices\footnote{\url{https://mathiasbynens.be/demo/url-regex}}
+    \item Regular expressions are notoriously hard to get right, but they are also very handy to have in your toolbox!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{More Regex Trivia}
+  \begin{itemize}
+    \item You can check for prime numbers using regex\footnote{\url{https://www.noulakaz.net/2007/03/18/a-regular-expression-to-check-for-prime-numbers/}}
+    \item You can match \texttt{A B C} where $A + B = C$\footnote{\url{http://www.drregex.com/2018/11/how-to-match-b-c-where-abc-beast-reborn.html}}
+    \item You can match nested brackets, e.g. to parse Lisp's s-expressions using Regex\footnote{\url{http://www.drregex.com/2017/11/match-nested-brackets-with-regex-new.html}}
+    \item Note: these are more for curiosity purposes. There are usually better tools than regex, although for a quick and dirty script, regex is usually enough.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Back to Data Wrangling}
+  So now we have
+  \begin{minted}{bash}
+cat log
+| grep sshd
+| grep "Accepted publickey for"
+| sed -E 's/.*Accepted publickey for (.*) from ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}) port ([0-9]+) ssh2: RSA SHA256:.*/\1/'
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{sed All the Way!}
+  But we can do everything just with sed!
+  \begin{minted}{bash}
+cat log
+| sed -E -e '/Accepted publickey for/!d' -e 's/.*Accepted publickey for (.*) from ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}) port ([0-9]+) ssh2: RSA SHA256:.*/\1/'
+  \end{minted}
+  \begin{itemize}
+    \item \texttt{d} is to delete, \texttt{!} is to apply the function to the lines \textbf{not} selected by the pattern.
+    \item Check out \mintinline{bash}{man sed}!
+  \end{itemize}
+\end{frame}
+
+\section{More Advanced Data Wrangling}
+\subsection{}
+\begin{frame}[fragile]{Let's look for common usernames}
+  \begin{minted}{bash}
+| sort | uniq -c
+  \end{minted}
+  \begin{itemize}
+    \item \texttt{sort} will, well, sort its input.
+    \item \texttt{uniq -c} will collapse consecutive lines that are the same into a single line, prefixed with a count of the number of occurrences.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{How about the most common logins?}
+  \begin{minted}{bash}
+| sort -nk1,1 | tail -n3
+  \end{minted}
+  \begin{itemize}
+    \item \texttt{-n} sorts in numeric (instead of lexicographic) order
+    \item \texttt{-k1} means sort only by the first whitespace separated column
+    \item \texttt{,n} means sort until the \texttt{n}th field, where the default is the end of the line\footnote{In this example, sorting by the whole line wouldn’t matter}.
+    \item \textbf{Exercise}: what if we wanted the least common ones?\pause
+    \item Either use \texttt{head} instead of \texttt{tail} or use \texttt{sort -r} which sorts in reverse order.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{We can do better}
+  Okay, so that’s pretty cool, but we’d sort of like to only give the usernames, and maybe not one per line?
+  \begin{minted}{bash}
+| awk '{print $2}' | paste -sd, -
+  \end{minted}
+  Let's start with \texttt{paste}
+  \begin{itemize}
+    \item It lets you combine lines (\texttt{-s}) by a given single-character delimiter (\texttt{-d}), and ask it to to read from \texttt{STDIN} (\texttt{-})\footnote{Using GNU paste, the \texttt{-} can be omitted, but this is not POSIX compliant.}
+    \item You can also emulate this using \mintinline{bash}{tr '\n' ','}, but this results in a trailing comma.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{awk}
+  \begin{itemize}
+    \item A programming language that happens to be really good at processing text streams.
+    \item There is \emph{a lot} to say about \texttt{awk} if you were to learn it properly, but as with many other things here, we’ll just go through the basics.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{awk Syntax}
+  \begin{itemize}
+    \item Basic \texttt{awk} syntax: \texttt{pattern \{ block \}}
+    \item \texttt{awk} takes in an optional pattern plus a block saying what to do if the pattern matches a given line.
+    \item The default pattern (if no pattern is provided) matches all lines.
+    \item Inside the block, \texttt{\$0} is set to the entire line's content, and \texttt{\$1} to \texttt{\$n} is set to the n-th field of that line, when separated by \texttt{awk} field separator\footnote{whitespace by default, can be changed with \texttt{-F}}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Our Use of awk}
+  \begin{minted}{bash}
+| awk '{print $2}'
+  \end{minted}
+  \begin{itemize}
+    \item So in this case, we're saying that, for every line, print the contents of the second field, which happens to be the username.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{More fancy awk}
+  Let’s compute the number of single-use usernames that start with \texttt{r} and end with \texttt{t}:
+  \begin{minted}{bash}
+| awk '$1 == 1 && $2 ~ /^r[^ ]*t$/ { print $2 }' | wc -l
+  \end{minted}
+
+  Let's unpack this!
+  \begin{itemize}
+    \item The pattern means the first field of the line should be equal to \texttt{1} (the count from \texttt{uniq -c}), and the second field should match the regex.
+    \item The block says to print the second field (username)
+    \item Finally, we count the number of lines in the output with \texttt{wc -l}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{awk as a Programming Language}
+  Remember that \texttt{awk} is a programming language, so we can actually not use \texttt{wc -l} at all:
+  \begin{minted}{awk}
+BEGIN { rows = 0 }
+$1 == 1 && $2 ~ /^r[^ ]*t$/ { rows += $1 }
+END { print rows }
+  \end{minted}
+  \begin{itemize}
+    \item \texttt{BEGIN} is a pattern that matches the start of the input, and \texttt{END} matches the end.
+    \item First we initialise the count to 0. The per-line block just adds the count from the first field. Then we print it out at the end.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Advanced awk}
+  \begin{itemize}
+    \item In fact, we could get rid of \texttt{grep} and \texttt{sed} entirely, because \texttt{awk} can do it all, but that is left as an exercise.
+    \item A good resource to read is \url{https://backreference.org/2010/02/10/idiomatic-awk/}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{We can do Maths too!}
+  \begin{minted}{bash}
+| awk '{print $1}'
+| paste -sd+ -
+| bc
+  \end{minted}
+  \begin{itemize}
+    \item \texttt{bc} is actually a calculator language.
+    \item You can even run it straight from your shell and use it as a normal calculator.
+    \item In this case, we are piping a mathematical expression to \texttt{bc}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Data Wrangling to Make Arguments (1/2)}
+  \begin{itemize}
+    \item \textbf{Exercise}: find out what the \texttt{xargs} tool does (hint: try to pipe to \texttt{xargs echo})\pause
+    \item Since we can pipe data to it, we can use data wrangling to make arguments too.
+    \item Say we want to delete all files that matches the regex \texttt{asd.a [0-9]\{2\}}
+  \end{itemize}
+  \mintinline{bash}{ls | grep -E 'asd.a [0-9]{2}' | xargs rm}
+
+  What happened?
+\end{frame}
+
+\begin{frame}[fragile]{Data Wrangling to Make Arguments (2/2)}
+  \begin{itemize}
+    \item It's the annoying whitespace splitting again.
+    \item A workaround is to use the null character (\texttt{\textbackslash 0}) as delimiter instead
+  \end{itemize}
+  \begin{minted}{bash}
+ls
+| grep -E 'asd.a [0-9]{2}'
+| tr '\n' '\0'
+| xargs -0 rm
+  \end{minted}
+\end{frame}
+
+\section{Exercises}
+\begin{frame}{Exercises (1/2)}
+  \begin{itemize}
+    \item How is \mintinline{bash}{sed s/REGEX/SUBSTITUTION/g} different from regular \texttt{sed}? What about \texttt{/i}?
+    \item To do in-place substitution it is quite tempting to do something like \mintinline{bash}{sed s/REGEX/SUBSTITUTION/ input.txt > input.txt}. However this is a bad idea, why? Is this particular to \texttt{sed}?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Exercises (2/2)}
+  \begin{itemize}
+    \item Find the number of words (in \mintinline{bash}{/usr/share/dict/words}) that contain at least three \texttt{a}s and don’t have \texttt{ness} ending.
+    \item What are the three most common last two letters of those words?
+    \item How many unique two-letter combinations are there?
+    \item And for a challenge: which combinations do not occur?
+          % cat /usr/share/dict/words | grep -v "ness" | grep '.*a.*a.*a.*' | grep -E -o '.{2}$' | sort | uniq -c | sort -nk1,1 | tail -n3
+          % cat /usr/share/dict/words | grep -v "ness" | grep '.*a.*a.*a.*' | grep -E -o '.{2}$' | sort | uniq | wc -l
+          % cat /usr/share/dict/words | grep -v "ness" | grep '.*a.*a.*a.*' | grep -E -o '.{2}$' | sort | uniq | comm -1 -3 - <(echo {a..z}{a..z} | tr ' ' '\n') | paste -sd, -
+  \end{itemize}
+\end{frame}
+
+
+\section{Conclusion}
+\subsection{}
+\begin{frame}
+  \frametitle{Talk to us!}
+  \begin{itemize}
+    \item \textbf{Feedback form}: \url{https://bit.ly/ht3-feedback}
+    \item \textbf{Upcoming Hacker Tools}:
+
+          Tue, 5th Oct 2020, 7.00pm -- LaTeX
+  \end{itemize}
+\end{frame}
+
+\end{document}

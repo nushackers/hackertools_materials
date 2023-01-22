@@ -1,0 +1,76 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Hacker Tools</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reset.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reveal.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/theme/black.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/styles/monokai.min.css"><link rel="stylesheet" href="../asciinema-player.css"><style>.reveal .slides img.logo-img {
+  background: white;
+  border: 10px solid #fff;
+  border-radius: 10px;
+}
+
+.reveal .slides .font175 {
+  font-size: 175%;
+}
+
+.reveal .slides .font150 {
+  font-size: 150%;
+}
+
+.reveal .slides .font120 {
+  font-size: 120%;
+}
+
+.reveal .slides .font75 {
+  font-size: 75%;
+}
+
+.reveal .slides .font70 {
+  font-size: 70%;
+}
+
+.reveal .slides .font45 {
+  font-size: 45%;
+}
+
+.reveal .slides .underline {
+  text-decoration: underline;
+}
+
+.reveal .slides .mt0 {
+  margin-top: 0;
+}
+
+.reveal .slides .mb0 {
+  margin-bottom: 0;
+}
+
+.reveal .slides .white-bg {
+  background: white;
+}
+</style></head><body><div class="reveal"><div class="slides"><section class="center"><h1>Hacker Tools</h1><h2>Web and browsers, security and privacy</h2><img class="logo-img" style="height: 5ex" src="../nushackers_svg.svg"></section><section><h2>Slides</h2><p>https://nushackers.github.io/hackertools-slides/2020ht4/</p></section><section><h2>Brief overview</h2><ul><li>Browsers and the web</li><li>Security and privacy</li></ul></section><section class="center"><h1>Browsers and the web</h1></section><section><h2>Keyboard shortcuts</h2><ul><li><kbd>C-t</kbd>: new tab</li><li><kbd>C-T</kbd>: reopen closed tab</li><li><kbd>C(-Shift)-Tab</kbd>: change tab</li><li><kbd>C-l</kbd>/<kbd>M-d</kbd>/<kbd>F6</kbd>: jump to address bar</li><li><kbd>C-f</kbd>: search in page</li><li><kbd>C-w</kbd>/<kbd>C-F4</kbd>/<kbd>Middle-click</kbd>: close tab</li><li><kbd>F12</kbd>/<kbd>C-M-i</kbd> (Mac): developer tools</li></ul><p>More: <a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly">Firefox</a>; <a href="https://support.google.com/chrome/answer/157179?hl=en">Chrome</a></p></section><section><h2>Google search operators</h2><ul><li><code>"X"</code>: must appear and must appear exactly</li><li><code>site:xyz.com</code>: results from xyz.com only</li><li><code>filetype:xyz</code>: xyz filetype only</li><li><code>define:xyz</code>: define xyz</li></ul><p>More: <a href="https://support.google.com/websearch/answer/2466433">Google docs</a>; <a href="https://ahrefs.com/blog/google-advanced-search-operators/">External docs</a></p></section><section><section><h2>Bookmark keywords (FF)</h2><img src="ff0.png"><img src="ff1.png"></section><section><h2>Custom search engines</h2><img src="chr-cse.png" style="width: 15em;"></section><section><h2>Custom search engines</h2><img src="chr-cse1.png"></section></section><section><section><h2>(FF) Container tabs</h2><img src="ff-mac.png" style="width: 12.5em;"><p>Long press the +</p></section><section><h2>Chromium profiles</h2><img src="chr-profiles0.png" style="height: 25ex;"></section><section><h2>Chromium profiles</h2><img src="chr-profiles.png" style="height: 25ex;"></section></section><section><h2>(FF) <code>about:config</code> tweaks</h2><ul><li><code class="font75">dom.select_events.enabled: false</code><br>stop websites from disallowing highlighting text</li><li><code class="font75">dom.event.clipboardevents.enabled: false</code><br>stop websites from disallowing copying/pasting</li><li><code class="font75">dom.event.contextmenu.enabled: false</code><br>stop websites from disallowing right-click (caveat: websites' custom context menus are disabled)<br>In FF, Shift+RightClick overrides.</li></ul></section><section><h2>Developer tools</h2><p>Not only useful for development; can be used for one-off scraping, removing annoyances, etc</p><ul><li>Downloading images/videos e.g. Flickr</li><li>Scraping (with JS)</li><li>Debugging why something isn't working</li></ul></section><section><h2>Bookmarklets</h2><p>Bookmarks, but the URL starts with <code>javascript:</code></p><p>Snippets of JavaScript to do stuff. E.g.</p><ul><li><a href="javascript:void(location.href='http://libproxy1.nus.edu.sg/login?url='+location.href);">NUS Libraries</a></li><li><a href="javascript:window.location=document.querySelector('meta[property=\'og:video\']').content;void 0;">Panopto download</a></li><li><a href="javascript:void(document.oncontextmenu=null)">Unblock right-click</a></li></ul></section><section><h2>Browser extensions</h2><ul><li><a href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/">uBlock Origin</a><a href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">(C)</a>: adblock</li><li><a href="https://addons.mozilla.org/en-US/firefox/addon/styl-us/">Stylus</a><a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">(C)</a>: <a href="https://userstyles.org/">user styles</a> for websites</li><li><a href="https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/">Violentmonkey</a><a href="https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag?hl=en">(C)</a>: user scripts from <a href="https://openuserjs.org/">OpenUserJS</a>, <a href="https://greasyfork.org/en/scripts">GreasyFork</a></li><li><a href="https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/">Tree Style Tabs</a> (FF only)</li><li><a href="https://addons.mozilla.org/en-US/firefox/addon/google-search-link-fix/">Google link search fix</a> (FF only)</li><li><a href="https://www.eff.org/https-everywhere">HTTPS Everywhere</a></li><li><a href="https://www.zotero.org/download/connectors">Zotero Connector(C)</a></li></ul></section><section><section><h2>User scripts</h2><p>Like bookmarklets on steroids</p><p>Scripts that automatically run on each page load</p><p>Some useful scripts:</p><ul><li><a href="https://adsbypasser.github.io/">Adsbypasser</a></li></ul></section><section><h2>Automation with user scripts</h2><pre><code class="javascript">// ==UserScript==
+// @name Example
+// @match https://www.google.com/webhp
+// ==/UserScript==
+
+let searchbox = document.getElementsByName("q")[0];
+searchbox.value = "Hello";
+searchbox.form.submit();</code></pre></section></section><section><section><h2>Useful web APIs</h2><ul><li><a href="https://api.telegram.org/">Telegram bot API</a>: e.g. as simple push notifications</li><li><a href="https://ifttt.com/">IFTTT</a>: service that glues many services together</li></ul></section><section><h2>Quick notifications with Telegram</h2><pre><code class="bash">curl -L 'https://api.telegram.org/bot&lt;TOKEN&gt;/sendMessage?chat_id=&lt;CHAT ID&gt;&text=Build+completed.</code></pre></section></section><section><h2>Extras</h2><p>Automation with <a href="https://www.seleniumhq.org/">Selenium</a></p></section><section class="center"><h1>Security and privacy</h1></section><section><h2>Some security blogs</h2><p><a href="https://www.troyhunt.com/">Troy Hunt</a></p><p><a href="https://decentsecurity.com/">Decent Security</a></p></section><section><h2>Know your threat model</h2><p>Government? Random person getting hold of your laptop?</p><p>There's always a tradeoff when you make things more secure</p></section><section><a href="https://xkcd.com/936/"><img src="https://imgs.xkcd.com/comics/password_strength.png"></a></section><section><h2><a href="https://haveibeenpwned.com/">Have I Been Pwned</a></h2></section><section><h2>Password managers</h2><ul><li><a href="https://keepass.info/">KeePass</a>: open-source, offline, .NET</li><li><a href="https://keepassxc.org/">KeePassXC</a>: open-source, C++ port of above (works better for Linux/Mac)</li><li><a href="https://www.passwordstore.org/">pass</a>: open-source, CLI, GPG-based</li><li><a href="https://bitwarden.com/">Bitwarden</a>: open-source, self-hostable cloud based (also see <a href="https://github.com/dani-garcia/bitwarden_rs">bitwarden_rs</a>)</li><li><a href="https://1password.com/">1Password</a>: commercial 👎, cloud-based</li><li><a href="https://www.lastpass.com">LastPass</a>: commercial 👎, cloud-based</li></ul></section><section><h2>Full-disk encryption</h2><p>Protect your data at rest</p><ul><li>Windows: BitLocker (only available on Pro)</li><li>Linux: LUKS/dm-crypt</li><li>macOS: FileVault</li><li>Cross-platform: <a href="https://www.veracrypt.fr/en/Home.html">VeraCrypt</a></li></ul></section><section><a href="https://xkcd.com/538/"><img src="https://imgs.xkcd.com/comics/security.png" style="height: 25ex;"></a></section><section><h2>Plausible deniability</h2></section><section><h2>File-based encryption</h2><p>Protect individual files</p><ul><li>Linux: eCryptFS, <a href="https://www.cryfs.org/tutorial">CryFS</a></li><li>Cross-platform: <a href="https://www.veracrypt.fr/en/Home.html">VeraCrypt</a></li><li>7-Zip</li><li><a href="https://github.com/FiloSottile/age">age</a></li><li><a href="https://github.com/skeeto/enchive">enchive</a></li></ul></section><section><h2>VPN services (paid)</h2><p>Protect your online privacy</p><ul><li><a href="https://mullvad.net/en/">Mullvad</a> (based in Sweden)</li><li><a href="https://www.tunnelbear.com/">Tunnelbear</a> (based in Canada)</li><li><a href="https://nordvpn.com/">NordVPN</a> (based in Panama)</li><li><a href="https://protonvpn.com/">ProtonVPN</a> (based in Switzerland)</li></ul><p><a href="https://thatoneprivacysite.net/vpn-comparison-chart/">Comparison table</a></p></section><section><h2>VPN software</h2><p>Run your own VPN</p><ul><li><a href="https://openvpn.net/community-downloads/">OpenVPN</a></li><li><a href="https://www.wireguard.com/">WireGuard</a></li></ul><p>Setting up a server is out of scope. Here are some guides: <a href="https://wiki.archlinux.org/index.php/OpenVPN">OpenVPN</a>, <a href="https://wiki.archlinux.org/index.php/WireGuard">WireGuard</a></p><p>WireGuard is a very modern (but very new) VPN. If you are setting up a new VPN, and it meets your needs, use it!</p></section><section><h2>Messengers</h2><ul><li><a href="https://signal.org/">Signal</a>: Trusted by security community</li><li><a href="https://element.io/">Element/Matrix</a>: Also trusted; federated</li><li><a href="https://www.whatsapp.com/">WhatsApp</a>: Supposedly uses Signal protocol</li><li><a href="https://telegram.org/">Telegram</a>: Questionable encryption</li></ul><p>There are many other messengers but most offer no privacy at all.</p></section><section class="center"><p>See <a href="https://privacytools.io">privacytools.io</a> for more privacy-focused alternatives to common software.</p><p>You could consider reducing your dependency on Google, for example, by moving to a different email provider.</p></section><section><a href="https://xkcd.com/1200/"><img src="https://imgs.xkcd.com/comics/authorization.png" style="height: 25ex;"></a></section><section><h2><span style="text-transform: none">PCs</span> are unsafe</h2><p>Mobile phones nowadays have better isolation</p></section><section><h2>Thank you! Questions?</h2><p>Feedback: <a href="https://docs.google.com/forms/d/e/1FAIpQLSfkQn7o5zzhUrqoqJ2Re36BsdRl-qc7oIpo5k89ZidjAFWlnA/viewform">bit.ly/2020ht4</a></p></section></div></div><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/highlight.min.js"></script><script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reveal.min.js"></script><script src="../asciinema-player.js"></script><script src="../reveal-highlight-v4.js"></script><script>Reveal.initialize({
+  plugins: [ RevealHighlight ],
+  slideNumber: true,
+  fragmentInURL: true,
+  transitionSpeed: "fast",
+  // center: false,
+  hash: true,
+  navigationMode: "linear",
+  transition: "fade",
+  pdfSeparateFragments: false,
+  highlight: {
+    escapeHTML: false
+  }
+});
+Reveal.addEventListener("fragmentshown", function({ fragment }) {
+  if (fragment.nodeName === "ASCIINEMA-PLAYER") {
+    fragment.player.play();
+  }
+});
+Reveal.addEventListener("fragmenthidden", function({ fragment }) {
+  if (fragment.nodeName === "ASCIINEMA-PLAYER") {
+    fragment.player.pause();
+  }
+});</script></body></html>

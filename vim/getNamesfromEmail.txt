@@ -1,0 +1,10 @@
+james.potter@gryffindor.hogwarts.edu
+sirius.black@gryffindor.hogwarts.edu
+lily.potter@gryffindor.hogwarts.edu
+draco.malfoy@slytherin.hogwarts.edu
+harry.potter@gryffindor.hogwarts.edu
+susan.bones@hufflepuff.hogwarts.edu
+luna.lovegood@ravenclaw.hogwarts.edu
+pansy.parkinson@slytherin.hogwarts.edu
+cedric.diggory@hufflepuff.hogwarts.edu
+cho.chang@hufflepuff.hogwarts.edu

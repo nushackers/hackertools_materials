@@ -1,0 +1,609 @@
+\documentclass[12pt]{beamer}
+
+\usetheme[sectionpage=none, subsectionpage=progressbar, progressbar=foot, numbering=fraction]{metropolis}
+
+\usepackage{tabularx}
+
+\makeatletter
+\setlength{\metropolis@frametitle@padding}{1.6ex}% <- default 2.2 ex
+
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\textwidth, sep=1.5ex]{footline}% <- default 3ex
+    \usebeamerfont{page number in head/foot}%
+    \usebeamertemplate*{frame footer}
+    \hfill%
+    \usebeamertemplate*{frame numbering}
+  \end{beamercolorbox}%
+}
+\makeatother
+
+\AtBeginSubsection
+{
+  \begin{frame}{Where are we?}
+    \tableofcontents[sectionstyle=show/shaded, subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+
+\makeatletter
+\setbeamertemplate{headline}{
+  \begin{beamercolorbox}{upper separation line head}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}{section in head/foot}
+    \vskip2pt\insertsectionnavigationhorizontal{\paperwidth}{}{}\vskip2pt
+  \end{beamercolorbox}
+  \begin{beamercolorbox}{lower separation line head}
+  \end{beamercolorbox}
+}
+\makeatother
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+\setbeamertemplate{itemize items}[square]
+
+
+\usepackage{menukeys}
+\usepackage{minted}
+\setminted[latex]{fontsize=\small, tabsize=2, breaklines}
+
+\title{hackerschool: \LaTeX{}}
+\author{Julius Putra Tanu Setiaji}
+\date{27 February 2021 \\ Slides at \url{https://is.gd/hs_latex_slides}}
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+\section{Introduction}
+\subsection{}
+
+\begin{frame}{NUS Hackers}
+
+  \begin{center}
+    \includegraphics[width=0.5\linewidth]{../NUSHackers}
+
+    \url{http://nushackers.org}
+  \end{center}
+
+  \begin{center}
+    \textbf{hacker}school
+
+    Friday \textbf{Hacks}
+
+    \textbf{Hack} \& Roll
+
+    \textbf{Hacker} Tools
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{About Me}
+  Hi! I'm Julius. My GitHub is \url{https://github.com/indocomsoft}
+
+  A software engineer at Stripe, recently graduated from NUS.
+
+  I was a former NUS Hackers coreteam member who loves hacking and building systems.
+
+  I also enjoy Space Exploration, Music Theory and History.
+
+    {\tiny (my favourite games are KSP and EU4 hit me up if you play those too)}
+\end{frame}
+
+\begin{frame}{Required Software}
+  These are preferable, but otherwise you should be to follow along using Overleaf\footnote{\url{https://www.overleaf.com/}}
+  \begin{itemize}
+    \item A \TeX{} distribution (instructions in our publicity channels)
+    \item TeXstudio
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What is \LaTeX{}?}
+  \begin{itemize}
+    \item A markup language for document preparation\footnote{Just like HTML (Hyper-Text Markup Language) is a markup language}
+    \item Uses plain text\footnote{thus versionable using a VCS like \texttt{git}} in contrast to most WYSIWYG editors
+    \item Started as a writing tool for mathematicians and computer scientists.
+    \item Built on top of \TeX{} by Leslie Lamport\footnote{Winner of the Turing Award in 2013 for his work in distributed and concurrent systems} in 1983
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What is \TeX{}?}
+  \begin{itemize}
+    \item A typesetting system designed and mostly written by Donald Knuth\footnote{Winner of the Turing Award in 1974 for analysis of algorithms and the design of programming languages} in 1978
+    \item Because Knuth was disappointed with the typesetting of the 2nd edition of TAOCP.
+    \item 2 Goals:
+          \begin{itemize}
+            \item Allow anybody to produce high-quality books with minimal effort
+            \item Provide a system that would give exactly the same results on all computers, at any point in time
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Trivia}
+  Version number of \TeX{} approaches $\pi$:
+
+  $3.0 \rightarrow 3.1 \rightarrow 3.14 \rightarrow 3.141 \rightarrow ... \rightarrow 3.14159265$ (current)
+
+  Version number of Metafont\footnote{Companion to \TeX{} written by Knuth, used to describe fonts using geometrical equations} approaches $e$:
+
+  $2.0 \rightarrow 2.7 \rightarrow 2.71 \rightarrow ... \rightarrow 2.7182818$ (current)
+\end{frame}
+
+\begin{frame}{What can I use \LaTeX{} for?}
+  \begin{itemize}
+    \item Reports
+    \item Books
+    \item Presentation\footnote{This presentation is written in \LaTeX{} using Beamer! \url{https://github.com/indocomsoft/hackertools-slides/blob/master/latex/latex.tex}}
+    \item And so much more!
+  \end{itemize}
+\end{frame}
+
+\section{Syntax}
+\begin{frame}[fragile]{Basic \LaTeX{} Syntax}
+  \begin{itemize}
+    \item A \LaTeX{} document consists of commands and environments\footnote{HTML terms: tags = commands, tags with children = environments}
+    \item The command syntax: \\
+          \mintinline{latex}{\command[option1,option2,...]{arg1}{arg2}...}
+    \item The environment syntax:
+          \begin{minted}{latex}
+\begin{environment}
+  % Some children content
+\end{environment}
+          \end{minted}
+    \item Comments are whatever comes after \mintinline{latex}{%}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Basic \LaTeX{} Document}
+  We will explain the commands and environment used here later on.
+  \begin{minted}{latex}
+\documentclass{article}
+
+\begin{document}
+Hello world!
+\end{document}
+  \end{minted}
+\end{frame}
+
+\begin{frame}{Spaces}
+  \begin{itemize}
+    \item All whitespace characters are treated as space.
+    \item Several consecutive spaces are treated as one space.
+    \item Leading/trailing spaces are ignored.
+    \item A single line break is treated as a space.
+    \item Two or more line breaks define the end of a paragraph.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Let's try out spaces}
+  \begin{minted}{latex}
+\begin{document}
+It does not matter whether you
+enter one or several             spaces
+after a word.
+
+An empty line starts a new
+paragraph.
+\end{document}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Reserved Characters}
+  Reserved characters either have a special meaning or are unavailable in all the fonts \footnote{This might feel weird, but remember that \TeX{} and \LaTeX{} are such old systems from the 1970s and 1980s}.
+
+  \begin{minted}{text}
+# $ % ^ & _ { } ~ \
+  \end{minted}
+
+  Instead, use
+
+  \begin{minted}{latex}
+\# \$ \% \^{} \& \_ \{ \} \~{} \textbackslash
+  \end{minted}
+
+  Note the empty argument to caret and tilde, because otherwise they are used to create diacritics.
+
+  We use \mintinline{text}{\textbackslash} because \mintinline{text}{\\} is line breaking.
+\end{frame}
+
+\begin{frame}[fragile]{Other tricky characters}
+  \begin{itemize}
+    \item \textless\ and \textgreater\ symbols usually do not get rendered correctly.
+    \item Instead, use \mintinline{latex}{\textless} and \mintinline{latex}{\textgreater}
+    \item In some circumstances, square brackets are reserved (for options)
+    \item Thus, \mintinline{latex}{\command [text]} fails, instead do \mintinline{latex}{\command{} [text]}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Packages}
+  \begin{itemize}
+    \item Just like other programming languages, \LaTeX{} has packages as well
+    \item \LaTeX{} also has its own package manager, called \texttt{CTAN}
+    \item Use the command \mintinline{latex}{\usepackage{packagename}} to ``import'' and use a package.
+    \item We will go through some useful packages in the upcoming subsections.
+  \end{itemize}
+\end{frame}
+
+\section{Commands and Environments}
+\subsection{}
+\begin{frame}[fragile]{Back to Our Example}
+  \begin{minted}{latex}
+\documentclass{article}
+
+\begin{document}
+Hello world!
+\end{document}
+  \end{minted}
+\end{frame}
+
+\subsection{Document Class}
+\begin{frame}[fragile]{Document Class}
+  \begin{minted}{latex}
+\documentclass{article}
+  \end{minted}
+  \begin{itemize}
+    \item Use the \texttt{article} document class.
+    \item Document class file defines the formatting standard to follow, which in this case is the generic article format.
+    \item Other document classes, e.g. \texttt{acmart} for ACM\footnote{Association for Computing Machinery} publications, \texttt{beamer} for presentations\footnote{Like this presentation!}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Document Class options}
+  \begin{itemize}
+    \item \texttt{10pt}, \texttt{11pt}, \texttt{12pt} -- size of main font (default: 10pt)
+    \item \texttt{a4paper}, \texttt{letterpaper}, ... - size of paper
+    \item \texttt{landscape} -- Landscape mode layout
+    \item \texttt{titlepage}, \texttt{notitlepage} -- whether a new page should be started after the document title
+  \end{itemize}
+
+  Find out more at \url{https://en.wikibooks.org/wiki/LaTeX/Document_Structure\#Document_classes}
+\end{frame}
+
+\subsection{Document environment}
+\begin{frame}[fragile]{Document Environment}
+  \begin{minted}{latex}
+\begin{document}
+  \end{minted}
+  \begin{itemize}
+    \item The beginning of the \texttt{document} environment.
+    \item Tells \LaTeX{} that the content of document starts here.
+    \item Anything before this line is called \textbf{the preamble}
+  \end{itemize}
+  \begin{minted}{latex}
+\end{document}
+  \end{minted}
+  \begin{itemize}
+    \item The end of the \texttt{document} environment
+    \item Tells \LaTeX{} that the document is complete.
+    \item Anything after this line is ignored.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Top Matter}
+  Top Matter: information about the document itself
+  \begin{itemize}
+    \item Provide information using the \texttt{title}, \texttt{author}, \texttt{date}
+    \item Typeset the title using \texttt{maketitle}
+  \end{itemize}
+  \begin{minted}{latex}
+\documentclass{article}
+
+\title{How to Basic: \LaTeX{}}
+\author{Julius Putra Tanu Setiaji}
+\date{27 February 2021}
+
+\begin{document}
+\maketitle
+\end{document}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Sectioning Commands}
+  \begin{minted}{latex}
+\section{Some Section Title}
+\subsection{Some Subsection Title}
+\subsubsection{Some Subsubsection Title}
+  \end{minted}
+  To get an unnumbered sections, add an asterisk to the end of the command name, e.g. \mintinline{latex}{\section*{Look Ma, no numbers!}}
+
+  Typeset a table of contents using \mintinline{latex}{\tableofcontents}
+
+  Note: unnumbered section will not be included in the TOC unless explicitly included:
+  \begin{minted}{latex}
+\addcontentsline{toc}{subsection}{Look Ma, no numbers!}
+  \end{minted}
+\end{frame}
+
+\subsection{Fonts}
+\begin{frame}[fragile]{Emphasising text}
+  \begin{itemize}
+    \item Use the \mintinline{latex}{\emph{text}} command
+    \item Typically done by italicising the text.
+    \item Note that the command is dynamic: emphasising a word in an already emphasised sentence will revert the word to upright font.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Font styles}
+  \begin{minted}{latex}
+\textnormal{document font family}
+\emph{Emphasised text}
+\texttt{teletype font family (monospaced)}
+\textbf{bold fontface}
+\textsc{Small Capitals}
+\uppercase{uppercase}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Font size}
+  Changes the size in scope
+  \begin{minted}{latex}
+{\tiny test}
+{\scriptsize test}
+{\footnotesize test}
+{\small test}
+{\normalsize test}
+{\large test}
+{\Large test}
+{\LARGE test}
+{\huge test}
+{\Huge test}
+  \end{minted}
+\end{frame}
+
+\subsection{Text and Paragraph Formatting}
+\begin{frame}[fragile]{Non-breaking Space}
+  Use tilde (\mintinline{latex}{~}) to tell \LaTeX{} not to change space into line break.
+\end{frame}
+
+\begin{frame}[fragile]{Line spacing}
+  \begin{itemize}
+    \item For controlling line spacing, I usually use the \texttt{setspace} package.
+    \item Import it in the preamble: \mintinline{latex}{\usepackage{setspace}}
+    \item Useful commands: \mintinline{latex}{\singlespacing}, \mintinline{latex}{\onehalfspacing}, \mintinline{latex}{\doublespacing}
+    \item Useful environments: \texttt{singlespace}, \texttt{onehalfspace}, \texttt{doublespace}, \texttt{spacing}
+  \end{itemize}
+  \begin{minted}{latex}
+\begin{spacing}{2.5}
+  This paragraph has \\ huge gaps \\ between lines.
+\end{spacing}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Quote-marks}
+  In \LaTeX{}, quote-marks can go the wrong way if you're not careful!
+  \begin{minted}{latex}
+To `quote' in LaTeX
+To ``quote'' in LaTeX
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Paragraph Alignment}
+  \begin{tabular}{|l|l|l|}
+    \hline
+    Alignment       & Environment         & Command                          \\ \hline
+    Left justified  & \texttt{flushleft}  & \mintinline{latex}{\raggedright} \\
+    Right justified & \texttt{flushright} & \mintinline{latex}{\raggedleft}  \\
+    Center          & \texttt{center}     & \mintinline{latex}{\centering}   \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]{Paragraph Indentation}
+  \begin{itemize}
+    \item By default, first paragraph after a heading is not indented, subsequent paragraphs are indented by \mintinline{latex}{\parindent}
+    \item This follows typical Anglo-American publishing convention.
+    \item To set this length, in preamble:
+          \begin{minted}{latex}
+\setlength{\parindent}{1cm} % Default 15pt
+          \end{minted}
+    \item You can use the \texttt{indentfirst} package to indent the beginning of every section
+    \item To force indent a non-indented paragraph, use \mintinline{latex}{\indent} at the beginning of the paragraph.
+    \item To force non-indent an indented paragraph, use \mintinline{latex}{\noindent}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Adding paragraph skips}
+  \begin{itemize}
+    \item To make paragraphs boundary clear using zero indentation, vertical space between paragraphs is needed.
+    \item Use the \texttt{parskip} package
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Verbatim Environment}
+  Introduce text that will not be interpreted by the compiler in a monospaced font
+  \begin{minted}{latex}
+\begin{verbatim}
+The verbatim environment
+  simply reproduces every
+ character you input,
+including all  s p a c e s!
+\end{verbatim}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Typesetting URLs}
+  Use the \texttt{hyperref} package, with the \mintinline{latex}{\url{https://stonks.trade}} command
+
+  If you want coloured hyperlink instead of box, set option \texttt{colorlinks} when using the \texttt{hyperref} package:
+  \begin{minted}{latex}
+\usepackage[colorlinks]{hyperref}
+  \end{minted}
+\end{frame}
+
+\section{Mathematics}
+\subsection{}
+\begin{frame}{Mathematics}
+  Knuth's motivation to develop \TeX{} among others was to allow simple construction of mathematical formulae that looks professional when printed.
+
+  Typesetting Mathematics is one of \LaTeX{}'s greatest strengths
+\end{frame}
+
+\begin{frame}[fragile]{Getting started}
+  I usually use the \texttt{mathtools} package to provide more powerful and flexible commands than plain \LaTeX{}
+
+  \begin{minted}{latex}
+\usepackage{mathtools}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Environments}
+  \LaTeX{} provides displayed equation environment (\texttt{displaymath}), where the formulae are on a line by themselves.
+
+  Short hand\footnote{DO NOT use \mintinline{latex}{$$...$$}, it is an older \TeX{} syntax that causes problems and is not officially supported by \LaTeX{}}: \mintinline{latex}{\[e^{i \pi} + 1 = 5\]}
+
+  To get automatically numbered equations, use the \texttt{equation} environment:
+  \begin{minted}{latex}
+\begin{equation}
+e^{i \pi} + 1 = 0
+\end{equation}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Inline vs Displayed Equations}
+  However, if you want to get an inline formula, use the \texttt{math} environment or the shorthand\footnote{There also exists the \LaTeX{} shorthand \mintinline{latex}{\(...\)}}:
+  \begin{minted}{latex}
+$e^{i \pi} + 1 = 0$
+  \end{minted}
+
+  These work on some flavours of Markdown too, e.g. \url{https://hackmd.io}
+\end{frame}
+
+\begin{frame}[fragile]{Maths Symbols}
+  A pretty good list at \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics\#List_of_mathematical_symbols}
+
+  You can also use detexify: \url{http://detexify.kirelabs.org/}
+
+  Or even cooler: \url{https://mathpix.com/}
+\end{frame}
+
+
+\begin{frame}{Powers and indices}
+  Use the caret (\^{}) to raise something, and underscore (\_) to lower.
+
+  If more than one expression is raised or lowered, group them using curly braces
+
+  Exercise: typeset this
+
+  $k_{n + 1} = n^2 + k_n^2 - k_{n - 1}$
+\end{frame}
+
+\begin{frame}[fragile]{Fractions and Binomials}
+  \begin{minted}{latex}
+$\frac{x^2}{y^3}$
+
+$\binom{n}{r}$
+  \end{minted}
+
+  $\frac{x^2}{y^3}$
+
+  $\binom{n}{r}$
+\end{frame}
+
+\begin{frame}[fragile]{Roots}
+  \begin{minted}{latex}
+$\sqrt[n]{1 + x + x^2 + x^3 + \dots + x^n}$
+  \end{minted}
+
+  $\sqrt[n]{1 + x + x^2 + x^3 + \dots + x^n}$
+\end{frame}
+
+\begin{frame}[fragile]{Sums and Integrals}
+  Use the \mintinline{latex}{\sum} and \mintinline{latex}{\int} for sum and integral respectively, with the limits specified using caret and underscore.
+
+  Use \mintinline{latex}{\limits} if you want the limits specified above and below the symbol in inline mode, or use displayed equation mode.
+
+  \begin{columns}
+    \begin{column}{0.8\textwidth}
+      \begin{minted}{latex}
+$\sum_{i=1}^{10} t_i$
+      \end{minted}
+    \end{column}
+    \begin{column}{0.2\textwidth}
+      $\sum_{i=1}^{10} t_i$
+    \end{column}
+  \end{columns}
+
+  \begin{columns}
+    \begin{column}{0.8\textwidth}
+      \begin{minted}{latex}
+$\sum\limits_{i=1}^{10} t_i$
+      \end{minted}
+    \end{column}
+    \begin{column}{0.2\textwidth}
+      $\sum\limits_{i=1}^{10} t_i$
+    \end{column}
+  \end{columns}
+
+  Use \mintinline{latex}{\,} for a small space
+
+  \begin{columns}
+    \begin{column}{0.8\textwidth}
+      \begin{minted}{latex}
+$\int_0^\infty e^{-x}\,dx$
+      \end{minted}
+    \end{column}
+    \begin{column}{0.2\textwidth}
+      $\int_0^\infty e^{-x}\,dx$
+    \end{column}
+  \end{columns}
+
+  \begin{columns}
+    \begin{column}{0.8\textwidth}
+      \begin{minted}{latex}
+$\int\limits_0^\infty e^{-x}\,dx$
+      \end{minted}
+    \end{column}
+    \begin{column}{0.2\textwidth}
+      $\int\limits_0^\infty e^{-x}\,dx$
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]{Other big commands}
+  Note that this also applies to other ``big'' commands like \mintinline{latex}{$\prod$} ($\prod$), \mintinline{latex}{$\bigcup$} ($\bigcup$), \mintinline{latex}{$\bigcap$} ($\bigcap$), etc.
+\end{frame}
+
+\begin{frame}[fragile]{Brackets, braces, delimiters}
+  \begin{minted}{latex}
+$( a ), [ b ], \{ c \}, | d |, \| e \|, \langle f \rangle, \lfloor g \rfloor, \lceil h \rceil, \ulcorner i \urcorner$
+      \end{minted}
+  $( a ), [ b ], \{ c \}, | d |, \| e \|, \langle f \rangle, \lfloor g \rfloor, \lceil h \rceil, \ulcorner i \urcorner$
+\end{frame}
+
+\begin{frame}[fragile]{Automatic sizing}
+  \begin{minted}{latex}
+  $P\left(A=2\middle|\frac{A^2}{B}>4\right)$
+
+  $P(A=2|\frac{A^2}{B}>4)$
+      \end{minted}
+  $P\left(A=2\middle|\frac{A^2}{B}>4\right)$
+
+  $P(A=2|\frac{A^2}{B}>4)$
+\end{frame}
+
+\begin{frame}{Exercises}
+  $\binom{n}{r} = {}_nC_r = \frac{n!}{r!(n-r)!}$, ${}_nC_r \times r! = {}_nP_r$
+
+  $\lim\limits_{n \rightarrow \infty}\left|\frac{a_{n+1}}{a_n}\right| = \rho$
+
+  $\frac{d^2y}{dx^2}+p(x)\frac{dy}{dx}+q(x)y=F(x)$
+
+  $\{x \mid x \in \mathbb{R}^+, -1 \leq x \leq 1\}$
+\end{frame}
+
+\begin{frame}{Resources}
+  Wikibooks provide some good resources: \url{https://en.wikibooks.org/wiki/LaTeX}
+
+  So does overleaf: \url{https://www.overleaf.com/learn/latex/Main_Page}
+\end{frame}
+
+\section{Conclusion}
+\subsection{}
+\begin{frame}
+  \frametitle{Talk to us!}
+
+  \begin{itemize}
+    \item \textbf{Feedback form}: \url{https://bit.ly/hs2021-latex-feedback}
+    \item Telegram: \url{https://t.me/nushackers} (@nushackers)
+  \end{itemize}
+\end{frame}
+
+\end{document}

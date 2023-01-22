@@ -1,0 +1,6 @@
+When programming, you spend most of your time reading/edittingg, not writing.
+For this reason, Vim is a modal editor: it has different modes for inserting text vs manipulating text.
+For this reason, Vim is a modal editor: it has different modes for inserting text vs manipulating text.
+Vim is programmable (with Vimscript and also other languages like Python), and Vim’s interface itself is a programming language:
+keystrokes (with mnemonic names) are commands, and these commands are composable.
+Vim avoids the use of the mouse, because it’s too dlow; Vim even avoids using the arrow keys because it requires too much mvoemnet.

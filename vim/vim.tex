@@ -1,0 +1,458 @@
+\documentclass[12pt]{beamer}
+
+\usetheme[sectionpage=none, subsectionpage=progressbar, progressbar=foot, numbering=fraction]{metropolis}
+
+\usepackage{tabularx}
+\usepackage{verbatim}
+
+\makeatletter
+\setlength{\metropolis@frametitle@padding}{1.6ex}% <- default 2.2 ex
+
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\textwidth, sep=1.5ex]{footline}% <- default 3ex
+    \usebeamerfont{page number in head/foot}%
+    \usebeamertemplate*{frame footer}
+    \hfill%
+    \usebeamertemplate*{frame numbering}
+  \end{beamercolorbox}%
+}
+\makeatother
+
+\AtBeginSubsection
+{
+  \begin{frame}{Where are we?}
+    \tableofcontents[sectionstyle=show/shaded, subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+
+\makeatletter
+\setbeamertemplate{headline}{
+  \begin{beamercolorbox}{upper separation line head}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}{section in head/foot}
+    \vskip2pt\insertsectionnavigationhorizontal{\paperwidth}{}{}\vskip2pt
+  \end{beamercolorbox}
+  \begin{beamercolorbox}{lower separation line head}
+  \end{beamercolorbox}
+}
+\makeatother
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+\setbeamertemplate{itemize items}[square]
+
+
+\usepackage{menukeys}
+\usepackage{minted}
+\setminted[bash]{fontsize=\small, tabsize=2, breaklines}
+
+\title{Hacker Tools: \\Vim}
+\author{Lam Chun Yu}
+\date{18 October 2022 \\ Slides at \url{https://hckr.cc/ht-vim-slides}}
+% TODO: Add link to slides
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+\section{Introduction}
+\subsection{}
+
+\begin{frame}{NUS Hackers}
+
+  \begin{center}
+    \includegraphics[width=0.5\linewidth]{../NUSHackers}
+
+    \url{http://nushackers.org}
+  \end{center}
+
+  \begin{center}
+    \textbf{hacker}school
+
+    Friday \textbf{Hacks}
+
+    \textbf{Hack} \& Roll
+
+    \textbf{Hacker} Tools
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{About Me}
+  Hi! I'm Chun Yu. My GitHub is \url{https://github.com/gunbux}
+
+  A Year 2 Computer Science Undergraduate who loves learning about operating systems and building cool stuff.
+
+  I enjoy playing the violin, and first person shooters.
+
+\end{frame}
+
+\begin{frame}{Required Software}
+  You need \textbf{vim} (that's what we're learning today)
+\end{frame}
+
+\begin{frame}{Why do we want to \underline{learn} an editor?}
+  \begin{itemize}
+    \item We don't have workshops on how to learn a web browser, so why are editors important?
+    \item Writing code, or editing files on a computer has a lot of moving parts: you spend a lot more time switching files, reading, navigating, editing code compared to writing a long stream of words sometimes.
+    \item As a power user, you probably will spend a lot of time doing these things, it might be good to find an editor that will \textbf{speed up your workflow.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{How to learn an editor}
+    \begin{itemize}
+        \item Start with the \textbf{fundamentals} (this is what we'll cover)
+        \item \textbf{Practice} as much as possible
+        \item Within about 10-20 hours of use, you'll be back to your normal speed
+        \item After that your new editor should start to save you lots of time
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{What to expect today?}
+        Today we'll be covering one such editor, \textbf{vim}.
+
+        The idea is to kickstart you knowledge, and give you the \underline{fundamentals and resources to go off on your own.}
+\end{frame}{}
+
+\begin{frame}{Which editor to learn?}
+    \begin{itemize}
+        \item People tend to have very strong opinions on this. See \url{https://en.wikipedia.org/wiki/Editor_war}
+        \item Vi(m) vs Emacs
+        \item It’s completely up to you! we’ll cover one of the popular options out there, vim but you can also look up Emacs and choose one that interests you most
+
+        \begin{center}
+            \includegraphics[width=0.5\linewidth]{2022hs5/editor-curve.png} 
+        \end{center}{}
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Origins of Vi(m) (1/2)}
+    \begin{itemize}
+        \item Vim stands for vi iMitation, later changed to vi iMproved
+        \item Created by Bram Moolenaar in 1991.
+        \item It is based off another text editor, \textbf{vi}, created by Bill Joy in 1976.
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Origins of Vi(m) (2/2)}
+    \begin{itemize}
+        \item Bill Joy was trying to create an editor that was usable with a 300 baud modem. (approximately 0.3 kbit/second today). Essentially, you could only type one letter a second, so the commands had to be really short.
+        \item As it turns out, when you optimize heavily to minimize the number of keystrokes, you have a
+        \textbf{really efficient editor}
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Benefits of Vim}
+    \begin{itemize}
+        \item Vi(m) is the de facto default editor in any Unix-based system. You can probably find vi/vim in 
+        any and every Unix-based system today
+        \item Vim is also extremely customizable and programmable
+        \item There is a huge community and plugin support for almost anything imaginable
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Philosophy of Vim}
+    \begin{itemize}
+        \item Vim is a \textbf{modal text editor}
+        \item We have \underline{different modes} for inserting text vs manipulating text
+        \item The idea here is that you tend to spend more time reading/making smaller edits, instead of
+        writing big essays in one big go.
+    \end{itemize}{}
+\end{frame}{}
+
+\section{Using Vim}
+\subsection{}
+
+\begin{frame}{Modes of Vim}
+    There are a few primary modes of vim:
+    \begin{itemize}
+        \item \underline{Normal Mode} - For moving around a file and making small edits
+        \item \underline{Insert Mode} - For inserting text
+        \item \underline{Visual Mode} - For selecting blocks of text (plain, line or block)
+        \item \underline{Command Mode} - For entering commands
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Modes of Vim}
+    Keystrokes have different meanings in different operating modes. for example, \keys{x} in insert mode will insert a literal character ‘x’, but in normal mode, it will delete the current selection
+\end{frame}{}
+
+\begin{frame}{Opening Vim and \underline{quitting it} (1/2)}
+    There's a common joke that if you give a web designer a computer with vim loaded up, and ask them to quit vim, 
+    you get a random string generator
+    
+    \includegraphics[width=1\linewidth]{2022hs5/exit_vim.png}
+\end{frame}
+
+\begin{frame}{Opening Vim and \underline{quitting it} (2/2)}
+    To open vim, just type \texttt{vim} in the terminal. If you are using gVim, you can just open the executable.
+    
+    To close vim, type \texttt{:q}. We'll go through what this means later
+\end{frame}{}
+
+\begin{frame}{Changing modes}
+    By default, you start vim in \textbf{normal mode}. For most cases, you will transition from normal mode to 
+    another mode, based on your use case, and then return back to normal mode after.
+\end{frame}{}
+
+\begin{frame}{Normal to Command Mode}
+    Command mode is where we run commands similar to a command line in vim.
+    To go to this mode, simple press \keys{:}. A text bar should appear at the bottom of the screen. From there,
+    we can execute several vim commands.
+    \begin{itemize}
+        \item \keys{:} - go to command mode
+        \item \keys{q} (in command mode) - quits the file
+        \item \keys{w} (in command mode) - saves the file
+        \item \keys{!} - force an action
+        \item \keys{:wq} - save the file then quit
+        \item \keys{:q!} - force quit file without saving
+    \end{itemize}{}
+    Once you are done, vim should automatically put you back in normal mode
+\end{frame}{}
+
+\begin{frame}{Any mode to normal mode}
+    Normal mode is your default mode where you should spend most of your time. In vim, if you ever get lost
+    or are not sure what is happening, always \textbf{reset to normal mode}
+    
+    \textbf{
+    \keys{Esc} will bring you to normal mode from any of the other modes. You will be using this a lot.
+    }
+\end{frame}{}
+
+\begin{frame}{Why Escape?}
+    It might seem quite counterintuitive to use escape since it's quite out of place on your keyboard. However, 
+    vi was created using an \underline{ADM-3A terminal}. It looks like this:
+    \begin{center}
+        \includegraphics[width=0.75\linewidth]{2022hs5/adm-3a.png}
+    \end{center}{}
+    Some programmers also map \keys{Caps Lock} to \keys{Esc} or other mappings for convenience
+\end{frame}
+
+\begin{frame}{Changing modes}
+    \begin{tabular}{|c|c|c|}
+       \hline
+       Mode  &  Description & Hotkey\\
+       \hline
+       Normal & Navigate the file & \keys{Esc}\\
+       \hline 
+       Insert & Inserting text & \keys{i}, \keys{I}, \keys{a}, \\ & & \keys{A}, \keys{o}, \keys{O}\\
+       \hline
+       Command & For entering commands & \keys{:}\\
+       \hline
+       Visual & For selecting text & \keys{v}, \keys{V}, \keys{Ctrl + v}\\
+       \hline
+    \end{tabular}{}
+\end{frame}{}
+
+\section{Normal Mode}
+\subsection{}
+
+\begin{frame}{Navigating in normal mode}
+    First let's open up a file using vim by using \texttt{vim (filename)}.
+
+    We can navigate the file by using \texttt{hjkl} (left, down, up, right respectively)
+
+    Why not arrow keys (or a mouse)? Historically, it's because the old keyboards did not have arrow keys or a mouse. 
+    
+    However, in practice, it is extremely efficient as you don't need to move you hands away from the alphanumeric
+    keys to do anything.
+\end{frame}{}
+
+\begin{frame}{Normal Mode}
+    \begin{tabular}{|c|c|}
+       \hline
+       Type  &  Description\\
+       \hline
+       Basic &  \keys{hjkl}: left, down, up, right\\
+       \hline 
+       Word & \keys{w}: next word, \keys{b}: back a word\\
+       \hline
+       File & \keys{gg}: top of file, \keys{G}: bottom of file\\
+       \hline
+       Line & \keys{0}: beginning of line, \keys{\$}: end of line,\\ & \keys{\^{}} first non-whitespace of line\\
+       \hline
+       Line Numbers & \keys{34G}: to go to line 34 in the file\\
+       \hline
+       Screen & \keys{H}igh part of screen, \keys{M}iddle of screen, \\ & \keys{L}ow part of screen\\
+       \hline
+       Braces & \keys{\%} to go to corresponding braces\\
+       \hline
+       Repeating & \keys{10j}: to go down 10 times\\
+       \hline
+       Scroll & \keys{Ctrl + d}: to scroll down,\\ & \keys{Ctrl + u} to scroll up\\
+       \hline
+    \end{tabular}{}
+\end{frame}{}
+
+\begin{frame}{Searching}
+    Searching is slightly different in vim, there are two main ways to search something:
+    \begin{itemize}
+        \item Find inline: \keys{f} to find further up in the line, \keys{F} to find in everything before the cursor
+        \item Search in file: \keys{/ + query} to search forward in the file from the cursor, \keys{?} to do the opposite. \keys{n} to go to next result and \keys{N} to go to previous result.
+    \end{itemize}{}
+\end{frame}{}
+
+\section{Writing}
+\subsection{}
+
+\begin{frame}{Insert Mode}
+    \begin{enumerate}
+        \item Make sure you are in normal mode. \keys{Esc}
+        \begin{enumerate}
+            \item \keys{i} to insert before cursor
+            \item \keys{I} to insert at the start of line
+            \item \keys{a} to insert after cursor
+            \item \keys{A} to insert at the end of line
+            \item \keys{o} to start a next line and insert
+            \item \keys{O} to start a line above the current selection and insert
+        \end{enumerate}{}
+        \item Get out of insert once done. \keys{Esc}
+    \end{enumerate}{}
+\end{frame}{}
+
+\begin{frame}{Making small edits - delete}
+    In normal word, you can quickly delete a portion of text
+    \begin{itemize}
+        \item \keys{d + modifier}, deletes a certain portion based on the modifier
+        \item \keys{dw} - delete word
+        \item \keys{6dw} - delete 6 words
+        \item \keys{dd} - delete the entire line
+        \item \keys{d\$} - delete till end of line
+        \item \keys{dt+char} - delete till character
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Making small edits - change}
+    Similarly, change allows you to quickly delete and change a certain portion of text
+    \begin{itemize}
+        \item \keys{c + modifier} - deletes then puts you into insert mode
+        \item \keys{cw} - change word
+        \item \keys{7cw} - change 7 words
+        \item \keys{c\$} - change till end of line
+        \item \keys{ct + char} - change till certain character
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Making small edits - misc. (1/2)}
+    \begin{itemize}
+        \item \keys{y + modifier}, yank a certain portion and puts it in a put buffer (think of ctrl c)
+        \item \keys{yy} - yank entire line
+        \item \keys{yw} - yank word
+        \item \keys{6yw} - yank 6 words
+        \item \keys{yt + char} - yank till character
+        \item \keys{p} - put/paste whatever was in the buffer
+        \item \keys{P} - put/paste in the line above
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Making small edits - misc. (2/2)}
+    \begin{itemize}
+        \item \keys{x} to delete a certain character
+        \item \keys{r} to replace a character
+        \item \keys{.} - do last action
+        \item \keys{u} - undo action
+        \item \keys{Ctrl + r} - redo action
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Practice 1}
+    \url{https://hckr.cc/ht-vim-p1}
+
+    Try and fix the typos, and small errors here!
+\end{frame}{}
+
+\section{Intermediate Vim}
+\subsection{}
+\begin{frame}{Visual Mode}
+    There are a few kinds of visual modes:
+    \begin{itemize}
+        \item Visual \keys{v}
+        \item Visual Line \keys{V}
+        \item Visual Block \keys{Ctrl + v}
+    \end{itemize}{}{}
+    We can use these selections along with the above commands: \keys{y}ank, \keys{d}elete, and \keys{c}hange.
+\end{frame}{}
+
+\begin{frame}{Opening Files and other commands}
+    Aside from saving and quitting, there are a couple of pretty important commands to know:
+    \begin{itemize}
+        \item \keys{:enew} - opens a new file
+        \item \keys{:e + filepath} - open the file at path
+        \item \keys{sp} - open a new split
+        \item \keys{vsp} - open a new vertical split
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Macros}
+    Macros are one of the really powerful features in vim that can significantly speed up your workflow.
+    \begin{itemize}
+        \item \keys{q + keystroke} to start recording a macro, \keys{q} again to stop recording
+        \item \keys{@keystroke} to apply the macro
+    \end{itemize}{}
+
+\end{frame}{}
+    
+\begin{frame}{Practice 2}
+    \url{https://hckr.cc/ht-vim-p2}
+
+    It seems like the data from the first 3 columns are corrupted, let's remove them!
+
+    \url{https://hckr.cc/ht-vim-p3}
+
+    Let's use a macro to extract the names from these emails!
+\end{frame}{}
+
+\section{Conclusion}
+\subsection{}
+
+\begin{frame}{Conclusion}
+    We covered the base fundamentals of operating vim. Here's some things we did not cover, but are really
+    useful:
+    \begin{itemize}
+        \item \keys{di(} - delete everything inside the nearest brackets
+        \item find and replace
+        \item ...a lot more!
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}{Extending Vim}
+    One of the greatest features is that it is extremely customize and very easy to customize too!
+    There are many great configs and plugins created for different workflows, which we can't cover in this
+    session. Here are a few reccomendations:
+    \begin{itemize}
+        \item \url{https://github.com/amix/vimrc}
+        \item \url{https://vimconfig.com}
+        \item \url{https://github.com/gunbux/dotfiles}
+    \end{itemize}{}
+    There are also many forks of vim, notably neovim with much more features.
+\end{frame}{}
+
+\begin{frame}{Using vim outside of vim}
+    Vim's hotkeys are very well loved, and many people love putting vimbindings on everything (myself included).
+    Here are some you can look at:
+    \item \href{https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en}{Vimium - Vim for Chromium based browsers}
+    \item \href{https://plugins.jetbrains.com/plugin/164-ideavim}{IdeaVim - Vim emulation for JetBrains}
+\end{frame}{}
+
+\begin{frame}{I need help!}
+    Vim is a really powerful editor if you are able to master it. Don't worry, there are plenty of resources!
+    \begin{itemize}
+        \item \keys{:help command} - get manual for a specific command
+        \item \keys{vimtutor} - built in vimtutor, give it a read, it shouldn't take more than 30 mins
+        \item \href{https://www.vimgolf.com}{VimGolf} - really good practice: edit the file in the minimum strokes
+        \item There are tons of vim wikis, guides and cheatsheets out there, just search for them!
+    \end{itemize}{}
+\end{frame}{}
+
+\begin{frame}
+  \frametitle{Talk to us!}
+  \begin{itemize}
+    \item \textbf{Feedback form}: \url{https://hckr.cc/ht-fb10}
+    \item \textbf{Upcoming Hacker Tools}:
+          Tue, 25th Oct 2022, 6.30pm -- WSL: \url{https://hckr.cc/ht-11}
+          
+    \item \textbf{Upcoming Hackerschool}:
+          Sat, 22nd Oct 2022, 10am -- Flask: \url{https://hckr.cc/hs2223s1-week10-signup}
+  \end{itemize}
+\end{frame}
+
+\end{document}
