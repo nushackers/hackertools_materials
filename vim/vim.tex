@@ -46,8 +46,8 @@
 \setminted[bash]{fontsize=\small, tabsize=2, breaklines}
 
 \title{Hacker Tools: \\Vim}
-\author{Lam Chun Yu}
-\date{18 October 2022 \\ Slides at \url{https://hckr.cc/ht-vim-slides}}
+\author{Liew Zhao Wei}
+\date{29 Jan 2023 \\ Slides at \url{https://hckr.cc/ht-vim-slides}}
 % TODO: Add link to slides
 
 \begin{document}
@@ -66,28 +66,31 @@
   \end{center}
 
   \begin{center}
-    \textbf{hacker}school
-
-    Friday \textbf{Hacks}
+    \textbf{Hacker} Tools
 
     \textbf{Hack} \& Roll
 
-    \textbf{Hacker} Tools
+    Friday \textbf{Hacks}
+
+    \textbf{hacker}school
   \end{center}
 
 \end{frame}
 
 \begin{frame}{About Me}
-  Hi! I'm Chun Yu. My GitHub is \url{https://github.com/gunbux}
+  Hi, I'm Zhao Wei! My GitHub is \url{https://github.com/zwliew}
 
-  A Year 2 Computer Science Undergraduate who loves learning about operating systems and building cool stuff.
+  Year 2 CS and Math undergrad. Interested in systems programming.
 
-  I enjoy playing the violin, and first person shooters.
+  Semi-interested in linguistics and chess.
 
+  I use (lunar)vim regularly.
 \end{frame}
 
 \begin{frame}{Required Software}
   You need \textbf{vim} (that's what we're learning today)
+
+  Download instructions: \url{https://www.vim.org/download.php}
 \end{frame}
 
 \begin{frame}{Why do we want to \underline{learn} an editor?}
@@ -103,6 +106,7 @@
         \item Start with the \textbf{fundamentals} (this is what we'll cover)
         \item \textbf{Practice} as much as possible
         \item Within about 10-20 hours of use, you'll be back to your normal speed
+        \item Look things up as you go: find out shortcuts to doing things
         \item After that your new editor should start to save you lots of time
     \end{itemize}{}
 \end{frame}{}
@@ -120,7 +124,7 @@
         \item It’s completely up to you! we’ll cover one of the popular options out there, vim but you can also look up Emacs and choose one that interests you most
 
         \begin{center}
-            \includegraphics[width=0.5\linewidth]{2022hs5/editor-curve.png} 
+            \includegraphics[width=0.5\linewidth]{editor-curve.png} 
         \end{center}{}
     \end{itemize}{}
 \end{frame}{}
@@ -180,7 +184,7 @@
     There's a common joke that if you give a web designer a computer with vim loaded up, and ask them to quit vim, 
     you get a random string generator
     
-    \includegraphics[width=1\linewidth]{2022hs5/exit_vim.png}
+    \includegraphics[width=1\linewidth]{exit_vim.png}
 \end{frame}
 
 \begin{frame}{Opening Vim and \underline{quitting it} (2/2)}
@@ -222,7 +226,7 @@
     It might seem quite counterintuitive to use escape since it's quite out of place on your keyboard. However, 
     vi was created using an \underline{ADM-3A terminal}. It looks like this:
     \begin{center}
-        \includegraphics[width=0.75\linewidth]{2022hs5/adm-3a.png}
+        \includegraphics[width=0.75\linewidth]{adm-3a.png}
     \end{center}{}
     Some programmers also map \keys{Caps Lock} to \keys{Esc} or other mappings for convenience
 \end{frame}
@@ -401,36 +405,54 @@
     Let's use a macro to extract the names from these emails!
 \end{frame}{}
 
-\section{Conclusion}
-\subsection{}
-
-\begin{frame}{Conclusion}
-    We covered the base fundamentals of operating vim. Here's some things we did not cover, but are really
-    useful:
-    \begin{itemize}
-        \item \keys{di(} - delete everything inside the nearest brackets
-        \item find and replace
-        \item ...a lot more!
-    \end{itemize}{}
-\end{frame}{}
-
 \begin{frame}{Extending Vim}
     One of the greatest features is that it is extremely customize and very easy to customize too!
     There are many great configs and plugins created for different workflows, which we can't cover in this
-    session. Here are a few reccomendations:
+    session. Here are a few recomendations:
+
     \begin{itemize}
         \item \url{https://github.com/amix/vimrc}
         \item \url{https://vimconfig.com}
         \item \url{https://github.com/gunbux/dotfiles}
     \end{itemize}{}
-    There are also many forks of vim, notably neovim with much more features.
 \end{frame}{}
+
+\begin{frame}{Getting productive quickly}
+  There are many (neo)vim-based distributions that are pre-configured with sane defaults and plugins to get you productive immediately:
+
+  \begin{itemize}
+    \item \url{https://www.lunarvim.org/}
+    \item \url{https://astronvim.github.io/}
+    \item \url{https://nvchad.com/}
+  \end{itemize}
+
+  Let me show you an example of LunarVim.
+\end{frame}{}
+
+\begin{frame}{Others}
+    We covered the base fundamentals of operating vim. Here's some things we did not cover, but are really
+    useful:
+
+    \begin{itemize}
+        \item \keys{di(} - delete everything inside the nearest brackets
+        \item find and replace
+        \item buffers, windows, and tabs
+        \item ...a lot more!
+    \end{itemize}{}
+\end{frame}{}
+
+\section{Conclusion}
+\subsection{}
+
 
 \begin{frame}{Using vim outside of vim}
     Vim's hotkeys are very well loved, and many people love putting vimbindings on everything (myself included).
     Here are some you can look at:
-    \item \href{https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en}{Vimium - Vim for Chromium based browsers}
-    \item \href{https://plugins.jetbrains.com/plugin/164-ideavim}{IdeaVim - Vim emulation for JetBrains}
+
+    \begin{itemize}
+      \item \href{https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en}{Vimium - Vim for Chromium based browsers}
+      \item \href{https://plugins.jetbrains.com/plugin/164-ideavim}{IdeaVim - Vim emulation for JetBrains}
+    \end{itemize}{}
 \end{frame}{}
 
 \begin{frame}{I need help!}
@@ -446,12 +468,16 @@
 \begin{frame}
   \frametitle{Talk to us!}
   \begin{itemize}
-    \item \textbf{Feedback form}: \url{https://hckr.cc/ht-fb10}
-    \item \textbf{Upcoming Hacker Tools}:
-          Tue, 25th Oct 2022, 6.30pm -- WSL: \url{https://hckr.cc/ht-11}
-          
+    \item \textbf{Feedback form}: \url{https://hckr.cc/ht2223s2-w4-feedback}
+
     \item \textbf{Upcoming Hackerschool}:
-          Sat, 22nd Oct 2022, 10am -- Flask: \url{https://hckr.cc/hs2223s1-week10-signup}
+          Tomorrow -- Intro to OpenCV: \url{https://hckr.cc/hsw4-cc}
+
+    \item \textbf{Upcoming Friday Hacks}:
+          This Friday -- Talks by Hack&Roll winners: \url{https://hckr.cc/fhw4-cc}
+
+    \item \textbf{Upcoming Hacker Tools}:
+          Tue, 7 Feb 2023, 6.30pm -- Shell and Scripting: Sign-ups coming soon!
   \end{itemize}
 \end{frame}
 
