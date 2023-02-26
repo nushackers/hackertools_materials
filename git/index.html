@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="">
+  <title>Introduction to Git (and GitHub)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/black.css" id="theme">
+  <style>
+  img.logo-img {
+    background: white;
+    border: 10px solid #fff;
+    border-radius: 10px;
+  }
+
+  .font120 {
+    font-size: 120%;
+  }
+
+  .font75 {
+    font-size: 75%;
+  }
+
+  .font70 {
+    font-size: 70%;
+  }
+
+  .font45 {
+    font-size: 45%;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .mt0 {
+    margin-top: 0;
+  }
+
+  .mb0 {
+    margin-bottom: 0;
+  }
+
+  .white-bg {
+    background: white;
+    padding: 5px;
+  }
+
+  .bash-strong {
+    font-weight: bold;
+  }
+
+  section .fragment.mark,
+  section .fragment.mark-red {
+    opacity: 1;
+    visibility: inherit;
+  }
+
+  section .fragment.mark.visible,
+  section .mark:not(.fragment) {
+    background: yellow;
+  }
+
+  section .fragment.mark.visible,
+  section .fragment.mark.visible .hljs-string,
+  section .mark:not(.fragment) {
+    color: black;
+  }
+
+  section .fragment.mark-red.visible,
+  section .mark-red:not(.fragment) {
+    background: maroon;
+  }
+
+  section .fragment.mark-red.visible,
+  section .fragment.mark-red.visible .hljs-string,
+  section .mark-red:not(.fragment) {
+    color: white;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Introduction to Git (and GitHub)</h1>
+  <p class="author"><a href="https://nushackers.org"
+target="_blank"><img data-src="../nushackers_svg.svg" class="logo-img"
+style="height: 5ex;" /></a></p>
+  <p class="date">7th March, 2023</p>
+</section>
+
+<section id="slides" class="slide level2">
+<h2>Slides</h2>
+<!---
+Change this
+-->
+<p>https://hackerschool-git.github.io/slides-2120/</p>
+</section>
+<section id="things-you-need" class="slide level2">
+<h2>Things you need</h2>
+<p><a href="https://git-scm.com"><img data-src="git-logo.svg"
+class="logo-img" style="height: 5ex;" /></a></p>
+<p><a href="https://github.com"><img data-src="github-logo.svg"
+class="logo-img" style="height: 5ex;" /></a></p>
+</section>
+<section id="things-to-keep-with-you" class="slide level2">
+<h2>Things to keep with you</h2>
+<ul>
+<li><a href="https://git-scm.com/docs">Git manual</a></li>
+<li><a href="https://git-scm.com/book/en/v2"><img data-src="progit2.png"
+class="logo-img" style="height: 10ex;" /></a></li>
+</ul>
+</section>
+<section id="what-is-version-control-and-why-should-you-care"
+class="slide level2">
+<h2>What is <strong>version control</strong> and why should you
+care?</h2>
+<ul>
+<li>A <strong>version control system (VCS)</strong> helps to record
+changes to a file or a set of files over time.</li>
+<li>It allows you to revert a project to a previous state, or to compare
+changes over time.</li>
+</ul>
+</section>
+<section id="git-lore" class="slide level2">
+<h2>Git lore</h2>
+<ul>
+<li>BitKeeper was a proprietary version control system that was used to
+manage the development of the Linux kernel.</li>
+<li>In 2005, the company withdrew the free license, leading to
+controversy within the Linux community.</li>
+<li>Linus Torvalds disliked many of the existing VCS, so he decided to
+create his own.</li>
+</ul>
+</section>
+<section id="what-is-git" class="slide level2">
+<h2>What is Git?</h2>
+<!---
+TODO: comparison graph
+-->
+<p>A distributed version control system (DVCS)</p>
+<p>Every commit is a <em>snapshot</em> of your files</p>
+<p><img data-src="snapshots.svg" class="white-bg" /></p>
+</section>
+<section id="the-three-areas" class="slide level2">
+<h2>The three "areas"</h2>
+<ul>
+<li>Working directory: where you actually work</li>
+<li>Index/"staging" area: where you construct a commit</li>
+<li>Repository/commit: the repository itself</li>
+</ul>
+<p><img data-src="areas.png" class="white-bg"
+style="height: 15ex" /></p>
+</section>
+<section id="getting-started" class="slide level2">
+<h2>Getting started</h2>
+<p>In each commit, Git stores the author and committer's name and
+email</p>
+<p>You need to configure Git:</p>
+<pre><code>git config --global user.name &quot;Your Name&quot;
+git config --global user.email &quot;your@email.com&quot;</code></pre>
+</section>
+<section id="setting-your-editor" class="slide level2">
+<h2>Setting your editor</h2>
+<p>Git sometimes launches an editor e.g. when you <code>commit</code>,
+to edit the commit message</p>
+<p>Configure your favourite editor:</p>
+<pre><code>git config --global core.editor nano
+git config --global core.editor emacs
+# VS Code
+git config --global core.editor &quot;code --wait --new-window&quot;
+# For Windows
+git config --global core.editor &quot;&#39;C:/Program Files/Notepad++/notepad++.exe&#39; -multiInst -nosession&quot;
+git config --global core.editor &quot;&#39;C:/Program Files/Microsoft VS Code/code.exe&#39; -n -w&quot;</code></pre>
+</section>
+<section id="git-manual" class="slide level2">
+<h2>Git manual</h2>
+<p>You can always access the help for a command via</p>
+<p><code>git help &lt;cmd&gt;</code></p>
+<p>or access the help summary by</p>
+<p><code>git &lt;cmd&gt; -h</code></p>
+</section>
+<section id="initialising-a-repository" class="slide level2">
+<h2>Initialising a repository</h2>
+<p>Let's create a new Git repository.</p>
+<pre class="bash-strong"><code>$ mkdir my-git-repo
+$ cd my-git-repo
+$ git init</code></pre>
+<pre><code>Initialized empty Git repository in my-git-repo/.git/</code></pre>
+</section>
+<section id="stage-a-file" class="slide level2">
+<h2>Stage a file</h2>
+<p>Create a new file in <code>my-git-repo</code>, however you want. Then
+add it:</p>
+<pre><code>$ echo &#39;Hello world&#39; &gt; hello
+$ git add hello</code></pre>
+</section>
+<section id="check-the-status" class="slide level2">
+<h2>Check the status</h2>
+<p>We've just staged a file! So what is the state of the repository?</p>
+<pre class="bash-strong"><code>$ git status</code></pre>
+<pre><code>On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+    new file:   hello</code></pre>
+</section>
+<section id="look-at-the-staged-diff" class="slide level2">
+<h2>Look at the staged diff</h2>
+<p>What exactly did we stage?</p>
+<pre class="bash-strong"><code>$ git diff --staged</code></pre>
+<pre><code>diff --git a/hello b/hello
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/hello
+@@ -0,0 +1 @@
++Hello world</code></pre>
+</section>
+<section id="make-your-first-commit" class="slide level2">
+<h2>Make your first commit</h2>
+<pre class="bash-strong"><code>$ git commit -m &quot;Add hello&quot;</code></pre>
+<pre><code>[master (root-commit) 5d74ce3] Add hello
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello</code></pre>
+<p>You can leave the <code>-m ...</code> part out. Git will open your
+editor for you to compose a commit message.</p>
+</section>
+<section id="look-at-your-commit" class="slide level2">
+<h2>Look at your commit</h2>
+<pre class="bash-strong"><code>$ git show</code></pre>
+<pre><code>commit dc37b1cb2627f9829db0072cfa7d3d6bf9eb6822 (HEAD -&gt; master)
+Author: Your Name &lt;your@email.com&gt;
+Date:   Sat May 8 21:16:45 2021 +0800
+
+    Add hello
+
+diff --git a/hello b/hello
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/hello
+@@ -0,0 +1 @@
++Hello world</code></pre>
+</section>
+<section id="make-some-changes-and-look-at-them" class="slide level2">
+<h2>Make some changes, and look at them</h2>
+<p>Make edits to <code>hello</code> (or whatever file you made),
+then</p>
+<pre class="bash-strong"><code>$ git diff</code></pre>
+<pre><code>diff --git a/hello b/hello
+index 802992c..5d56d4d 100644
+--- a/hello
++++ b/hello
+@@ -1 +1 @@
+-Hello world
++Hello Hackerschool!</code></pre>
+</section>
+<section id="viewing-commit-history" class="slide level2">
+<h2>Viewing commit history</h2>
+<pre class="bash-strong"><code>$ git log</code></pre>
+<pre><code>commit 19c32155172a20f2fd14fe0e6c0fea954c17296b (HEAD -&gt; master)
+Author: Your Name &lt;your@email.com&gt;
+Date:   Sat May 8 21:36:58 2021 +0800
+
+    Change world to Hackerschool!
+
+commit dc37b1cb2627f9829db0072cfa7d3d6bf9eb6822
+Author: Your Name &lt;your@email.com&gt;
+Date:   Sat May 8 21:16:45 2021 +0800
+
+    Add hello</code></pre>
+</section>
+<section id="ignoring-files" class="slide level2">
+<h2>Ignoring files</h2>
+<p>Sometimes we don't want Git to track a certain file</p>
+<pre class="bash-strong"><code>$ touch ignore-me
+$ git status</code></pre>
+<pre><code>On branch master
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    ignore-me
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+</section>
+<section id="ignoring-files-1" class="slide level2">
+<h2>Ignoring files</h2>
+<p>We can add it to <code>.gitignore</code></p>
+<pre class="bash-strong"><code>$ echo &quot;/ignore-me&quot; &gt;&gt; .gitignore
+$ git status</code></pre>
+<pre><code>On branch master
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    .gitignore
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+<p><code>.gitignore</code> should be committed.</p>
+</section>
+<section id="ignoring-files-2" class="slide level2">
+<h2>Ignoring files</h2>
+<pre class="bash-strong"><code>$ git add .gitignore &amp;&amp; git commit -m &quot;Add .gitignore&quot;</code></pre>
+<pre><code>[master 5ada1cf] Add .gitignore
+ 1 file changed, 1 insertion(+)
+ create mode 100644 .gitignore</code></pre>
+<pre class="bash-strong"><code>$ git status</code></pre>
+<pre><code>On branch master
+nothing to commit, working tree clean</code></pre>
+<pre class="bash-strong"><code>$ git status --ignored</code></pre>
+<pre><code>On branch master
+Ignored files:
+  (use &quot;git add -f &lt;file&gt;...&quot; to include in what will be committed)
+
+    ignore-me
+
+nothing to commit, working tree clean</code></pre>
+</section>
+<section id="what-to-ignore" class="slide level2">
+<h2>What to ignore?</h2>
+<p>Typically, we ignore files like build artifacts and generated files
+that are usually derived from the human-authored code in the repository.
+E.g.</p>
+<ul>
+<li>dependency caches like <code>/node_modules</code></li>
+<li>compiled code like <code>.o</code>, <code>.pyc</code> files</li>
+<li>build output directories like <code>/bin</code>,
+<code>/out</code></li>
+<li>runtime-generated files like log files</li>
+<li>personal configuration files e.g. of your IDE</li>
+</ul>
+</section>
+<section id="gitignore-format" class="slide level2">
+<h2><code>.gitignore</code> format</h2>
+<pre><code>/logs/*/*.log
+/logs/**/*.log
+**/logs
+**/logs/debug.log
+*.log
+/debug.log
+debug.log</code></pre>
+<p><a href="https://git-scm.com/docs/gitignore#_pattern_format">See the
+full pattern format.</a></p>
+</section>
+<section id="summary-so-far" class="slide level2">
+<h2>Summary so far</h2>
+<div class="font75">
+<ul>
+<li><a
+href="https://git-scm.com/docs/git-init"><code>git init</code></a>:
+Initialise repository</li>
+<li><a href="https://git-scm.com/docs/git-add"><code>git add</code></a>:
+Stage changes</li>
+<li><a
+href="https://git-scm.com/docs/git-diff"><code>git diff</code></a><code></code><a
+href="https://git-scm.com/docs/git-diff#Documentation/git-diff.txt-emgitdiffemltoptionsgt--ltpathgt82308203"><code>(--staged)</code></a>:
+Look at differences between working tree and index
+(<code>--staged</code>: index and current commit)</li>
+<li><a
+href="https://git-scm.com/docs/git-status"><code>git status</code></a>:
+Look at repository status</li>
+<li><a
+href="https://git-scm.com/docs/git-commit"><code>git commit</code></a><code></code><a
+href="https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--mltmsggt"><code>(-m)</code></a>:
+Commit staged changes (<code>-m</code>: with this commit message)</li>
+<li><a
+href="https://git-scm.com/docs/git-show"><code>git show</code></a>: Show
+current commit</li>
+<li><a href="https://git-scm.com/docs/git-log"><code>git log</code></a>:
+View the log</li>
+<li><code>.gitignore</code>: Ignore files</li>
+</ul>
+<p>The commands' manuals are linked. (They all have <em>many</em> more
+options than what we've covered.)</p>
+</div>
+</section>
+<section id="try-it-out" class="slide level2">
+<h2>Try it out!</h2>
+<p>Now take some time to try out the commands so far, create a new
+directory and try making your first commit.</p>
+<div class="font75">
+<ul>
+<li>Create a folder and initialize a git repo</li>
+<li>Create a new file and commit it</li>
+<li>Make some changes and push it again</li>
+<li>See your list of changes using <code>git log</code></li>
+<li>BONUS: Use <code>.gitignore</code> to ignore some files you don’t
+want to be commit. e.g. MacOS likes to store a resource fork as a hidden
+file in all your folders (<code>_MACOSX</code>). Let’s make sure we
+don’t commit that to our Git repo!</li>
+</ul>
+</div>
+</section>
+<section id="branching-merging-and-collaboration" class="slide level2">
+<h2>Branching, merging and collaboration</h2>
+</section>
+<section id="branches" class="slide level2">
+<h2>Branches</h2>
+<div class="font75">
+<p>... let you have multiple lines of development happen
+simultaneously.</p>
+<p>In Git, branching is extremely fast and lightweight. A branch is
+simply a pointer to a commit; the default branch is typically
+<code>master</code> or <code>main</code>.</p>
+<p><code>HEAD</code> is a special pointer to the branch you are
+currently on.</p>
+<p><img data-src="head-to-master.png" class="white-bg"
+style="height: 20ex;" /></p>
+</div>
+</section>
+<section id="creating-a-branch" class="slide level2">
+<h2>Creating a branch</h2>
+<pre><code>$ git checkout -b new-feature
+Switched to a new branch &#39;new-feature&#39;
+$ git show
+commit 5ada... (HEAD -&gt; new-feature, master)
+Author: Your Name &lt;your@email.com&gt;
+Date:   Sat May 8 21:44:32 2021 +0800
+
+    Add .gitignore</code></pre>
+<p>Alternatively:</p>
+<pre><code>$ git branch new-feature
+$ git checkout new-feature
+Switched to branch &#39;new-feature&#39;</code></pre>
+</section>
+<section id="creating-a-branch-1" class="slide level2">
+<h2>Creating a branch</h2>
+<p><img data-src="branch-1.svg" class="white-bg" /></p>
+</section>
+<section id="listing-branches" class="slide level2">
+<h2>Listing branches</h2>
+<pre><code>$ git branch
+  master
+* new-feature</code></pre>
+</section>
+<section id="changing-branches" class="slide level2">
+<h2>Changing branches</h2>
+<pre><code>$ git checkout master
+Switched to branch &#39;master&#39;</code></pre>
+</section>
+<section id="fast-forward-merging" class="slide level2">
+<h2>Fast-forward merging</h2>
+<p>Let's develop <code>new-feature</code> a bit, then merge it back to
+<code>master</code>.</p>
+<pre><code>$ echo &quot;bye&quot; &gt; bye
+$ git add bye &amp;&amp; git commit -m &quot;Add farewell&quot;
+[new-feature b53e9cf] Add farewell
+ 1 file changed, 1 insertion(+)
+ create mode 100644 bye</code></pre>
+</section>
+<section id="fast-forward-merging-1" class="slide level2">
+<h2>Fast-forward merging</h2>
+<p><img data-src="branch-2.svg" class="white-bg" /></p>
+</section>
+<section id="fast-forward-merging-2" class="slide level2">
+<h2>Fast-forward merging</h2>
+<pre><code>$ git checkout master
+Switched to branch &#39;master&#39;
+$ git merge new-feature
+Updating 5ada1cf..b53e9cf
+Fast-forward
+ bye | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 bye</code></pre>
+</section>
+<section id="fast-forward-merging-3" class="slide level2">
+<h2>Fast-forward merging</h2>
+<p><img data-src="branch-3.svg" class="white-bg" /></p>
+</section>
+<section id="deleting-branches" class="slide level2">
+<h2>Deleting branches</h2>
+<p>Now that we're done with <code>new-feature</code>, we can delete
+it.</p>
+<pre><code>$ git branch -d new-feature
+Deleted branch new-feature (was b53e9cf).</code></pre>
+</section>
+<section id="cloning-repositories" class="slide level2">
+<h2>Cloning repositories</h2>
+<p>Follow along! We're going to clone a repository to use later on. Go
+to <a
+href="https://github.com/hackerschool-git/merge-conflict">merge-conflict</a>,
+and look for this:</p>
+<p><img data-src="github-clone-url.png" style="height: 20ex;" /></p>
+<p>We’ll go into more detail about remote repositories later</p>
+</section>
+<section id="cloning-repositories-1" class="slide level2">
+<h2>Cloning repositories</h2>
+<pre><code>$ git clone https://github.com/hackerschool-git/merge-conflict.git
+Cloning into &#39;merge-conflict&#39;...
+remote: Enumerating objects: 18, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 18 (delta 0), reused 18 (delta 0), pack-reused 0
+Unpacking objects: 100% (18/18), done.
+$ cd merge-conflict/
+$ ls
+bye</code></pre>
+</section>
+<section id="merge-conflicts-setup" class="slide level2">
+<h2>Merge conflicts setup</h2>
+<p>First, checkout <code>conflict-1</code> and <code>conflict-2</code>
+to create your local copies of the branches. Then go back to
+<code>master</code>.</p>
+<pre><code>$ git checkout conflict-1
+Branch &#39;conflict-1&#39; set up to track remote branch &#39;conflict-1&#39; from &#39;origin&#39;.
+Switched to a new branch &#39;conflict-1&#39;
+$ git checkout conflict-2
+Branch &#39;conflict-2&#39; set up to track remote branch &#39;conflict-2&#39; from &#39;origin&#39;.
+Switched to a new branch &#39;conflict-2&#39;
+$ git checkout master
+Switched to branch &#39;master&#39;
+Your branch is up to date with &#39;origin/master&#39;.</code></pre>
+</section>
+<section id="merge-conflicts" class="slide level2">
+<h2>Merge conflicts</h2>
+<p><img data-src="conflict-1.svg" class="white-bg" /></p>
+</section>
+<section id="merge-conflicts-1" class="slide level2">
+<h2>Merge conflicts</h2>
+<pre><code>$ git log --graph --all
+* commit ba119655f9009085d5f3fd72cf29787fe1aef05f (origin/conflict-2)
+| Author: Your Name &lt;your@email.com&gt;
+| Date:   Sun May 9 00:15:38 2021 +0800
+|
+|     Change bye to farewell
+|
+| * commit 87a92c314d38f8941f61053991086d16f08a5d6f (origin/conflict-1)
+|/  Author: Your Name &lt;your@email.com&gt;
+|   Date:   Sun May 9 00:15:15 2021 +0800
+|
+|       Make bye more formal
+|
+* commit b53e9cfb656a633f207b6099bf413c08a0011af5 (HEAD -&gt; master, origin/master, origin/HEAD)</code></pre>
+</section>
+<section id="merge-conflicts-2" class="slide level2">
+<h2>Merge conflicts</h2>
+<p>Now, try to merge <code>conflict-1</code> and <code>conflict-2</code>
+into <code>master</code>.</p>
+<pre><code>$ git merge conflict-1
+Updating b53e9cf..87a92c3
+Fast-forward
+ bye | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+$ git merge conflict-2
+Auto-merging bye
+CONFLICT (content): Merge conflict in bye
+Automatic merge failed; fix conflicts and then commit the result.</code></pre>
+<p>Oh no! <span
+style="font-size: 50%; text-decoration: line-through;"><a
+href="https://xkcd.com/1597/">Time to delete everything and start
+over!</a></span></p>
+</section>
+<section id="handling-merge-conflicts" class="slide level2">
+<h2>Handling merge conflicts</h2>
+<pre><code>$ git status
+On branch master
+Your branch is ahead of &#39;origin/master&#39; by 1 commit.
+(use &quot;git push&quot; to publish your local commits)
+
+You have unmerged paths.
+(fix conflicts and run &quot;git commit&quot;)
+(use &quot;git merge --abort&quot; to abort the merge)
+
+Unmerged paths:
+(use &quot;git add &lt;file&gt;...&quot; to mark resolution)
+
+both modified:   bye
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
+</section>
+<section id="handling-merge-conflicts-1" class="slide level2">
+<h2>Handling merge conflicts</h2>
+<pre><code>$ cat bye
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Goodbye!
+=======
+Farewell!
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; conflict-2</code></pre>
+<p><mark>What we have in <code>master</code></mark></p>
+<p><span class="mark-red">What we want to merge in
+<code>conflict-2</code></span></p>
+</section>
+<section id="handling-merge-conflicts-2" class="slide level2">
+<h2>Handling merge conflicts</h2>
+<p>Fix the merge conflict however you'd like, then commit.</p>
+<pre><code>$ echo &#39;Farewell!&#39; &gt; bye
+$ git add bye &amp;&amp; git commit
+[master 00e746b] Merge branch &#39;conflict-2&#39;
+$ git show
+commit 00e746be657f4ca8e2adde376d09dd6af0533008 (HEAD -&gt; master)
+Merge: 87a92c3 ba11965
+Author: Your Name &lt;your@email.com&gt;
+Date:   Sun May 9 00:43:12 2021 +0800
+
+    Merge branch &#39;conflict-2&#39;</code></pre>
+</section>
+<section id="handling-merge-conflicts-3" class="slide level2">
+<h2>Handling merge conflicts</h2>
+<p><img data-src="conflict-2.svg" class="white-bg" /></p>
+</section>
+<section id="using-and-navigating-github" class="slide level2">
+<h2>Using and Navigating GitHub</h2>
+</section>
+<section id="github-git" class="slide level2">
+<h2>GitHub != Git</h2>
+<p>Git is a DVCS as mentioned earlier.</p>
+<p>GitHub is a cloud based hosting service that’s let’s people manage
+Git repositories.</p>
+</section>
+<section id="creating-a-new-github-repository" class="slide level2">
+<h2>Creating a new GitHub repository</h2>
+<p><img data-src="github-new.png" /></p>
+</section>
+<section id="creating-a-new-github-repository-1" class="slide level2">
+<h2>Creating a new GitHub repository</h2>
+<p><img data-src="github-new-2.png" /></p>
+</section>
+<section id="creating-a-new-github-repository-2" class="slide level2">
+<h2>Creating a new GitHub repository</h2>
+<p><img data-src="github-new-3.png" style="height: 22ex;" /></p>
+</section>
+<section id="pushing-to-a-new-github-repository" class="slide level2">
+<h2>Pushing to a new GitHub repository</h2>
+<pre><code>$ mkdir my-new-repo &amp;&amp; cd my-new-repo
+$ git init
+Initialized empty Git repository in /tmp/my-new-repo/.git/
+$ echo &#39;Hello world!&#39; &gt; hello
+$ git add hello &amp;&amp; git commit -m &quot;Initial commit&quot;
+[master (root-commit) 18cac44] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello
+$ git remote add origin git@github.com:.../my-new-repo.git
+$ git push -u origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 220 bytes | 220.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To github.com:.../my-new-repo.git
+ * [new branch]      master -&gt; master
+Branch &#39;master&#39; set up to track remote branch &#39;master&#39; from &#39;origin&#39;.</code></pre>
+</section>
+<section id="updating-your-repository" class="slide level2">
+<h2>Updating your repository</h2>
+<pre><code>$ git pull origin master
+From https://github.com/hackerschool-git/fork-me
+ * branch            master     -&gt; FETCH_HEAD
+Already up to date.</code></pre>
+<p>Alternatively, if your branch is tracking a remote:</p>
+<pre><code>$ git pull
+Already up to date.</code></pre>
+<p><code>pull</code> is roughly equivalent to a <code>fetch</code> and
+<code>merge</code>.</p>
+<p>So if there are merge conflicts, you handle them as you did
+earlier.</p>
+</section>
+<section id="updating-with-rebase" class="slide level2">
+<h2>Updating with rebase</h2>
+<pre><code>$ git pull --rebase
+Already up to date.</code></pre>
+</section>
+<section id="rebase-vs-merge" class="slide level2">
+<h2>Rebase vs merge</h2>
+<p><img data-src="conflict-rebase-1.svg" class="white-bg" /></p>
+<p><img data-src="conflict-rebase-2.svg" class="white-bg" /></p>
+</section>
+<section id="https-vs-ssh" class="slide level2">
+<h2>HTTPS vs SSH</h2>
+<p>It doesn't really matter.</p>
+<p>Use HTTPS if you don't have an SSH key set up with GitHub, or if it
+is a repository that you cannot write to.</p>
+<p>Use SSH if you have an SSH key set up, and you can write to the
+repository.</p>
+</section>
+<section id="or-it-kinda-does" class="slide level2">
+<h2>Or it kinda does</h2>
+<div class="font75">
+<p>Using your GitHub password is no longer allowed after <strong>August
+13, 2021</strong>. If you use HTTPS, you’ll need to create a Personal
+Access Token (PAT).</p>
+<p>In your GitHub account, go to</p>
+<p><code>Settings &gt; Developer Settings &gt; Personal Access Token</code></p>
+<p>to generate one.</p>
+</div>
+</section>
+<section id="or-does-it" class="slide level2">
+<h2>Or does it?</h2>
+<p>Some enteprise network/universities may block SSH connections.
+However, you can try using SSH over HTTPS port (443).</p>
+<pre><code>$ ssh -T -p 443 git@ssh.github.com
+&gt; Hi USERNAME! You&#39;ve successfully authenticated, but GitHub does not
+&gt; provide shell access.</code></pre>
+</section>
+<section id="or-does-it-1" class="slide level2">
+<h2>Or does it?</h2>
+<p>If you get the success message, you can proceed to set SSH over HTTPS
+as a default connection by adding this to your
+<code>.ssh/config</code></p>
+<pre><code>Host github.com
+Hostname ssh.github.com
+Port 443
+User git</code></pre>
+</section>
+<section id="forking-and-pr-setup" class="slide level2">
+<h2>Forking and PR setup</h2>
+<p>Clone this repository: <a
+href="https://github.com/hackerschool-git/fork-me">fork-me</a>.</p>
+<pre><code>$ git clone https://github.com/hackerschool-git/fork-me.git
+Cloning into &#39;fork-me&#39;...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.</code></pre>
+</section>
+<section id="forking-and-pr" class="slide level2">
+<h2>Forking and PR</h2>
+<p>You've made some improvements, and now you want it upstreamed!</p>
+<pre><code>$ cd fork-me/
+$ nano hello # Edit hello
+$ git add hello &amp;&amp; git commit -m &quot;Improve hello&quot;
+[master df48f95] Improve hello
+ 1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
+</section>
+<section id="forking-and-pr-1" class="slide level2">
+<h2>Forking and PR</h2>
+<p>Fork the repository:</p>
+<p><img data-src="github-fork-1.png" /></p>
+</section>
+<section id="forking-and-pr-2" class="slide level2">
+<h2>Forking and PR</h2>
+<p>Get the URL:</p>
+<p><img data-src="github-fork-2.png" /></p>
+</section>
+<section id="update-your-repository" class="slide level2">
+<h2>Update your repository</h2>
+<p>Make sure there haven't been new changes made to the upstream.</p>
+<pre><code>$ git pull --rebase
+Already up to date.</code></pre>
+<p>We use <code>--rebase</code> because merge commits are generally
+frowned-upon in GitHub-style PRs.</p>
+<p>Also merge commits will look extremely funky in your PRs.</p>
+</section>
+<section id="forking-and-pr-3" class="slide level2">
+<h2>Forking and PR</h2>
+<p>Add the remote, and push</p>
+<pre><code>$ git remote add fork git@github.com:.../fork-me.git
+$ git push fork master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 248 bytes | 248.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To github.com:.../fork-me.git
+   18cac44..df48f95  master -&gt; master</code></pre>
+</section>
+<section id="forking-and-pr-4" class="slide level2">
+<h2>Forking and PR</h2>
+<p><img data-src="github-fork-3.png" /></p>
+</section>
+<section id="forking-and-pr-5" class="slide level2">
+<h2>Forking and PR</h2>
+<p><img data-src="github-fork-4.png" /></p>
+</section>
+<section id="forking-and-pr-6" class="slide level2">
+<h2>Forking and PR</h2>
+<p><img data-src="github-fork-5.png" /></p>
+</section>
+<section id="commit-message-discipline" class="slide level2">
+<h2>Commit message discipline</h2>
+<p>First line: 80-character title, phrased imperatively</p>
+<p>Then if your change is complex, elaborate on the change in prose.</p>
+<pre class="font45"><code>Change greeting from &quot;Hi&quot; to &quot;Hello&quot;
+
+&quot;Hi&quot; is a bit too informal for a greeting. We should change it to &quot;Hello&quot; instead,
+so that our users don&#39;t feel like we are being too informal. Blah blah blah blah.
+Blah blah.</code></pre>
+</section>
+<section id="a-real-commit-message" class="slide level2">
+<h2>A real commit message</h2>
+<p><a
+href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=37c0aead7902b1ddf1b668e1ab74c80b9a7fd183">Randomly
+chosen from the Linux kernel.</a></p>
+<pre class="font45"><code>net_sched: sch_fq: handle non connected flows
+
+FQ packet scheduler assumed that packets could be classified
+based on their owning socket.
+
+This means that if a UDP server uses one UDP socket to send
+packets to different destinations, packets all land
+in one FQ flow.
+
+This is unfair, since each TCP flow has a unique bucket, meaning
+that in case of pressure (fully utilised uplink), TCP flows
+have more share of the bandwidth.
+
+If we instead detect unconnected sockets, we can use a stochastic
+hash based on the 4-tuple hash.
+
+This also means a QUIC server using one UDP socket will properly
+spread the outgoing packets to different buckets, and in-kernel
+pacing based on EDT model will no longer risk having big rb-tree on
+one flow.
+
+Note that UDP application might provide the skb-&gt;hash in an
+ancillary message at sendmsg() time to avoid the cost of a dissection
+in fq packet scheduler.
+
+Signed-off-by: Eric Dumazet &lt;edumazet@google.com&gt;
+Signed-off-by: David S. Miller &lt;davem@davemloft.net&gt;</code></pre>
+</section>
+<section id="github-tip" class="slide level2">
+<h2>GitHub tip</h2>
+<p>You can create <a
+href="https://github.com/nushackers/nushackers-site/pull/252">pull
+requests</a> between branches in the same repository.</p>
+<p>This is useful if you want your team to review something before
+merging, or if you set up automated CI checks, etc.</p>
+<p><img data-src="github-pr-1.png" style="height: 12ex" /></p>
+</section>
+<section id="summary-since-the-last-summary" class="slide level2">
+<h2>Summary since the last summary</h2>
+<ul>
+<li><a
+href="https://git-scm.com/docs/git-checkout"><code>git checkout</code></a>:
+Checkout a branch (and also files, etc)</li>
+<li><a
+href="https://git-scm.com/docs/git-merge"><code>git merge</code></a>:
+Merge a branch</li>
+<li><a
+href="https://git-scm.com/docs/git-clone"><code>git clone</code></a>:
+Clone a remote repository</li>
+<li><a
+href="https://git-scm.com/docs/git-remote"><code>git remote</code></a>:
+Manage remotes</li>
+<li><a
+href="https://git-scm.com/docs/git-push"><code>git push</code></a>: Push
+your branch to a remote</li>
+<li><a
+href="https://git-scm.com/docs/git-pull"><code>git pull</code></a>: Pull
+updates from a remote to your repository</li>
+</ul>
+</section>
+<section id="commit-manipulation" class="slide level2">
+<h2>Commit manipulation</h2>
+</section>
+<section id="clone-another-repo" class="slide level2">
+<h2>Clone another repo</h2>
+<p>Let's clone <a
+href="https://github.com/hackerschool-git/big-repo">another
+repository</a> to use for this section.</p>
+<pre><code>$ git clone https://github.com/hackerschool-git/big-repo.git
+Cloning into &#39;big-repo&#39;...
+remote: Enumerating objects: 12, done.
+remote: Counting objects: 100% (12/12), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 12 (delta 0), reused 12 (delta 0), pack-reused 0
+Receiving objects: 100% (12/12), done.</code></pre>
+</section>
+<section id="this-repository" class="slide level2">
+<h2>This repository</h2>
+<pre><code>$ git log --graph --all --oneline
+* d1f4fcc (HEAD -&gt; master, origin/master, origin/HEAD) Add file3
+| * 367597c (origin/new-file) Add file2
+|/
+* 643aec6 Update file to c
+* 4ec21c7 Update file to b
+* 055cab4 Initial commit</code></pre>
+</section>
+<section id="revert" class="slide level2">
+<h2>Revert</h2>
+<p>Create a commit to reverse a previous commit.</p>
+<pre><code>$ git log --graph --oneline
+* d1f4fcc (HEAD -&gt; master, origin/master, origin/HEAD) Add file3
+* 643aec6 Update file to c
+* 4ec21c7 Update file to b
+* 055cab4 Initial commit</code></pre>
+<p>Suppose we want to revert <mark>this</mark> commit.</p>
+</section>
+<section id="revert-1" class="slide level2">
+<h2>Revert</h2>
+<pre><code>$ git revert 643aec6
+[master 7b73baf] Revert &quot;Update file to c&quot;
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+$ git show
+commit 7b73baf229e2b8db19bc594c450743b50adf649d (HEAD -&gt; master)
+Author: Your Name &lt;your@email.com&gt;
+Date:   Tue May 11 01:21:31 2021 +0800
+
+    Revert &quot;Update file to c&quot;
+
+    This reverts commit 643aec6d2a1b4cd485d678886fc1cef25b15bee0.
+
+diff --git a/file b/file
+index f2ad6c7..6178079 100644
+--- a/file
++++ b/file
+@@ -1 +1 @@
+-c
++b</code></pre>
+</section>
+<section id="reset" class="slide level2">
+<h2>Reset</h2>
+<p>Undo <code>git add</code>.</p>
+<pre><code>$ echo e &gt; file
+$ git add file
+$ git status
+On branch master
+Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+    modified:   file
+$ git reset file
+Unstaged changes after reset:
+M   file
+$ git status
+On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    modified:   file
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
+</section>
+<section id="checkout" class="slide level2">
+<h2>Checkout</h2>
+<p>Undo changes to a file in the working tree.</p>
+<pre><code>$ echo e &gt; file
+$ git status
+On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    modified:   file
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+$ git checkout -- file
+$ git status
+On branch master
+nothing to commit, working tree clean</code></pre>
+</section>
+<section id="summary-since-the-last-summary-1" class="slide level2">
+<h2>Summary since the last summary</h2>
+<ul>
+<li><a
+href="https://git-scm.com/docs/git-revert"><code>git revert</code></a>:
+Revert a commit</li>
+<li><a
+href="https://git-scm.com/docs/git-reset"><code>git reset</code></a>:
+Unstage files</li>
+<li><a
+href="https://git-scm.com/docs/git-checkout"><code>git checkout</code></a>:
+Checkout files (and also a branch) commits</li>
+<li><a
+href="https://git-scm.com/docs/git-reset"><code>git reset</code></a>
+(2): Move/"reset" a branch branch</li>
+</ul>
+</section>
+<section id="cool-gitgithub-stuff-you-can-do" class="slide level2">
+<h2>Cool Git/GitHub stuff you can do</h2>
+<p>Honestly if you just want to <em>learn</em> how to use Git, you can
+stop here, but there’s so much more you <em>can</em> do!</p>
+</section>
+<section id="some-activities-you-can-try" class="slide level2">
+<h2>Some activities you can try</h2>
+<p>Clone a repo you might be interested in and follow along! Some
+examples:</p>
+<ul>
+<li><a href="https://github.com/torvalds/linux">Linux Kernel</a></li>
+<li><a href="https://github.com/musescore/MuseScore">Musescore</a></li>
+<li><a href="https://github.com/vuejs/vue">Vue</a></li>
+<li><a href="https://github.com/gpujs/gpu.js/">GPU.js</a></li>
+</ul>
+</section>
+<section id="git-aliases" class="slide level2">
+<h2>Git aliases</h2>
+<p>For any medium to large Git projects, the <code>git log</code> will
+be extremely long and hard to read. We can pass is some flags to make it
+really readable.</p>
+<pre><code>git log --graph --decorate --pretty=oneline --abbrev-commit --all
+git log --graph --abbrev-commit --decorate --format=format:&#39;%C(bold blue)    %h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white    )- %an%C(reset)%C(auto)%d%C(reset)&#39;</code></pre>
+</section>
+<section id="git-aliases-1" class="slide level2">
+<h2>Git aliases</h2>
+<p>But imagine having to type all that all the time! Can we alias
+it?</p>
+<pre><code>git config --global alias.lola &quot;log --graph --decorate --pretty=oneline --abbrev-commit --all&quot;
+git config --global alias.lg &quot;log --graph --abbrev-commit --decorate --format=format:&#39;%C(bold blue)    %h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white    )- %an%C(reset)%C(auto)%d%C(reset)&#39;&quot;</code></pre>
+<p>Now we can type something like <code>git lola</code> or
+<code>git lg</code> to get a nice concise log!</p>
+</section>
+<section id="checking-out-specific-commits" class="slide level2">
+<h2>Checking out specific commits</h2>
+<p>Each git commit has a <em>hash</em> attached to it. We can use this
+unique hash to checkout a specific commit.</p>
+<pre><code>git checkout &lt;commit-hash&gt;</code></pre>
+</section>
+<section id="diffing-branchescommits" class="slide level2">
+<h2>Diffing branches/commits</h2>
+<p>You can quite easily extend <code>git diff</code> to diff two
+different branches/commits</p>
+<pre><code>git diff branch-1 branch-2</code></pre>
+</section>
+<section
+id="oh-no-i-messed-up-and-i-resetreverttouched-something-i-shouldnt-have"
+class="slide level2">
+<h2>Oh no! I messed up and I reset/revert/touched something I shouldn’t
+have</h2>
+</section>
+<section id="reflog" class="slide level2">
+<h2>Reflog</h2>
+<p><code>git reflog</code> is a reference log of all your actions you’ve
+done using git. Find the hash in reflog you want to go to and do</p>
+<pre><code>git reset --hard &lt;reflog-hash&gt;</code></pre>
+<p>With this you can under (almost) anything in git!</p>
+</section>
+<section id="thats-a-lot-of-cool-git-stuff-what-about-github"
+class="slide level2">
+<h2>That’s a lot of cool Git stuff, what about GitHub?</h2>
+</section>
+<section id="comparing-branches-in-github" class="slide level2">
+<h2>Comparing branches in GitHub</h2>
+<p>Go to any repo you want on github, then add <code>/compare</code> to
+the back of the URL and try comparing different branches! Here are some
+you can try:</p>
+<ul>
+<li><a href="https://github.com/neovim/neovim/compare">Neovim</a></li>
+<li><a href="https://github.com/source-academy/frontend/compare">Source
+Academy’s frontend</a></li>
+</ul>
+</section>
+<section id="code-in-github" class="slide level2">
+<h2>Code in GitHub</h2>
+<p>What if you found a typo on one line of code, and you want to quickly
+edit it? You can replace <code>.com</code> in the url to a
+<code>.dev</code> to open a VSCode environment with the GitHub Repo.
+Here’s some cool stuff you can try looking at:</p>
+<ul>
+<li><a
+href="https://github.dev/nusmodifications/nusmods">NUSMods</a></li>
+<li><a href="https://github.dev/MarkBind/markbind">MarkBind</a></li>
+</ul>
+</section>
+<section id="where-to-go-from-here" class="slide level2">
+<h2>Where to go from here?</h2>
+<ul>
+<li><a
+href="https://git-scm.com/docs/git-rebase"><code>git rebase</code></a>:
+"Rebase" a branch</li>
+<li><a
+href="https://git-scm.com/docs/git-add"><code>git add -p</code></a>:
+Interactively add</li>
+<li><a href="https://git-scm.com/docs/git-rev-list">Specifying commit
+ranges</a>: for commands like log, cherry-pick, etc</li>
+<li><a
+href="https://git-scm.com/docs/git-rebase"><code>git rebase -i</code></a>:
+interactive rebase—edit history</li>
+<li><a
+href="https://git-scm.com/docs/git-bisect"><code>git bisect</code></a>:
+Find the first commit with a bug, etc</li>
+<li><a
+href="https://git-scm.com/docs/git-submodule"><code>git submodule</code></a>:
+Include another repository in your current repository</li>
+<li><a
+href="https://man.archlinux.org/man/git-subtree.1"><code>git subtree</code></a>:
+Extract a subdirectory (incl. commit history) into a separate
+repository</li>
+</ul>
+</section>
+<section id="where-to-go-from-here-1" class="slide level2">
+<h2>Where to go from here?</h2>
+<ul>
+<li>Look into <a
+href="https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#ch05-distributed-git">Git
+workflows</a></li>
+<li>If you’re interested in how version control works with lots of
+technical details, look into <a
+href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration">Customizing
+Git</a> and <a
+href="https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain">Git
+Internals</a></li>
+<li>GitHub isn’t the only way you can share you repositories online! You
+could even self host your own Git servers.</li>
+<li>Why stop at learning? <a
+href="https://github.com/codecrafters-io/build-your-own-x#build-your-own-git">Build
+your own Git!</a></li>
+</ul>
+</section>
+<section id="where-to-go-from-here-2" class="slide level2">
+<h2>Where to go from here?</h2>
+<p>Check out Hackerschool: Advanced Git<br />
+(last run on 7 Nov 2020)</p>
+<p>Recording: <a href="https://www.youtube.com/watch?v=pGAorBdZ6Y8"
+class="uri">https://www.youtube.com/watch?v=pGAorBdZ6Y8</a></p>
+<p>Slides: <a href="https://hs2010-git.github.io/adv"
+class="uri">https://hs2010-git.github.io/adv</a></p>
+</section>
+<section id="end" class="slide level2">
+<h2>End</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,73 @@
+<style>
+img.logo-img {
+  background: white;
+  border: 10px solid #fff;
+  border-radius: 10px;
+}
+
+.font120 {
+  font-size: 120%;
+}
+
+.font75 {
+  font-size: 75%;
+}
+
+.font70 {
+  font-size: 70%;
+}
+
+.font45 {
+  font-size: 45%;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.mt0 {
+  margin-top: 0;
+}
+
+.mb0 {
+  margin-bottom: 0;
+}
+
+.white-bg {
+  background: white;
+  padding: 5px;
+}
+
+.bash-strong {
+  font-weight: bold;
+}
+
+section .fragment.mark,
+section .fragment.mark-red {
+  opacity: 1;
+  visibility: inherit;
+}
+
+section .fragment.mark.visible,
+section .mark:not(.fragment) {
+  background: yellow;
+}
+
+section .fragment.mark.visible,
+section .fragment.mark.visible .hljs-string,
+section .mark:not(.fragment) {
+  color: black;
+}
+
+section .fragment.mark-red.visible,
+section .mark-red:not(.fragment) {
+  background: maroon;
+}
+
+section .fragment.mark-red.visible,
+section .fragment.mark-red.visible .hljs-string,
+section .mark-red:not(.fragment) {
+  color: white;
+}
+
+</style>
