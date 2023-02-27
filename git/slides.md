@@ -6,10 +6,7 @@
 
 ## Slides
 
-<!---
-Change this
--->
-https://hackerschool-git.github.io/slides-2120/
+https://hckr.cc/ht-git-slides
 
 ---
 
@@ -381,6 +378,14 @@ a pointer to a commit; the default branch is typically `master` or
 ![](head-to-master.png){.white-bg style="height: 20ex;"}
 
 :::
+
+---
+
+## Why use branching? {.font75}
+
+-   work on **different versions of our code simultaneously**. Think of branches as alternative timelines.
+-   create separate contexts where we can try new things or even **work on multiple ideas in parallel** without risking the codebase.
+-   if feature A and feature B are being developed, if A breaks, it doesn't affect B.
 
 ---
 
