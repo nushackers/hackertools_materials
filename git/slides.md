@@ -1115,7 +1115,7 @@ Find the hash in reflog you want to go to and do
 
     git reset --hard <reflog-hash>
 
-With this you can under (almost) anything in git!
+With this you can undo (almost) anything in git!
 
 ---
 
