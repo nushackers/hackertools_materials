@@ -1160,6 +1160,14 @@ What if you found a typo on one line of code, and you want to quickly edit it? Y
 
 ---
 
+## Cheatsheet
+
+<https://hckr.cc/ht-git-cs>
+
+![](cheatsheet.png)
+
+---
+
 ## Where to go from here?
 
 -   Look into [Git
