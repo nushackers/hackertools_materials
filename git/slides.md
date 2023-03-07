@@ -1182,6 +1182,28 @@ Slides: <https://hs2010-git.github.io/adv>
 
 ---
 
+## Join us at our events
+
+Hackerschool: Improve your Dev Experience with Docker: <https://hckr.cc/hs2023-docker>
+
+![](docker.png)
+
+---
+
+## Join us at our events
+
+Friday Hacks #237: Building Customisable Laptops, the Hard things about Hardware: <https://hckr.cc/fh2223s2-w8-pub>
+
+![](fh.png)
+
+---
+
+## Feedback
+
+<https://hckr.cc/ht-git-feedback>
+
+![](feedback.png)
+
 ## End
 
 
