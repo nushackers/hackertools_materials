@@ -93,3 +93,9 @@ restore
 ```
 git checkout -- tmp
 ```
+
+```
+cat /usr/share/dict/words | grep -v "ness" | grep '.*a.*a.*a.*' | grep -E -o '.{2}$' | sort | uniq -c | sort -nk1,1 | tail -n3
+cat /usr/share/dict/words | grep -v "ness" | grep '.*a.*a.*a.*' | grep -E -o '.{2}$' | sort | uniq | wc -l
+cat /usr/share/dict/words | grep -v "ness" | grep '.*a.*a.*a.*' | grep -E -o '.{2}$' | sort | uniq | comm -1 -3 - <(echo {a..z}{a..z} | tr ' ' '\n') | paste -sd, -
+```
