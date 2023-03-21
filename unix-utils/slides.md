@@ -10,6 +10,13 @@ https://hckr.cc/ht-unix-slides
 
 ---
 
+## Overview
+
+* SSH, Keygen, scp, tmux/screen, cronjobs, top
+* Today's focus is on the tools and what you can do with them.
+
+---
+
 ## SSH
 
 ---
