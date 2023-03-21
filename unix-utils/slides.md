@@ -278,8 +278,6 @@ we'll focus on panes (because they are much cooler).
 - By default, you should have some log files at /var/log. Try tailing one of the logs
 with `tail -F` and disconnect from tmux and run some things to update the log.
 - Extension: Try outputting the result into a file
-- Run test script while monitoring your CPU and see what happens!
-(**WARNING**: If you have a slow CPU don't run this)
 
 ---
 
