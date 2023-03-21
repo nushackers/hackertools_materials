@@ -121,7 +121,7 @@ The config file follows this format:
 
 ## Neat examples
 
-Suppose you are part of a *world-class* university and need to connect to a school server. However, you are required to login via a login node or VPN. Let's set this up in our config.
+Suppose you are part of a university/entreprise and need to connect to a school server. However, you are required to login via a login node or VPN. Let's set this up in our config.
 
     Host stu
       HostName %h.comp.nus.edu.sg
@@ -540,6 +540,10 @@ How would I do that?
 -   [Hackerschool: Cosplay for Starters: Design, Model, 3D Print!](https://hckr.cc/hs2023-cosplay)
 
 https://hckr.cc/hs2023-cosplay
+
+-   Friday Hackers #239
+
+https://hckr.cc/links
 
 ---
 
