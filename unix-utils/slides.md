@@ -129,6 +129,12 @@ Since %h is the `Host`, we can quickly appead it to our HostName so that we have
 
 ---
 
+## Let's try it out!
+
+- If you have access to a remote server, try configuring your ssh config to that server!
+
+---
+
 ## Keygen
 
 Without going into details into public/private key, it basically gives you a way to
@@ -167,8 +173,8 @@ local and host machines.
 
 Before we move on, let's quickly get some practice:
 
-- If you have access to a remote server, try configuring your ssh config to that server!
 - If you haven't already, set up your ssh keys on your remote
+(try using `scp` instead of ssh-copy-id!)
 - If you don't have a remote, but have a GitHub account, try using ssh-keygen to generate a key for GitHub! More details [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 ---
@@ -266,7 +272,7 @@ we'll focus on panes (because they are much cooler).
 with `tail -F` and disconnect from tmux and run some things to update the log.
 - Extension: Try outputting the result into a file
 - Run test script while monitoring your CPU and see what happens!
-(**WARNING:** If you have a slow CPU don't run this)
+(**WARNING**: If you have a slow CPU don't run this)
 
 ---
 
@@ -281,9 +287,70 @@ even *after a reboot*
 
 ## Files and how they work
 
+- Files and how they work
 - Linux file structure
 - Some *special* files
 - Symlinks
+
+---
+
+## How do we read `ls` output?
+
+    total 5416
+    drwxr-xr-x  2 chun chun    4096 Mar 17 11:19 .
+    drwxr-xr-x 12 chun chun    4096 Mar  3 02:38 ..
+    -rw-r--r--  1 chun chun 5472298 Mar 17 11:19 f2c69c43-8b85-4ae0-8575-3f34a1e36587.pdf
+    -rw-r--r--  1 chun chun   19217 Mar 16 02:44 fs-layout.png
+    -rw-r--r--  1 chun chun   21615 Mar 21 08:58 index.html
+    -rw-r--r--  1 chun chun     351 Mar  3 02:44 Makefile
+    -rw-r--r--  1 chun chun    8895 Mar 21 08:58 slides.md
+
+---
+
+## How files work
+
+- The `d` initially indicates that it is a directory/folder.
+- The next 9 characters are called **permission bits** and indicate the permissions of
+the file.
+- The next 2 characters are the number of hard links to the file.
+- The next 2 characters are owner and group to whom the file belongs to.
+
+---
+
+## Permission bits
+
+- Permission bits follow this format:
+```
+    Format:   rwxrwxrwx
+    Example:  rwxr-xr-x
+    Category: UUUGGGOOO
+```
+- rwx - read, write, execute
+- First three bits are for user, then group, then owner
+- You can change the permissions of a file using `chmod`
+```
+    chmod u=rw,og=r new_file.txt
+    chmod a+x new_script.sh
+```
+
+---
+
+## A much faster way to `chmod`
+
+- You can think of the permission bits as 1 and 0s.
+```
+    Example
+    Perms:  rwx r-x r-x
+    Binary: 111 101 101
+    Decimal:  7   5   5
+```
+- Let's say I want the file to give rwx access to all users.
+```
+    rwx rwx rwx
+    111 111 111
+      7   7   7
+```
+- We can just do `chmod 777 <filename>` to change the permissions as such.
 
 ---
 
@@ -295,7 +362,10 @@ even *after a reboot*
 
 ## Special files to play with in Linux/Unix systems
 
-
+- We can play with the sysfs file system mounted under `/sys`.
+sysfs exposes a number of kernel parameters as files, so that you can easily reconfigure the kernel on the fly without specialized tools.
+- The `/proc` file system is another psuedo-filesystem which provides an interface to
+kernel data structures
 
 ---
 
@@ -312,26 +382,137 @@ Using only files from /sys/class!
 
 ---
 
-## Processes and jobs
+## Symlinks
 
-- Scheduling jobs with `cron` and `anacron`
-- fg, bg, &
-- Sending signals to your processes
+- Symlinks are a way to create a shortcut to a file or directory.
+- You can create a symlink using `ln -s <target> <link>`
+- This will create what is known as a **soft link**
+
+---
+
+## Soft links vs Hard links
+
+- A symbolic or soft link is an actual link to the original file, whereas a hard link is a mirror copy of the original file.
+- If you delete the original file, the soft link has no value, because it points to a non-existent file.
+- But in the case of hard link, it is entirely opposite. Even if you delete the original file, the hard link will still has the data of the original file.
 
 ---
 
 ## Activities
+- Symlinks are really useful if you want to create a "duplicate" of a file in a
+different location
+- This is usefule for something like tracking your config files in a git repo!
+- Try creating a symlink to your .bashrc/.zshrc file and see what happens!
+
+---
+
+## Scheduling jobs with `cron`
+- Cron is a scheduling daemon that executes tasks at specified intervals.
+- These tasks are called cron jobs and are mostly used to automate system maintenance or administration.
+
+---
+
+## Cron jobs
+The crontab command allows you to install, view , or open a crontab file for editing:
+
+- `crontab -e` - Edit crontab file, or create one if it doesn’t already exist.
+- `crontab -l` - Display crontab file contents.
+- `crontab -r` - Remove your current crontab file.
+- `crontab -i` - Remove your current crontab file with a prompt before removal.
+- `crontab -u` <username> - Edit other user crontab file. This option requires system administrator privileges.
+
+---
+
+## Cron Syntax
+
+- [https://crontab.guru/](https://crontab.guru/)
+
+    ```
+    Syntax:
+    * * * * * command(s)
+    - - - - -
+    | | | | |
+    | | | | ----- Day of week (0 - 7) (Sun=0 or 7)
+    | | | ------- Month (1 - 12)
+    | | --------- Day of month (1 - 31)
+    | ----------- Hour (0 - 23)
+    ------------- Minute (0 - 59)
+
+    Example:
+    */5 * * * * /path/to/script.sh # Run every 5 minutes
+    ```
+
+## Activities
+- Try creating a cron job that runs every minute and prints out the current time.
+- Let's extend that further: Can we make it run every day, every hour, on the hour,
+from 8 AM through 4 PM?
+
+---
+
+## Activities
+- Try creating a cron job that runs every minute and prints out the current time.
+- **Solution: `* * * * * date`**
+- Let's extend that further: Can we make it run every day, every hour, on the hour,
+from 8 AM through 4 PM?
+- **Solution: `00 08-16 * * * date`**
 
 ---
 
 ## Monitoring
-- top, htop, bashtop and how to use them
-- ps and how to use it
+- top, htop and how to use them
 - searching and killing resources
 
 ---
 
+## What is top?
+- top command is used to show the Linux processes. It provides a dynamic real-time view of the running system.
+- Think of it as a super powerful task manager for Linux.
+
+---
+
+## Basic Usage
+
+- Just type `top` to start the program.
+- Pressing q will simply exit the command mode.
+- Pressing h will show you the help menu.
+
+---
+
+## What does everything mean?
+    PID: Shows task’s unique process id.
+    PR: The process’s priority. The lower the number, the higher the priority.
+    VIRT: Total virtual memory used by the task.
+    USER: User name of owner of task.
+    %CPU: Represents the CPU usage.
+    TIME+: CPU Time, the same as ‘TIME’, but reflecting more granularity through hundredths of a second.
+    SHR: Represents the Shared Memory size (kb) used by a task.
+    NI: Represents a Nice Value of task. A Negative nice value implies higher priority, and positive Nice value means lower priority.
+    %MEM: Shows the Memory usage of task.
+    RES: How much physical RAM the process is using, measured in kilobytes.
+    COMMAND: The name of the command that started the process.
+
 ## Activities
+- [Cheatsheet](https://gist.github.com/ericandrewlewis/4983670c508b2f6b181703df43438c37)
+
+(**Warning**: Kill processes on your machine at your own risk! Make
+sure you know what you're killing)
+
+- Try running `top` and see what you can find out about your system!
+- What are the top 5 processes using the most CPU?
+- What would I press if I want to kill the processes using the most memory?
+- I want to see what processes start running when I start my computer.
+How would I do that?
+
+---
+
+## Solution
+
+- What are the top 5 processes using the most CPU?
+    - `top` -> `Shift + P`
+- What would I press if I want to kill the processes using the most memory?
+    - `top -> Shift + M` -> `k`
+- I want to see what processes start running when I start my computer.
+    - `top` -> `f` -> `PID` -> `s` -> `q` -> `Shift + R`
 
 ---
 
@@ -349,8 +530,9 @@ Using only files from /sys/class!
 ## Upcoming events
 
 -   Hacker Tools: Self Hosting
--   Hackerschool:
--   Friday Hacks:
+-   [Hackerschool: Cosplay for Starters: Design, Model, 3D Print!](https://hckr.cc/hs2023-cosplay)
+
+https://hckr.cc/hs2023-cosplay
 
 ---
 

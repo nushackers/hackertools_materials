@@ -307,6 +307,13 @@ Host pe11? pe120
 <p>Since %h is the <code>Host</code>, we can quickly appead it to our
 HostName so that we have a shorter alias!</p>
 </section>
+<section id="lets-try-it-out" class="slide level2">
+<h2>Let’s try it out!</h2>
+<ul>
+<li>If you have access to a remote server, try configuring your ssh
+config to that server!</li>
+</ul>
+</section>
 <section id="keygen" class="slide level2">
 <h2>Keygen</h2>
 <p>Without going into details into public/private key, it basically
@@ -337,9 +344,8 @@ scp [options] &lt;local directory&gt; username@source_host:directory/filename1</
 <h2>Activities</h2>
 <p>Before we move on, let’s quickly get some practice:</p>
 <ul>
-<li>If you have access to a remote server, try configuring your ssh
-config to that server!</li>
-<li>If you haven’t already, set up your ssh keys on your remote</li>
+<li>If you haven’t already, set up your ssh keys on your remote (try
+using <code>scp</code> instead of ssh-copy-id!)</li>
 <li>If you don’t have a remote, but have a GitHub account, try using
 ssh-keygen to generate a key for GitHub! More details <a
 href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">here</a></li>
@@ -443,7 +449,7 @@ one of the logs with <code>tail -F</code> and disconnect from tmux and
 run some things to update the log.</li>
 <li>Extension: Try outputting the result into a file</li>
 <li>Run test script while monitoring your CPU and see what happens!
-(<strong>WARNING:</strong> If you have a slow CPU don’t run this)</li>
+(<strong>WARNING</strong>: If you have a slow CPU don’t run this)</li>
 </ul>
 </section>
 <section id="extension---plugins-and-configs" class="slide level2">
@@ -460,9 +466,70 @@ sessions even <em>after a reboot</em></li>
 <section id="files-and-how-they-work" class="slide level2">
 <h2>Files and how they work</h2>
 <ul>
+<li>Files and how they work</li>
 <li>Linux file structure</li>
 <li>Some <em>special</em> files</li>
 <li>Symlinks</li>
+</ul>
+</section>
+<section id="how-do-we-read-ls-output" class="slide level2">
+<h2>How do we read <code>ls</code> output?</h2>
+<pre><code>total 5416
+drwxr-xr-x  2 chun chun    4096 Mar 17 11:19 .
+drwxr-xr-x 12 chun chun    4096 Mar  3 02:38 ..
+-rw-r--r--  1 chun chun 5472298 Mar 17 11:19 f2c69c43-8b85-4ae0-8575-3f34a1e36587.pdf
+-rw-r--r--  1 chun chun   19217 Mar 16 02:44 fs-layout.png
+-rw-r--r--  1 chun chun   21615 Mar 21 08:58 index.html
+-rw-r--r--  1 chun chun     351 Mar  3 02:44 Makefile
+-rw-r--r--  1 chun chun    8895 Mar 21 08:58 slides.md</code></pre>
+</section>
+<section id="how-files-work" class="slide level2">
+<h2>How files work</h2>
+<ul>
+<li>The <code>d</code> initially indicates that it is a
+directory/folder.</li>
+<li>The next 9 characters are called <strong>permission bits</strong>
+and indicate the permissions of the file.</li>
+<li>The next 2 characters are the number of hard links to the file.</li>
+<li>The next 2 characters are owner and group to whom the file belongs
+to.</li>
+</ul>
+</section>
+<section id="permission-bits" class="slide level2">
+<h2>Permission bits</h2>
+<ul>
+<li>Permission bits follow this format:</li>
+</ul>
+<pre><code>    Format:   rwxrwxrwx
+    Example:  rwxr-xr-x
+    Category: UUUGGGOOO</code></pre>
+<ul>
+<li>rwx - read, write, execute</li>
+<li>First three bits are for user, then group, then owner</li>
+<li>You can change the permissions of a file using
+<code>chmod</code></li>
+</ul>
+<pre><code>    chmod u=rw,og=r new_file.txt
+    chmod a+x new_script.sh</code></pre>
+</section>
+<section id="a-much-faster-way-to-chmod" class="slide level2">
+<h2>A much faster way to <code>chmod</code></h2>
+<ul>
+<li>You can think of the permission bits as 1 and 0s.</li>
+</ul>
+<pre><code>    Example
+    Perms:  rwx r-x r-x
+    Binary: 111 101 101
+    Decimal:  7   5   5</code></pre>
+<ul>
+<li>Let’s say I want the file to give rwx access to all users.</li>
+</ul>
+<pre><code>    rwx rwx rwx
+    111 111 111
+      7   7   7</code></pre>
+<ul>
+<li>We can just do <code>chmod 777 &lt;filename&gt;</code> to change the
+permissions as such.</li>
 </ul>
 </section>
 <section id="the-linux-filesystem" class="slide level2">
@@ -472,6 +539,14 @@ sessions even <em>after a reboot</em></li>
 <section id="special-files-to-play-with-in-linuxunix-systems"
 class="slide level2">
 <h2>Special files to play with in Linux/Unix systems</h2>
+<ul>
+<li>We can play with the sysfs file system mounted under
+<code>/sys</code>. sysfs exposes a number of kernel parameters as files,
+so that you can easily reconfigure the kernel on the fly without
+specialized tools.</li>
+<li>The <code>/proc</code> file system is another psuedo-filesystem
+which provides an interface to kernel data structures</li>
+</ul>
 </section>
 <section id="activities-2" class="slide level2">
 <h2>Activities</h2>
@@ -484,27 +559,173 @@ class="slide level2">
 </ul>
 <p>Using only files from /sys/class!</p>
 </section>
-<section id="processes-and-jobs" class="slide level2">
-<h2>Processes and jobs</h2>
+<section id="symlinks" class="slide level2">
+<h2>Symlinks</h2>
 <ul>
-<li>Scheduling jobs with <code>cron</code> and <code>anacron</code></li>
-<li>fg, bg, &amp;</li>
-<li>Sending signals to your processes</li>
+<li>Symlinks are a way to create a shortcut to a file or directory.</li>
+<li>You can create a symlink using
+<code>ln -s &lt;target&gt; &lt;link&gt;</code></li>
+<li>This will create what is known as a <strong>soft link</strong></li>
+</ul>
+</section>
+<section id="soft-links-vs-hard-links" class="slide level2">
+<h2>Soft links vs Hard links</h2>
+<ul>
+<li>A symbolic or soft link is an actual link to the original file,
+whereas a hard link is a mirror copy of the original file.</li>
+<li>If you delete the original file, the soft link has no value, because
+it points to a non-existent file.</li>
+<li>But in the case of hard link, it is entirely opposite. Even if you
+delete the original file, the hard link will still has the data of the
+original file.</li>
 </ul>
 </section>
 <section id="activities-3" class="slide level2">
 <h2>Activities</h2>
-</section>
-<section id="monitoring" class="slide level2">
-<h2>Monitoring</h2>
 <ul>
-<li>top, htop, bashtop and how to use them</li>
-<li>ps and how to use it</li>
-<li>searching and killing resources</li>
+<li>Symlinks are really useful if you want to create a “duplicate” of a
+file in a different location</li>
+<li>This is usefule for something like tracking your config files in a
+git repo!</li>
+<li>Try creating a symlink to your .bashrc/.zshrc file and see what
+happens!</li>
+</ul>
+</section>
+<section id="scheduling-jobs-with-cron" class="slide level2">
+<h2>Scheduling jobs with <code>cron</code></h2>
+<ul>
+<li>Cron is a scheduling daemon that executes tasks at specified
+intervals.</li>
+<li>These tasks are called cron jobs and are mostly used to automate
+system maintenance or administration.</li>
+</ul>
+</section>
+<section id="cron-jobs" class="slide level2">
+<h2>Cron jobs</h2>
+<p>The crontab command allows you to install, view , or open a crontab
+file for editing:</p>
+<ul>
+<li><code>crontab -e</code> - Edit crontab file, or create one if it
+doesn’t already exist.</li>
+<li><code>crontab -l</code> - Display crontab file contents.</li>
+<li><code>crontab -r</code> - Remove your current crontab file.</li>
+<li><code>crontab -i</code> - Remove your current crontab file with a
+prompt before removal.</li>
+<li><code>crontab -u</code> <username> - Edit other user crontab file.
+This option requires system administrator privileges.</li>
+</ul>
+</section>
+<section id="cron-syntax" class="slide level2">
+<h2>Cron Syntax</h2>
+<ul>
+<li><p><a href="https://crontab.guru/">https://crontab.guru/</a></p>
+<pre><code>Syntax:
+* * * * * command(s)
+- - - - -
+| | | | |
+| | | | ----- Day of week (0 - 7) (Sun=0 or 7)
+| | | ------- Month (1 - 12)
+| | --------- Day of month (1 - 31)
+| ----------- Hour (0 - 23)
+------------- Minute (0 - 59)
+
+Example:
+*/5 * * * * /path/to/script.sh # Run every 5 minutes</code></pre></li>
 </ul>
 </section>
 <section id="activities-4" class="slide level2">
 <h2>Activities</h2>
+<ul>
+<li>Try creating a cron job that runs every minute and prints out the
+current time.</li>
+<li>Let’s extend that further: Can we make it run every day, every hour,
+on the hour, from 8 AM through 4 PM?</li>
+</ul>
+</section>
+<section id="activities-5" class="slide level2">
+<h2>Activities</h2>
+<ul>
+<li>Try creating a cron job that runs every minute and prints out the
+current time.</li>
+<li><strong>Solution: <code>* * * * * date</code></strong></li>
+<li>Let’s extend that further: Can we make it run every day, every hour,
+on the hour, from 8 AM through 4 PM?</li>
+<li><strong>Solution: <code>00 08-16 * * * date</code></strong></li>
+</ul>
+</section>
+<section id="monitoring" class="slide level2">
+<h2>Monitoring</h2>
+<ul>
+<li>top, htop and how to use them</li>
+<li>searching and killing resources</li>
+</ul>
+</section>
+<section id="what-is-top" class="slide level2">
+<h2>What is top?</h2>
+<ul>
+<li>top command is used to show the Linux processes. It provides a
+dynamic real-time view of the running system.</li>
+<li>Think of it as a super powerful task manager for Linux.</li>
+</ul>
+</section>
+<section id="basic-usage" class="slide level2">
+<h2>Basic Usage</h2>
+<ul>
+<li>Just type <code>top</code> to start the program.</li>
+<li>Pressing q will simply exit the command mode.</li>
+<li>Pressing h will show you the help menu.</li>
+</ul>
+</section>
+<section id="what-does-everything-mean" class="slide level2">
+<h2>What does everything mean?</h2>
+<pre><code>PID: Shows task’s unique process id.
+PR: The process’s priority. The lower the number, the higher the priority.
+VIRT: Total virtual memory used by the task.
+USER: User name of owner of task.
+%CPU: Represents the CPU usage.
+TIME+: CPU Time, the same as ‘TIME’, but reflecting more granularity through hundredths of a second.
+SHR: Represents the Shared Memory size (kb) used by a task.
+NI: Represents a Nice Value of task. A Negative nice value implies higher priority, and positive Nice value means lower priority.
+%MEM: Shows the Memory usage of task.
+RES: How much physical RAM the process is using, measured in kilobytes.
+COMMAND: The name of the command that started the process.</code></pre>
+</section>
+<section id="activities-6" class="slide level2">
+<h2>Activities</h2>
+<ul>
+<li><a
+href="https://gist.github.com/ericandrewlewis/4983670c508b2f6b181703df43438c37">Cheatsheet</a></li>
+</ul>
+<p>(<strong>Warning</strong>: Kill processes on your machine at your own
+risk! Make sure you know what you’re killing)</p>
+<ul>
+<li>Try running <code>top</code> and see what you can find out about
+your system!</li>
+<li>What are the top 5 processes using the most CPU?</li>
+<li>What would I press if I want to kill the processes using the most
+memory?</li>
+<li>I want to see what processes start running when I start my computer.
+How would I do that?</li>
+</ul>
+</section>
+<section id="solution" class="slide level2">
+<h2>Solution</h2>
+<ul>
+<li>What are the top 5 processes using the most CPU?
+<ul>
+<li><code>top</code> -&gt; <code>Shift + P</code></li>
+</ul></li>
+<li>What would I press if I want to kill the processes using the most
+memory?
+<ul>
+<li><code>top -&gt; Shift + M</code> -&gt; <code>k</code></li>
+</ul></li>
+<li>I want to see what processes start running when I start my computer.
+<ul>
+<li><code>top</code> -&gt; <code>f</code> -&gt; <code>PID</code> -&gt;
+<code>s</code> -&gt; <code>q</code> -&gt; <code>Shift + R</code></li>
+</ul></li>
+</ul>
 </section>
 <section id="where-to-go-from-here" class="slide level2">
 <h2>Where to go from here?</h2>
@@ -523,9 +744,10 @@ href="https://sadservers.com">https://sadservers.com</a></li>
 <h2>Upcoming events</h2>
 <ul>
 <li>Hacker Tools: Self Hosting</li>
-<li>Hackerschool:</li>
-<li>Friday Hacks:</li>
+<li><a href="https://hckr.cc/hs2023-cosplay">Hackerschool: Cosplay for
+Starters: Design, Model, 3D Print!</a></li>
 </ul>
+<p>https://hckr.cc/hs2023-cosplay</p>
 </section>
 <section id="end" class="slide level2">
 <h2>End</h2>
