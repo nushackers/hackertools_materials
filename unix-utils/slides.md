@@ -535,13 +535,14 @@ How would I do that?
 ## Upcoming events
 
 -   Hacker Tools: Self Hosting
+-   Friday Hackers #239
+
+https://hckr.cc/links
+
 -   [Hackerschool: Cosplay for Starters: Design, Model, 3D Print!](https://hckr.cc/hs2023-cosplay)
 
 https://hckr.cc/hs2023-cosplay
 
--   Friday Hackers #239
-
-https://hckr.cc/links
 
 ---
 
