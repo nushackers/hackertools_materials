@@ -132,7 +132,7 @@ Suppose you are part of a university/entreprise and need to connect to a school 
       ProxyJump stu
       User <enter user>
 
-Since %h is the `Host`, we can quickly appead it to our HostName so that we have a shorter alias!
+Since %h is the `Host`, we can quickly append it to our HostName so that we have a shorter alias!
 
 ---
 
