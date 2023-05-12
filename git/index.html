@@ -174,7 +174,7 @@
   <p class="author"><a href="https://nushackers.org"
 target="_blank"><img data-src="../nushackers_svg.svg" class="logo-img"
 style="height: 5ex;" /></a></p>
-  <p class="date">7th March, 2023</p>
+  <p class="date">13th May, 2023</p>
 </section>
 
 <section id="slides" class="slide level2">
@@ -210,12 +210,10 @@ for the Linux kernel</li>
 <li>Every commit is a <em>snapshot</em> of your files</li>
 <li>GitHub != Git</li>
 </ul>
-<!-- TODO: Delete if needed -->
 <p><img data-src="snapshots.svg" class="white-bg" /></p>
 </section>
 <section id="the-three-areas" class="slide level2">
 <h2>The three "areas"</h2>
-<!-- TODO: See how to explain this concisely -->
 <ul>
 <li>Working directory: where you actually work</li>
 <li>Index/"staging" area: where you construct a commit</li>
@@ -255,9 +253,6 @@ git config --global user.email &quot;your@email.com&quot;</code></pre>
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/<span class="op">&lt;</span>your GitHub username<span class="op">&gt;</span>/learning-git.git</span></code></pre></div>
 <p>The server (i.e. GitHub) stores the remote copy (like a single source
 of truth)</p>
-<!-- TODO: Explain what [origin] means -->
-<!-- TODO: Include pictures -->
-<p><img data-src="" /></p>
 </section>
 <section class="slide level2">
 
@@ -283,10 +278,10 @@ git config --global core.editor &quot;&#39;C:/Program Files/Microsoft VS Code/co
 <section id="initialising-a-repository" class="slide level2">
 <h2>Initialising a repository</h2>
 <p>Let's create a new Git repository.</p>
-<pre class="bash-strong"><code>$ mkdir my-git-repo
+<pre><code>$ mkdir my-git-repo
 $ cd my-git-repo
-$ git init</code></pre>
-<pre><code>Initialized empty Git repository in my-git-repo/.git/</code></pre>
+$ git init
+Initialized empty Git repository in my-git-repo/.git/</code></pre>
 </section>
 <section id="stage-a-file" class="slide level2">
 <h2>Stage a file</h2>
@@ -414,6 +409,9 @@ visit this link here</a></p>
 features or bug fixes that should not be directly and immediately saved
 onto the main branch</p>
 <p><img data-src="./branch.svg" /></p>
+</section>
+<section id="what-is-a-branch-1" class="slide level2">
+<h2>What is a branch?</h2>
 <p>Main branch is the initial and primary place where most development
 occurs (<code>main</code> is traditionally used but can be named
 anything, used to be known as <code>master</code> branch)</p>
@@ -422,10 +420,8 @@ anything, used to be known as <code>master</code> branch)</p>
 <h2>HEAD</h2>
 <p><code>HEAD</code> is a special name given to the current commit of
 your current branch for ease of reference</p>
-<p>:::</p>
 <p><img data-src="head-to-master.png" class="white-bg"
 style="height: 20ex;" /></p>
-<p>:::</p>
 </section>
 <section id="why-use-branching" class="slide level2">
 <h2>Why use branching?</h2>
@@ -488,6 +484,9 @@ cloning)</p>
 <p>Add your teammate as a collaborator to your newly created GitHub
 repository (Settings &gt; Manage access &gt; Invite a collaborator)</p>
 <p><img data-src="./collaborator.png" /></p>
+</section>
+<section id="setup-1" class="slide level2">
+<h2>Setup</h2>
 <p>Clone their repository onto your machine (name it something different
 from your own):</p>
 <pre><code>$ git clone https://github.com/&lt;your teammate&#39;s GitHub name&gt;/my-new-repo.git my-friend-repo/
@@ -544,10 +543,12 @@ changes into your repository’s <code>main</code> branch</p>
 class="slide level2">
 <h2>Getting latest remote copy on your local copy</h2>
 <pre><code>git pull origin main</code></pre>
+<p><code>Origin</code> is a shorthand name for the remote repo that the
+project was cloned from. It is used instead of the URL for
+convenience.</p>
 </section>
 <section id="merging" class="slide level2">
 <h2>Merging</h2>
-<!-- TODO: Improve explanation -->
 <p>Combining your branch to <code>main</code> branch</p>
 <p><img data-src="./merge.png" /></p>
 </section>
@@ -947,7 +948,8 @@ E.g.</p>
 <li>build output directories like <code>/bin</code>,
 <code>/out</code></li>
 <li>runtime-generated files like log files</li>
-<li>personal configuration files e.g. of your IDE</li>
+<li><h2 id="personal-configuration-files-e.g.-of-your-ide">personal
+configuration files e.g. of your IDE</h2></li>
 </ul>
 </section>
 <section id="gitignore-format" class="slide level2">
@@ -959,8 +961,10 @@ E.g.</p>
 *.log
 /debug.log
 debug.log</code></pre>
-<p><a href="https://git-scm.com/docs/gitignore#_pattern_format">See the
-full pattern format.</a> —</p>
+</section>
+<section id="see-the-full-pattern-format." class="slide level2">
+<h2><a href="https://git-scm.com/docs/gitignore#_pattern_format">See the
+full pattern format.</a></h2>
 </section>
 <section id="where-to-go-from-here" class="slide level2">
 <h2>Where to go from here?</h2>
@@ -968,19 +972,27 @@ full pattern format.</a> —</p>
 manual</a> - <a href="https://git-scm.com/book/en/v2">Pro Git</a> - <a
 href="https://hckr.cc/ht-git-cs">NUS Hackers Git Cheatsheet</a> - Look
 into <a
-href="https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#ch05-distributed-git">Git
-workflows</a> - If you’re interested in how version control works with
-lots of technical details, look into <a
+href="https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#ch05-distributed-git">Gitworkflows</a>
+- <a href="https://www.atlassian.com/git/tutorials/syncing">Atlassian's
+collaboration guide</a></p>
+</section>
+<section id="where-to-go-from-here-1" class="slide level2">
+<h2>Where to go from here?</h2>
+<ul>
+<li>If you’re interested in how version control works with lots of
+technical details, look into <a
 href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration">Customizing
 Git</a> and <a
 href="https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain">Git
-Internals</a> - GitHub isn’t the only way you can share you repositories
-online! You could even self host your own Git servers. - Why stop at
-learning? <a
+Internals</a></li>
+<li>GitHub isn’t the only way you can share you repositories online! You
+could even self host your own Git servers.</li>
+<li>Why stop at learning? <a
 href="https://github.com/codecrafters-io/build-your-own-x#build-your-own-git">Build
-your own Git!</a></p>
+your own Git!</a></li>
+</ul>
 </section>
-<section id="where-to-go-from-here-1" class="slide level2">
+<section id="where-to-go-from-here-2" class="slide level2">
 <h2>Where to go from here?</h2>
 <p>Check out Hackerschool: Advanced Git<br />
 (last run on 7 Nov 2020)</p>
@@ -991,10 +1003,6 @@ class="uri">https://hs2010-git.github.io/adv</a></p>
 </section>
 <section id="feedback" class="slide level2">
 <h2>Feedback</h2>
-<!-- TODO: Check if required -->
-<p><a href="https://hckr.cc/ht-git-feedback"
-class="uri">https://hckr.cc/ht-git-feedback</a></p>
-<p><img data-src="feedback.png" /></p>
 </section>
 <section id="end" class="slide level2">
 <h2>End</h2>

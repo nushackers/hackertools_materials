@@ -1,6 +1,6 @@
 % Introduction to Git (and GitHub)
 % [![](../nushackers_svg.svg){.logo-img style="height: 5ex;"}](https://nushackers.org){target="_blank"}
-% 7th March, 2023
+% 13th May, 2023
 
 ---
 
@@ -34,14 +34,12 @@ https://hckr.cc/ht-git-slides
 - Every commit is a *snapshot* of your files
 - GitHub != Git
 
-<!-- TODO: Delete if needed -->
 ![](snapshots.svg){.white-bg}
 
 ---
 
 ## The three \"areas\"
 
-<!-- TODO: See how to explain this concisely -->
 - Working directory: where you actually work
 - Index/\"staging\" area: where you construct a commit
 - Repository/commit: the repository itself
@@ -84,6 +82,8 @@ Now, we will create a new repository for this session.
 <!-- TODO: Use new image -->
 ![](github-new-3.png){style="height: 22ex;"}
 
+---
+
 ## Cloning the repository
 
 Downloading a local copy of the repository
@@ -93,11 +93,6 @@ git clone https://github.com/<your GitHub username>/learning-git.git
 ```
 
 The server (i.e. GitHub) stores the remote copy (like a single source of truth)
-
-<!-- TODO: Explain what [origin] means -->
-
-<!-- TODO: Include pictures -->
-![]()
 
 ---
 
@@ -124,12 +119,12 @@ Configure your favourite editor:
 
 Let\'s create a new Git repository.
 
-~~~ {.bash-strong}
+```
 $ mkdir my-git-repo
 $ cd my-git-repo
 $ git init
-~~~
-    Initialized empty Git repository in my-git-repo/.git/
+Initialized empty Git repository in my-git-repo/.git/
+```
 
 ---
 
@@ -287,17 +282,15 @@ that should not be directly and immediately saved onto the main branch
 
 ![](./branch.svg)
 
+## What is a branch?
+
 Main branch is the initial and primary place where most development occurs (`main` is traditionally used but can be named anything, used to be known as `master` branch)
 
 ## HEAD
 
 `HEAD` is a special name given to the current commit of your current branch for ease of reference
 
-:::
-
 ![](head-to-master.png){.white-bg style="height: 20ex;"}
-
-:::
 
 ---
 
@@ -378,6 +371,10 @@ When working on a new feature or bug fix, each member will
 Add your teammate as a collaborator to your newly created GitHub repository (Settings > Manage access > Invite a collaborator)
 
 ![](./collaborator.png)
+
+---
+
+## Setup
 
 Clone their repository onto your machine (name it something different from your own):
 
@@ -465,11 +462,13 @@ your repository's `main` branch
 git pull origin main
 ```
 
+`Origin` is a shorthand name for the remote repo that the project was
+cloned from. It is used instead of the URL for convenience.
+
 ---
 
 ## Merging
 
-<!-- TODO: Improve explanation -->
 Combining your branch to `main` branch
 
 ![](./merge.png)
@@ -970,8 +969,8 @@ are usually derived from the human-authored code in the repository. E.g.
 -   build output directories like `/bin`, `/out`
 -   runtime-generated files like log files
 -   personal configuration files e.g. of your IDE
-
 ---
+
 
 ## `.gitignore` format
 
@@ -983,8 +982,7 @@ are usually derived from the human-authored code in the repository. E.g.
     /debug.log
     debug.log
 
-[See the full pattern
-format.](https://git-scm.com/docs/gitignore#_pattern_format)
+[See the full pattern format.](https://git-scm.com/docs/gitignore#_pattern_format)
 ---
 
 ## Where to go from here?
@@ -993,10 +991,15 @@ Additional readings:
 - [Git manual](https://git-scm.com/docs)
 - [Pro Git](https://git-scm.com/book/en/v2)
 - [NUS Hackers Git Cheatsheet](https://hckr.cc/ht-git-cs)
-- Look into [Git
-workflows](https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#ch05-distributed-git)
-- If you're interested in how version control works with lots of technical details,
-look into [Customizing Git](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) and [Git Internals](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain)
+- Look into [Gitworkflows](https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#ch05-distributed-git)
+- [Atlassian\'s collaboration guide](https://www.atlassian.com/git/tutorials/syncing)
+
+
+---
+
+## Where to go from here?
+
+- If you're interested in how version control works with lots of technical details, look into [Customizing Git](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) and [Git Internals](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain)
 - GitHub isn't the only way you can share you repositories online! You could even self host your own Git servers.
 - Why stop at learning? [Build your own Git!](https://github.com/codecrafters-io/build-your-own-x#build-your-own-git)
 
@@ -1015,10 +1018,6 @@ Slides: <https://hs2010-git.github.io/adv>
 
 ## Feedback
 
-<!-- TODO: Check if required -->
-
-<https://hckr.cc/ht-git-feedback>
-
-![](feedback.png)
+---
 
 ## End
