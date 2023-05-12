@@ -179,6 +179,17 @@ for you to compose a commit message.
 
 ---
 
+## Push your changes to GitHub
+After committing your changes, you can now `push` these changes to GitHub
+```
+$ git push origin main
+```
+`origin` is a shorthand name for the remote repo that the project was
+cloned from. It is used instead of the URL for convenience.
+
+
+---
+
 ## Make some changes, and look at them
 Make edits to `hello.txt` (or whatever file you made), then
 
@@ -237,7 +248,8 @@ Date:   Sat May 8 21:16:45 2021 +0800
     Commit staged changes (`-m`: with this commit message)
 -   [`git show`](https://git-scm.com/docs/git-show): Show current commit
 -   [`git log`](https://git-scm.com/docs/git-log): View the log
--   `.gitignore`: Ignore files
+-   [`git push`](https://git-scm.com/docs/git-push): Push your branch to
+    a remote
 
 The commands\' manuals are linked. (They all have *many* more options
 than what we\'ve covered.)
