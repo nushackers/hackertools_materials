@@ -351,6 +351,10 @@ Each member owns their copy of the repository locally (through cloning)
 
 When working on a new feature or bug fix, each member will
 
+---
+
+## Branch & PR Workflow
+
 1. Pull the latest changes from the remote repository
 2. Create a branch per feature/bug fix on their local copy
 3. Edit the files in their respective branch
@@ -466,7 +470,7 @@ cloned from. It is used instead of the URL for convenience.
 
 ## Merging
 
-Combining your branch to `main` branch
+Combining your branch to another branch
 
 ![](./merge.png)
 
@@ -594,6 +598,201 @@ Edit `hello.txt` as such...
 ---
 
 ## Additional Notes
+
+---
+
+## Commit manipulation
+
+---
+
+## Revert
+
+Undo accidental changes made
+
+```
+$ git log --graph --oneline
+* d1f4fcc (HEAD -> master, origin/master, origin/HEAD) Add file3
+* 643aec6 Update file to c
+* 4ec21c7 Update file to b
+* 055cab4 Initial commit
+```
+
+Suppose we want to revert [this]{.mark} commit.
+
+---
+
+## Revert
+
+```
+$ git revert 643aec6
+[master 7b73baf] Revert "Update file to c"
+    1 file changed, 1 insertion(+), 1 deletion(-)
+$ git show
+commit 7b73baf229e2b8db19bc594c450743b50adf649d (HEAD -> master)
+Author: Your Name <your@email.com>
+Date:   Tue May 11 01:21:31 2021 +0800
+
+    Revert "Update file to c"
+
+    This reverts commit 643aec6d2a1b4cd485d678886fc1cef25b15bee0.
+
+diff --git a/file b/file
+index f2ad6c7..6178079 100644
+--- a/file
++++ b/file
+@@ -1 +1 @@
+-c
++b
+```
+
+---
+
+## Reset
+
+Undo `git add`.
+
+```
+$ echo e > file
+$ git add file
+$ git status
+On branch master
+Changes to be committed:
+    (use "git restore --staged <file>..." to unstage)
+    modified:   file
+$ git reset file
+Unstaged changes after reset:
+M   file
+$ git status
+On branch master
+Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+    modified:   file
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+---
+
+## Checkout
+
+Undo changes to a file in the working tree.
+
+```
+$ echo e > file
+$ git status
+On branch master
+Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+    modified:   file
+
+no changes added to commit (use "git add" and/or "git commit -a")
+$ git checkout -- file
+$ git status
+On branch master
+nothing to commit, working tree clean
+```
+
+---
+
+## Summary
+
+-   [`git revert`](https://git-scm.com/docs/git-revert): Revert a commit
+-   [`git reset`](https://git-scm.com/docs/git-reset): Unstage files
+-   [`git checkout`](https://git-scm.com/docs/git-checkout): Checkout
+    files (and also a branch)
+    commits
+
+---
+
+## Ignoring files
+
+Sometimes we don\'t want Git to track a certain file
+
+~~~ {.bash-strong}
+$ touch ignore-me
+$ git status
+~~~
+    On branch master
+    Untracked files:
+      (use "git add <file>..." to include in what will be committed)
+
+        ignore-me
+
+    nothing added to commit but untracked files present (use "git add" to track)
+---
+
+## Ignoring files
+
+We can add it to `.gitignore`
+
+~~~ {.bash-strong}
+$ echo "/ignore-me" >> .gitignore
+$ git status
+~~~
+    On branch master
+    Untracked files:
+      (use "git add <file>..." to include in what will be committed)
+
+        .gitignore
+
+    nothing added to commit but untracked files present (use "git add" to track)
+
+`.gitignore` should be committed.
+
+---
+
+## Ignoring files
+
+~~~ {.bash-strong}
+$ git add .gitignore && git commit -m "Add .gitignore"
+~~~
+    [master 5ada1cf] Add .gitignore
+     1 file changed, 1 insertion(+)
+     create mode 100644 .gitignore
+~~~ {.bash-strong}
+$ git status
+~~~
+    On branch master
+    nothing to commit, working tree clean
+~~~ {.bash-strong}
+$ git status --ignored
+~~~
+    On branch master
+    Ignored files:
+      (use "git add -f <file>..." to include in what will be committed)
+
+        ignore-me
+
+    nothing to commit, working tree clean
+
+---
+
+## What to ignore?
+
+Typically, we ignore files like build artifacts and generated files that
+are usually derived from the human-authored code in the repository. E.g.
+
+-   dependency caches like `/node_modules`
+-   compiled code like `.o`, `.pyc` files
+-   build output directories like `/bin`, `/out`
+-   runtime-generated files like log files
+-   personal configuration files e.g. of your IDE
+
+---
+
+
+## `.gitignore` format
+
+    /logs/*/*.log
+    /logs/**/*.log
+    **/logs
+    **/logs/debug.log
+    *.log
+    /debug.log
+    debug.log
+
+[See the full pattern format.](https://git-scm.com/docs/gitignore#_pattern_format)
 
 ---
 
@@ -783,202 +982,6 @@ Signed-off-by: Eric Dumazet <edumazet@google.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 ```
 
----
-
-## Commit manipulation
-
----
-
-## Revert
-
-Undo accidental changes made
-
-```
-$ git log --graph --oneline
-* d1f4fcc (HEAD -> master, origin/master, origin/HEAD) Add file3
-* 643aec6 Update file to c
-* 4ec21c7 Update file to b
-* 055cab4 Initial commit
-```
-
-Suppose we want to revert [this]{.mark} commit.
-
----
-
-## Revert
-
-```
-$ git revert 643aec6
-[master 7b73baf] Revert "Update file to c"
-    1 file changed, 1 insertion(+), 1 deletion(-)
-$ git show
-commit 7b73baf229e2b8db19bc594c450743b50adf649d (HEAD -> master)
-Author: Your Name <your@email.com>
-Date:   Tue May 11 01:21:31 2021 +0800
-
-    Revert "Update file to c"
-
-    This reverts commit 643aec6d2a1b4cd485d678886fc1cef25b15bee0.
-
-diff --git a/file b/file
-index f2ad6c7..6178079 100644
---- a/file
-+++ b/file
-@@ -1 +1 @@
--c
-+b
-```
-
----
-
-## Reset
-
-Undo `git add`.
-
-```
-$ echo e > file
-$ git add file
-$ git status
-On branch master
-Changes to be committed:
-    (use "git restore --staged <file>..." to unstage)
-    modified:   file
-$ git reset file
-Unstaged changes after reset:
-M   file
-$ git status
-On branch master
-Changes not staged for commit:
-    (use "git add <file>..." to update what will be committed)
-    (use "git restore <file>..." to discard changes in working directory)
-    modified:   file
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-
----
-
-## Checkout
-
-Undo changes to a file in the working tree.
-
-```
-$ echo e > file
-$ git status
-On branch master
-Changes not staged for commit:
-    (use "git add <file>..." to update what will be committed)
-    (use "git restore <file>..." to discard changes in working directory)
-    modified:   file
-
-no changes added to commit (use "git add" and/or "git commit -a")
-$ git checkout -- file
-$ git status
-On branch master
-nothing to commit, working tree clean
-```
-
----
-
-## Summary
-
--   [`git revert`](https://git-scm.com/docs/git-revert): Revert a commit
--   [`git reset`](https://git-scm.com/docs/git-reset): Unstage files
--   [`git checkout`](https://git-scm.com/docs/git-checkout): Checkout
-    files (and also a branch)
-    commits
--   [`git reset`](https://git-scm.com/docs/git-reset) (2):
-    Move/\"reset\" a branch
-    branch
-
----
-
-## Ignoring files
-
-Sometimes we don\'t want Git to track a certain file
-
-~~~ {.bash-strong}
-$ touch ignore-me
-$ git status
-~~~
-    On branch master
-    Untracked files:
-      (use "git add <file>..." to include in what will be committed)
-
-        ignore-me
-
-    nothing added to commit but untracked files present (use "git add" to track)
----
-
-## Ignoring files
-
-We can add it to `.gitignore`
-
-~~~ {.bash-strong}
-$ echo "/ignore-me" >> .gitignore
-$ git status
-~~~
-    On branch master
-    Untracked files:
-      (use "git add <file>..." to include in what will be committed)
-
-        .gitignore
-
-    nothing added to commit but untracked files present (use "git add" to track)
-
-`.gitignore` should be committed.
-
----
-
-## Ignoring files
-
-~~~ {.bash-strong}
-$ git add .gitignore && git commit -m "Add .gitignore"
-~~~
-    [master 5ada1cf] Add .gitignore
-     1 file changed, 1 insertion(+)
-     create mode 100644 .gitignore
-~~~ {.bash-strong}
-$ git status
-~~~
-    On branch master
-    nothing to commit, working tree clean
-~~~ {.bash-strong}
-$ git status --ignored
-~~~
-    On branch master
-    Ignored files:
-      (use "git add -f <file>..." to include in what will be committed)
-
-        ignore-me
-
-    nothing to commit, working tree clean
-
----
-
-## What to ignore?
-
-Typically, we ignore files like build artifacts and generated files that
-are usually derived from the human-authored code in the repository. E.g.
-
--   dependency caches like `/node_modules`
--   compiled code like `.o`, `.pyc` files
--   build output directories like `/bin`, `/out`
--   runtime-generated files like log files
--   personal configuration files e.g. of your IDE
----
-
-
-## `.gitignore` format
-
-    /logs/*/*.log
-    /logs/**/*.log
-    **/logs
-    **/logs/debug.log
-    *.log
-    /debug.log
-    debug.log
-
-[See the full pattern format.](https://git-scm.com/docs/gitignore#_pattern_format)
 ---
 
 ## Where to go from here?
