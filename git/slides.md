@@ -6,7 +6,7 @@
 
 ## Slides
 
-https://hckr.cc/orbital23-git-slides
+https://hckr.cc/ht-git-slides
 
 ---
 
