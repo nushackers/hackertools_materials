@@ -410,6 +410,8 @@ $ git commit -m "Update hello.txt"
 ```
 $ git push origin feature-1
 ```
+`origin` is a shorthand name for the remote repo that the project was
+cloned from. It is used instead of the URL for convenience.
 
 ---
 
@@ -463,7 +465,7 @@ your repository's `main` branch
 git pull origin main
 ```
 
-`Origin` is a shorthand name for the remote repo that the project was
+`origin` is a shorthand name for the remote repo that the project was
 cloned from. It is used instead of the URL for convenience.
 
 ---
