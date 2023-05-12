@@ -88,33 +88,31 @@ Now, we will create a new repository for this session.
 
 Downloading a local copy of the repository
 
-```bash
+```
 git clone https://github.com/<your GitHub username>/learning-git.git
 ```
-
 The server (i.e. GitHub) stores the remote copy (like a single source of truth)
 
 ---
 
-<!-- TODO: If too much time spent, skip this -->
 ## Setting your editor
 
 Git sometimes launches an editor e.g. when you `commit`, to edit the
 commit message
 
 Configure your favourite editor:
-
-    git config --global core.editor nano
-    git config --global core.editor emacs
-    # VS Code
-    git config --global core.editor "code --wait --new-window"
-    # For Windows
-    git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -nosession"
-    git config --global core.editor "'C:/Program Files/Microsoft VS Code/code.exe' -n -w"
+```
+git config --global core.editor nano
+git config --global core.editor emacs
+# VS Code
+git config --global core.editor "code --wait --new-window"
+# For Windows
+git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -nosession"
+git config --global core.editor "'C:/Program Files/Microsoft VS Code/code.exe' -n -w"
+```
 
 ---
 
-<!-- TODO: Maybe ignore -->
 ## Initialising a repository
 
 Let\'s create a new Git repository.
@@ -248,7 +246,6 @@ than what we\'ve covered.)
 
 ---
 
-<!-- TODO: Treat this section as both try it out and Q&A session -->
 ## Intermission
 
 5 minutes...
@@ -600,7 +597,6 @@ Edit `hello.txt` as such...
 
 ---
 
-<!-- TODO: Remove if too long -->
 ## HTTPS vs SSH
 
 It doesn\'t really matter.
