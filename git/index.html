@@ -166,6 +166,19 @@ email</p>
 <p>You need to configure Git:</p>
 <pre><code>git config --global user.name &quot;Your Name&quot;
 git config --global user.email &quot;your@email.com&quot;</code></pre>
+</section>
+<section id="setting-your-editor" class="slide level2">
+<h2>Setting your editor</h2>
+<p>Git sometimes launches an editor e.g. when you <code>commit</code>,
+to edit the commit message</p>
+<p>Configure your favourite editor:</p>
+<pre><code>git config --global core.editor nano
+git config --global core.editor emacs
+# VS Code
+git config --global core.editor &quot;code --wait --new-window&quot;
+# For Windows
+git config --global core.editor &quot;&#39;C:/Program Files/Notepad++/notepad++.exe&#39; -multiInst -nosession&quot;
+git config --global core.editor &quot;&#39;C:/Program Files/Microsoft VS Code/code.exe&#39; -n -w&quot;</code></pre>
 <p>Now, we will create a new repository for this session.</p>
 </section>
 <section id="creating-a-new-github-repository" class="slide level2">
@@ -189,19 +202,6 @@ git config --global user.email &quot;your@email.com&quot;</code></pre>
 <pre><code>git clone https://github.com/&lt;your GitHub username&gt;/learning-git.git</code></pre>
 <p>The server (i.e. GitHub) stores the remote copy (like a single source
 of truth)</p>
-</section>
-<section id="setting-your-editor" class="slide level2">
-<h2>Setting your editor</h2>
-<p>Git sometimes launches an editor e.g. when you <code>commit</code>,
-to edit the commit message</p>
-<p>Configure your favourite editor:</p>
-<pre><code>git config --global core.editor nano
-git config --global core.editor emacs
-# VS Code
-git config --global core.editor &quot;code --wait --new-window&quot;
-# For Windows
-git config --global core.editor &quot;&#39;C:/Program Files/Notepad++/notepad++.exe&#39; -multiInst -nosession&quot;
-git config --global core.editor &quot;&#39;C:/Program Files/Microsoft VS Code/code.exe&#39; -n -w&quot;</code></pre>
 </section>
 <section id="initialising-a-repository" class="slide level2">
 <h2>Initialising a repository</h2>

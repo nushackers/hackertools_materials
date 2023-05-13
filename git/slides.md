@@ -59,6 +59,24 @@ git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
 ```
 
+---
+
+## Setting your editor
+
+Git sometimes launches an editor e.g. when you `commit`, to edit the
+commit message
+
+Configure your favourite editor:
+```
+git config --global core.editor nano
+git config --global core.editor emacs
+# VS Code
+git config --global core.editor "code --wait --new-window"
+# For Windows
+git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -nosession"
+git config --global core.editor "'C:/Program Files/Microsoft VS Code/code.exe' -n -w"
+```
+
 Now, we will create a new repository for this session.
 
 ---
@@ -93,23 +111,6 @@ git clone https://github.com/<your GitHub username>/learning-git.git
 ```
 The server (i.e. GitHub) stores the remote copy (like a single source of truth)
 
----
-
-## Setting your editor
-
-Git sometimes launches an editor e.g. when you `commit`, to edit the
-commit message
-
-Configure your favourite editor:
-```
-git config --global core.editor nano
-git config --global core.editor emacs
-# VS Code
-git config --global core.editor "code --wait --new-window"
-# For Windows
-git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -nosession"
-git config --global core.editor "'C:/Program Files/Microsoft VS Code/code.exe' -n -w"
-```
 
 ---
 
