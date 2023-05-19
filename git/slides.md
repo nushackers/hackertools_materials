@@ -1,12 +1,18 @@
 % Introduction to Git (and GitHub)
 % [![](../nushackers_svg.svg){.logo-img style="height: 5ex;"}](https://nushackers.org){target="_blank"}
-% 13th May, 2023
+% 20th May, 2023
 
 ---
 
 ## Slides
 
 https://hckr.cc/orbital23-git-slides
+
+---
+
+## Setup Issues
+
+Answer the Zoom poll to tell us about any setup issues that we can address
 
 ---
 
@@ -78,6 +84,20 @@ git config --global core.editor "'C:/Program Files/Microsoft VS Code/code.exe' -
 ```
 
 Now, we will create a new repository for this session.
+
+---
+
+## Allowing your local machine to access your GitHub account
+
+This can be done by setting up an SSH key or an HTTPS Personal Access Token (PAT)
+
+---
+
+## Setting up a PAT
+
+PATs are used to provide access to repositories with finer control/settings.
+
+You can learn more about them [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
 ---
 
@@ -1031,6 +1051,8 @@ Slides: <https://hs2010-git.github.io/adv>
 ---
 
 ## Feedback
+
+Remember to give us feedback [here](https://bit.ly/orbital23-mc2-feedback)!
 
 ---
 
