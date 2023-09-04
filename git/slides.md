@@ -1,18 +1,19 @@
 % Introduction to Git (and GitHub)
 % [![](../nushackers_svg.svg){.logo-img style="height: 5ex;"}](https://nushackers.org){target="_blank"}
-% 20th May, 2023
+% 5th Sep, 2023
 
 ---
 
 ## Slides
 
-https://hckr.cc/orbital23-git-slides
+https://hckr.cc/hackerstoolsbox-git
 
 ---
 
 ## Setup Issues
 
-Answer the Zoom poll to tell us about any setup issues that we can address
+Quick check: Did anyone face any problems setting up Git on your machine or creating an account on
+GitHub?
 
 ---
 
