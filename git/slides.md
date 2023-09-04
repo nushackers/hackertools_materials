@@ -1053,7 +1053,7 @@ Slides: <https://hs2010-git.github.io/adv>
 
 ## Feedback
 
-Remember to give us feedback [here](https://bit.ly/orbital23-mc2-feedback)!
+Remember to give us feedback here: https://hckr.cc/ht2324s1-w4-feedback!
 
 ---
 
