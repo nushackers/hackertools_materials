@@ -45,10 +45,9 @@
 \usepackage{minted}
 \setminted[bash]{fontsize=\small, tabsize=2, breaklines}
 
-\title{Hacker Tools: \\Vim}
-\author{Liew Zhao Wei}
-\date{29 Jan 2023 \\ Slides at \url{https://hckr.cc/ht-vim-slides}}
-% TODO: Add link to slides
+\title{Hackers Toolbox: \\Vim}
+\author{Liew Zhao Wei, Ravern Koh}
+\date{17 Oct 2023 \\ Slides at \url{https://hckr.cc/ht2324s1-w9-slides}}
 
 \begin{document}
 
@@ -59,46 +58,44 @@
 
 \begin{frame}{NUS Hackers}
 
-  \begin{center}
-    \includegraphics[width=0.5\linewidth]{../NUSHackers}
+    \begin{center}
+        \includegraphics[width=0.5\linewidth]{../NUSHackers}
 
-    \url{http://nushackers.org}
-  \end{center}
+        \url{http://nushackers.org}
+    \end{center}
 
-  \begin{center}
-    \textbf{Hacker} Tools
+    \begin{center}
+        \textbf{Hackers} Toolbox
 
-    \textbf{Hack} \& Roll
+        \textbf{Hack} \& Roll
 
-    Friday \textbf{Hacks}
+        Friday \textbf{Hacks}
 
-    \textbf{hacker}school
-  \end{center}
+        \textbf{Hacker}school
+    \end{center}
 
 \end{frame}
 
 \begin{frame}{About Me}
-  Hi, I'm Zhao Wei! My mini-site is \url{https://zwliew.com}
+    Hi, I'm Ravern!
 
-  Year 2 CS and Math undergrad. Interested in systems programming.
+    Year 2 CS undergrad. Interested in collaborative software and programming languages.
 
-  Semi-interested in linguistics and chess.
-
-  I use (lunar)vim regularly.
+    I've used Vim (on and off) for 3 years.
 \end{frame}
 
 \begin{frame}{Required Software}
-  You need \textbf{vim} (that's what we're learning today)
+    You need \textbf{vim} (that's what we're learning today)
 
-  Download instructions: \url{https://www.vim.org/download.php}
+    Download instructions: \url{https://www.vim.org/download.php}
 \end{frame}
 
 \begin{frame}{Why do we want to \underline{learn} an editor?}
-  \begin{itemize}
-    \item We don't have workshops on how to learn a web browser, so why are editors important?
-    \item Writing code, or editing files on a computer has a lot of moving parts: you spend a lot more time switching files, reading, navigating, editing code compared to writing a long stream of words sometimes.
-    \item As a power user, you probably will spend a lot of time doing these things, it might be good to find an editor that will \textbf{speed up your workflow.}
-  \end{itemize}
+    \begin{itemize}
+        \item We don't have workshops on how to learn a web browser, so why are editors important?
+        \item Writing code, or editing files on a computer has a lot of moving parts: you spend a lot more time switching files, reading, navigating, editing code compared to writing a long stream of words sometimes.
+        \item As a power user, you probably will spend a lot of time doing these things, it might be good to find an editor that will \textbf{speed up your workflow.}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{How to learn an editor}
@@ -112,9 +109,9 @@
 \end{frame}{}
 
 \begin{frame}{What to expect today?}
-        Today we'll be covering one such editor, \textbf{vim}.
+    Today we'll be covering one such editor, \textbf{vim}.
 
-        The idea is to kickstart you knowledge, and give you the \underline{fundamentals and resources to go off on your own.}
+    The idea is to kickstart you knowledge, and give you the \underline{fundamentals and resources to go off on your own.}
 \end{frame}{}
 
 \begin{frame}{Which editor to learn?}
@@ -123,16 +120,16 @@
         \item Vi(m) vs Emacs
         \item It’s completely up to you! we’ll cover one of the popular options out there, vim but you can also look up Emacs and choose one that interests you most
 
-        \begin{center}
-            \includegraphics[width=0.5\linewidth]{editor-curve.png} 
-        \end{center}{}
+              \begin{center}
+                  \includegraphics[width=0.5\linewidth]{editor-curve.png}
+              \end{center}{}
     \end{itemize}{}
 \end{frame}{}
 
 \begin{frame}{Origins of Vi(m) (1/2)}
     \begin{itemize}
         \item Vim stands for vi iMitation, later changed to vi iMproved
-        \item Created by Bram Moolenaar in 1991.
+        \item Created by the late Bram Moolenaar in 1991.
         \item It is based off another text editor, \textbf{vi}, created by Bill Joy in 1976.
     \end{itemize}{}
 \end{frame}{}
@@ -141,14 +138,14 @@
     \begin{itemize}
         \item Bill Joy was trying to create an editor that was usable with a 300 baud modem. (approximately 0.3 kbit/second today). Essentially, you could only type one letter a second, so the commands had to be really short.
         \item As it turns out, when you optimize heavily to minimize the number of keystrokes, you have a
-        \textbf{really efficient editor}
+              \textbf{really efficient editor}
     \end{itemize}{}
 \end{frame}{}
 
 \begin{frame}{Benefits of Vim}
     \begin{itemize}
-        \item Vi(m) is the de facto default editor in any Unix-based system. You can probably find vi/vim in 
-        any and every Unix-based system today
+        \item Vi(m) is the de facto default editor in any Unix-based system. You can probably find vi/vim in
+              any and every Unix-based system today
         \item Vim is also extremely customizable and programmable
         \item There is a huge community and plugin support for almost anything imaginable
     \end{itemize}{}
@@ -159,7 +156,7 @@
         \item Vim is a \textbf{modal text editor}
         \item We have \underline{different modes} for inserting text vs manipulating text
         \item The idea here is that you tend to spend more time reading/making smaller edits, instead of
-        writing big essays in one big go.
+              writing big essays in one big go.
     \end{itemize}{}
 \end{frame}{}
 
@@ -181,20 +178,20 @@
 \end{frame}{}
 
 \begin{frame}{Opening Vim and \underline{quitting it} (1/2)}
-    There's a common joke that if you give a web designer a computer with vim loaded up, and ask them to quit vim, 
+    There's a common joke that if you give a web designer a computer with vim loaded up, and ask them to quit vim,
     you get a random string generator
-    
+
     \includegraphics[width=1\linewidth]{exit_vim.png}
 \end{frame}
 
 \begin{frame}{Opening Vim and \underline{quitting it} (2/2)}
     To open vim, just type \texttt{vim} in the terminal. If you are using gVim, you can just open the executable.
-    
+
     To close vim, type \texttt{:q}. We'll go through what this means later
 \end{frame}{}
 
 \begin{frame}{Changing modes}
-    By default, you start vim in \textbf{normal mode}. For most cases, you will transition from normal mode to 
+    By default, you start vim in \textbf{normal mode}. For most cases, you will transition from normal mode to
     another mode, based on your use case, and then return back to normal mode after.
 \end{frame}{}
 
@@ -216,14 +213,14 @@
 \begin{frame}{Any mode to normal mode}
     Normal mode is your default mode where you should spend most of your time. In vim, if you ever get lost
     or are not sure what is happening, always \textbf{reset to normal mode}
-    
+
     \textbf{
-    \keys{Esc} will bring you to normal mode from any of the other modes. You will be using this a lot.
+        \keys{Esc} will bring you to normal mode from any of the other modes. You will be using this a lot.
     }
 \end{frame}{}
 
 \begin{frame}{Why Escape?}
-    It might seem quite counterintuitive to use escape since it's quite out of place on your keyboard. However, 
+    It might seem quite counterintuitive to use escape since it's quite out of place on your keyboard. However,
     vi was created using an \underline{ADM-3A terminal}. It looks like this:
     \begin{center}
         \includegraphics[width=0.75\linewidth]{adm-3a.png}
@@ -233,17 +230,17 @@
 
 \begin{frame}{Changing modes}
     \begin{tabular}{|c|c|c|}
-       \hline
-       Mode  &  Description & Hotkey\\
-       \hline
-       Normal & Navigate the file & \keys{Esc}\\
-       \hline 
-       Insert & Inserting text & \keys{i}, \keys{I}, \keys{a}, \\ & & \keys{A}, \keys{o}, \keys{O}\\
-       \hline
-       Command & For entering commands & \keys{:}\\
-       \hline
-       Visual & For selecting text & \keys{v}, \keys{V}, \keys{Ctrl + v}\\
-       \hline
+        \hline
+        Mode    & Description           & Hotkey                              \\
+        \hline
+        Normal  & Navigate the file     & \keys{Esc}                          \\
+        \hline
+        Insert  & Inserting text        & \keys{i}, \keys{I}, \keys{a},       \\ & & \keys{A}, \keys{o}, \keys{O}\\
+        \hline
+        Command & For entering commands & \keys{:}                            \\
+        \hline
+        Visual  & For selecting text    & \keys{v}, \keys{V}, \keys{Ctrl + v} \\
+        \hline
     \end{tabular}{}
 \end{frame}{}
 
@@ -255,41 +252,41 @@
 
     We can navigate the file by using \texttt{hjkl} (left, down, up, right respectively)
 
-    Why not arrow keys (or a mouse)? Historically, it's because the old keyboards did not have arrow keys or a mouse. 
-    
+    Why not arrow keys (or a mouse)? Historically, it's because the old keyboards did not have arrow keys or a mouse.
+
     However, in practice, it is extremely efficient as you don't need to move you hands away from the alphanumeric
     keys to do anything.
 \end{frame}{}
 
 \begin{frame}{A simple vim config}
-  Notice that by default, vim looks pretty bad. Let's spice it up a bit with some simple configs.
+    Notice that by default, vim looks pretty bad. Let's spice it up a bit with some simple configs.
 
-  Copy this config file to \keys{~/.vimrc}, or modify your existing config: \url{https://hckr.cc/ht-vim-vimrc}
+    Copy this config file to \keys{~/.vimrc}, or modify your existing config: \url{https://hckr.cc/ht-vim-vimrc}
 \end{frame}{}
 
 \begin{frame}{Normal Mode}
     \begin{tabular}{|c|c|}
-       \hline
-       Type  &  Description\\
-       \hline
-       Basic &  \keys{hjkl}: left, down, up, right\\
-       \hline 
-       Word & \keys{w}: next word, \keys{b}: back a word\\
-       \hline
-       File & \keys{gg}: top of file, \keys{G}: bottom of file\\
-       \hline
-       Line & \keys{0}: beginning of line, \keys{\$}: end of line,\\ & \keys{\^{}} first non-whitespace of line\\
-       \hline
-       Line Numbers & \keys{34G}: to go to line 34 in the file\\
-       \hline
-       Screen & \keys{H}igh part of screen, \keys{M}iddle of screen, \\ & \keys{L}ow part of screen\\
-       \hline
-       Braces & \keys{\%} to go to corresponding braces\\
-       \hline
-       Repeating & \keys{10j}: to go down 10 times\\
-       \hline
-       Scroll & \keys{Ctrl + d}: to scroll down,\\ & \keys{Ctrl + u} to scroll up\\
-       \hline
+        \hline
+        Type         & Description                                          \\
+        \hline
+        Basic        & \keys{hjkl}: left, down, up, right                   \\
+        \hline
+        Word         & \keys{w}: next word, \keys{b}: back a word           \\
+        \hline
+        File         & \keys{gg}: top of file, \keys{G}: bottom of file     \\
+        \hline
+        Line         & \keys{0}: beginning of line, \keys{\$}: end of line, \\ & \keys{\^{}} first non-whitespace of line\\
+        \hline
+        Line Numbers & \keys{34G}: to go to line 34 in the file             \\
+        \hline
+        Screen       & \keys{H}igh part of screen, \keys{M}iddle of screen, \\ & \keys{L}ow part of screen\\
+        \hline
+        Braces       & \keys{\%} to go to corresponding braces              \\
+        \hline
+        Repeating    & \keys{10j}: to go down 10 times                      \\
+        \hline
+        Scroll       & \keys{Ctrl + d}: to scroll down,                     \\ & \keys{Ctrl + u} to scroll up\\
+        \hline
     \end{tabular}{}
 \end{frame}{}
 
@@ -307,14 +304,14 @@
 \begin{frame}{Insert Mode}
     \begin{enumerate}
         \item Make sure you are in normal mode. \keys{Esc}
-        \begin{enumerate}
-            \item \keys{i} to insert before cursor
-            \item \keys{I} to insert at the start of line
-            \item \keys{a} to insert after cursor
-            \item \keys{A} to insert at the end of line
-            \item \keys{o} to start a next line and insert
-            \item \keys{O} to start a line above the current selection and insert
-        \end{enumerate}{}
+              \begin{enumerate}
+                  \item \keys{i} to insert before cursor
+                  \item \keys{I} to insert at the start of line
+                  \item \keys{a} to insert after cursor
+                  \item \keys{A} to insert at the end of line
+                  \item \keys{o} to start a next line and insert
+                  \item \keys{O} to start a line above the current selection and insert
+              \end{enumerate}{}
         \item Get out of insert once done. \keys{Esc}
     \end{enumerate}{}
 \end{frame}{}
@@ -400,7 +397,7 @@
     \end{itemize}{}
 
 \end{frame}{}
-    
+
 \begin{frame}{Practice 2}
     \url{https://hckr.cc/ht-vim-p2}
 
@@ -424,15 +421,13 @@
 \end{frame}{}
 
 \begin{frame}{Getting productive quickly}
-  There are many (neo)vim-based distributions that are pre-configured with sane defaults and plugins to get you productive immediately:
+    There are many (neo)vim-based distributions that are pre-configured with sane defaults and plugins to get you productive immediately:
 
-  \begin{itemize}
-    \item \url{https://www.lunarvim.org/}
-    \item \url{https://astronvim.github.io/}
-    \item \url{https://nvchad.com/}
-  \end{itemize}
-
-  Let me show you an example of LunarVim.
+    \begin{itemize}
+        \item \url{https://www.lunarvim.org/}
+        \item \url{https://astronvim.github.io/}
+        \item \url{https://nvchad.com/}
+    \end{itemize}
 \end{frame}{}
 
 \begin{frame}{Others}
@@ -456,8 +451,9 @@
     Here are some you can look at:
 
     \begin{itemize}
-      \item \href{https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en}{Vimium - Vim for Chromium based browsers}
-      \item \href{https://plugins.jetbrains.com/plugin/164-ideavim}{IdeaVim - Vim emulation for JetBrains}
+        \item \href{https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en}{Vimium - Vim for Chromium based browsers}
+        \item \href{https://plugins.jetbrains.com/plugin/164-ideavim}{IdeaVim - Vim emulation for JetBrains}
+        \item \href{https://www.homerow.app}{Homerow - Use your keyboard for your whole Mac}
     \end{itemize}{}
 \end{frame}{}
 
@@ -472,19 +468,16 @@
 \end{frame}{}
 
 \begin{frame}
-  \frametitle{Talk to us!}
-  \begin{itemize}
-    \item \textbf{Feedback form}: \url{https://hckr.cc/ht2223s2-w4-feedback}
+    \frametitle{Talk to us!}
+    \begin{itemize}
+        \item \textbf{Feedback form}: \url{https://hckr.cc/ht-feedback}
 
-    \item \textbf{Upcoming Hackerschool}:
-          Tomorrow -- Intro to OpenCV: \url{https://hckr.cc/hsw4-cc}
+        \item \textbf{Upcoming Hackerschool}:
+              Tomorrow -- Anime(tion) for Beginners: \url{https://hckr.cc/hs2324s1-w9-signup-nus}
 
-    \item \textbf{Upcoming Friday Hacks}:
-          This Friday -- Talks by Hack&Roll winners: \url{https://hckr.cc/fhw4-cc}
-
-    \item \textbf{Upcoming Hacker Tools}:
-          Tue, 7 Feb 2023, 6.30pm -- Shell and Scripting: Sign-ups coming soon!
-  \end{itemize}
+        \item \textbf{Upcoming Friday Hacks}:
+              This Friday -- Talks about startups and/or Rust: \url{https://hckr.cc/fh-247}
+    \end{itemize}
 \end{frame}
 
 \end{document}
