@@ -1,0 +1,156 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no')
+    block title
+      title Untitled
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/reveal.js@4.2.1/dist/reset.css')
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/reveal.js@4.2.1/dist/reveal.css')
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/reveal.js@4.2.1/dist/theme/black.css')
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.css')
+
+    block styles
+      style.
+        .reveal:not(.overview) .slides {
+          overflow: hidden;
+        }
+
+        .reveal .slides .white-bg {
+          background-color: white;
+        }
+
+        .reveal .slides section .fragment.emph,
+        .reveal .slides section .fragment.unemph,
+        .reveal .slides section asciinema-player.fragment {
+          visibility: inherit;
+          opacity: 1;
+        }
+
+        .reveal .slides pre > code > strong:not(.red),
+        .reveal .slides .fragment.unemph:not(.visible) > .fragment.emph.visible:not(.red),
+        .reveal .slides :not(.unemph) > .fragment.emph.visible:not(.red) {
+          background-color: yellow;
+          color: black;
+        }
+
+        .reveal .slides pre > code > strong.red,
+        .reveal .slides .fragment.unemph:not(.visible) > .fragment.emph.red.visible,
+        .reveal .slides :not(.unemph) > .fragment.emph.red.visible {
+          background-color: red;
+          color: black;
+        }
+
+        .reveal pre {
+          line-height: 1;
+          font-variant-ligatures: none;
+        }
+
+        .reveal pre code {
+          max-height: none;
+        }
+
+        .reveal pre .sans {
+          font-family: "Source Sans Pro", sans-serif;
+        }
+
+        .reveal code {
+          font-variant-ligatures: none;
+        }
+
+        .reveal .underline {
+          text-decoration: underline;
+        }
+
+        .reveal section div.asciinema {
+          height: 720px;
+        }
+
+        .reveal pre.asciinema-terminal {
+          margin-top: 0;
+          margin-bottom: 0;
+          border: none;
+        }
+
+        .reveal .slides section .invisible {
+          visibility: hidden;
+        }
+
+        .reveal .font70 {
+          font-size: 0.7em;
+        }
+
+        html.print-pdf .reveal pre code {
+          font-family: monospace !important;
+        }
+
+  body
+    .reveal
+      .slides
+        block slides
+          section
+            p Empty presentation.
+    script(type='module').
+      import Reveal from "https://cdn.jsdelivr.net/npm/reveal.js@4.2.1/dist/reveal.esm.js";
+      const search = window.location.search;
+      if (!search.includes('show-all')) {
+        if (search.includes("print-pdf") || search.includes("show-alt")) {
+          document.querySelectorAll(".live-only").forEach(e => {
+            e.remove();
+          });
+        } else {
+          document.querySelectorAll(".print-only").forEach(e => {
+            e.remove();
+          });
+        }
+      }
+      window.Reveal = Reveal;
+      const readyPromise = Reveal.initialize({
+        slideNumber: true,
+        fragmentInURL: true,
+        transitionSpeed: "fast",
+        hash: true,
+        navigationMode: "linear",
+        transition: "fade",
+        pdfSeparateFragments: false,
+        highlight: {
+          escapeHTML: false
+        },
+        width: 960,
+        height: 720
+      });
+      if (search.includes("print-pdf")) {
+        document.querySelectorAll(".asciinema").forEach(e => {
+          e.innerHTML = "<p>Asciinema (please see the HTML slides for this)</p>";
+          if (e.dataset.alt) {
+            const p = document.createElement("p");
+            p.innerText = e.dataset.alt;
+            e.appendChild(p);
+            e.classList.remove("asciinema");
+          }
+        });
+      } else {
+        const { create } = await import('https://cdn.jsdelivr.net/npm/asciinema-player@3.0.0-rc.1/+esm');
+        function initSlideAsciinema(slide) {
+          slide.querySelectorAll(".asciinema").forEach(e => {
+            e.Asciinema = create(e.dataset.src, e, { theme: e.dataset.theme || "monokai" });
+          });
+        }
+        function destroySlideAsciinema(slide) {
+          slide.querySelectorAll(".asciinema").forEach(e => {
+            if (e.Asciinema) {
+              e.Asciinema.dispose();
+              delete e.Asciinema;
+            }
+          });
+        }
+        readyPromise.then(() => {
+          initSlideAsciinema(Reveal.getCurrentSlide());
+          Reveal.on('slidechanged', ({ currentSlide }) => {
+            initSlideAsciinema(currentSlide);
+          });
+          Reveal.on('slidetransitionend', ({ previousSlide }) => {
+            destroySlideAsciinema(previousSlide);
+          });
+        });
+      }
