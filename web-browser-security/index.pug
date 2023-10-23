@@ -1,4 +1,4 @@
-extends ../template.pug
+extends ./template.pug
 
 block styles
   style.
@@ -67,6 +67,7 @@ block slides
       li Security and privacy
   section.center
     h1 Browsers and the web
+    a(href='https://xkcd.com/934/'): img(src='https://imgs.xkcd.com/comics/mac_pc.png', style='height: 25ex;')
   section
     h2 Keyboard shortcuts
     ul
@@ -87,6 +88,12 @@ block slides
       li #[code define:xyz]: define xyz
     p More: #[a(href='https://support.google.com/websearch/answer/2466433') Google docs]; #[a(href='https://ahrefs.com/blog/google-advanced-search-operators/') External docs]
   section
+    h2 LLM backed search engines 
+    ul
+      li #[a(href='https://you.com') You]
+      li #[a(href='https://perplexity.ai') Perplexity]
+      li #[a(href='https://bing.com') BingAI]
+  section
     section
       h2 Bookmark keywords (FF)
       img(src='ff0.png')
@@ -99,9 +106,14 @@ block slides
       img(src='chr-cse1.png')
   section
     section
-      h2 (FF) Container tabs
+      h2 (FF) #[a(href='https://addons.mozilla.org/en-CA/firefox/addon/multi-account-containers/') Container] tabs
       img(src='ff-mac.png', style='width: 12.5em;')
       p Long press the +
+    section
+      h2 Firefox profiles
+      p about:profiles 
+      //- https://utcc.utoronto.ca/~cks/space/blog/web/FirefoxExtraProfilesHack
+      //- https://news.ycombinator.com/item?id=37952719
     section
       h2 Chromium profiles
       img(src='chr-profiles0.png', style='height: 25ex;')
@@ -130,13 +142,20 @@ block slides
       li #[a(href="javascript:window.location=document.querySelector('meta[property=\\'og:video\\']').content;void 0;") Panopto download]
       li #[a(href='javascript:void(document.oncontextmenu=null)') Unblock right-click]
   section
+    h2 Browser selection
+    p If you use multiple browser for different purposes, you may want to have a tool open specific browser for specific links
+    ul
+      li #[a(href='https://github.com/johnste/finicky') Finicky]: #[a(href='https://gist.github.com/francisyzy/0d1a9e90434fd4adef4071ddaceb12ca') Mac]
+      li #[a(href='https://github.com/U-C-S/Hurl') Hurl]: Windows
+      li #[a(href='https://gitlab.com/ToS0/browserselector') Linux Browser Selector]: Linux
+  section
     h2 Browser extensions
     ul
       li #[a(href='https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/') uBlock Origin]#[a(href='https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm') (C)]: adblock
+      //- https://arstechnica.com/security/2023/10/google-hosted-malvertising-leads-to-fake-keepass-site-that-looks-genuine/
       li #[a(href='https://addons.mozilla.org/en-US/firefox/addon/styl-us/') Stylus]#[a(href='https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne') (C)]: #[a(href='https://userstyles.org/') user styles] for websites
-      li #[a(href='https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/') Violentmonkey]#[a(href='https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag?hl=en') (C)]: user scripts from #[a(href='https://openuserjs.org/') OpenUserJS], #[a(href='https://greasyfork.org/en/scripts') GreasyFork], #[a(href="https://gist.github.com/search?l=JavaScript&o=desc&q=%22%3D%3DUserScript%3D%3D%22&s=updated") Github Gist]
+      li #[a(href='https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/') Violentmonkey]#[a(href='https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag?hl=en') (C)]#[a(href='https://github.com/quoid/userscripts') (S)]: user scripts from #[a(href='https://openuserjs.org/') OpenUserJS], #[a(href='https://greasyfork.org/en/scripts') GreasyFork], #[a(href="https://gist.github.com/search?l=JavaScript&o=desc&q=%22%3D%3DUserScript%3D%3D%22&s=updated") Github Gist]
       li #[a(href='https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/') Tree Style Tabs] (FF only)
-      li #[a(href='https://addons.mozilla.org/en-US/firefox/addon/google-search-link-fix/') Google link search fix] (FF only)
       li #[a(href='https://www.eff.org/https-everywhere') HTTPS Everywhere]
       li #[a(href='https://www.zotero.org/download/connectors') Zotero Connector(C)]
   section
@@ -147,6 +166,8 @@ block slides
       p Some useful scripts:
       ul
         li #[a(href='https://adsbypasser.github.io/') Adsbypasser]
+        li #[a(href='https://gist.github.com/francisyzy/e3bd49c13ba91257098178b03e6f529e') Canvas Click Login]
+        li #[a(href='https://gist.github.com/francisyzy/d5f1669b7fe483734e4f58e04b80073b') NUS SSO Click Login]: #[a(href="https://www.youtube.com/watch?v=3UozEnHfQCI") Video Guide]
     section
       h2 Automation with user scripts
       pre: code.javascript.
@@ -170,6 +191,8 @@ block slides
   section
     h2 Extras
     p Automation with #[a(href='https://www.seleniumhq.org/') Selenium]
+    p #[a(href="https://www.autotab.com") Autotab]: An AI-powered Chrome extension to create Selenium scripts
+    //- https://news.ycombinator.com/item?id=37943931
   section.center
     h1 Security and privacy
   section
@@ -223,6 +246,7 @@ block slides
       li #[a(href='https://nordvpn.com/') NordVPN] (based in Panama)
       li #[a(href='https://protonvpn.com/') ProtonVPN] (based in Switzerland)
     p #[a(href='https://thatoneprivacysite.net/vpn-comparison-chart/') Comparison table]
+    p #[a(href='https://www.bleepingcomputer.com/news/security/cyberstalking-suspect-arrested-after-vpn-providers-shared-logs-with-the-fbi/') Logs?] Never heard of it. 
   section
     h2 VPN software
     p Run your own VPN
@@ -230,7 +254,18 @@ block slides
       li #[a(href='https://openvpn.net/community-downloads/') OpenVPN]
       li #[a(href='https://www.wireguard.com/') WireGuard]
     p Setting up a server is out of scope. Here are some guides: #[a(href='https://wiki.archlinux.org/index.php/OpenVPN') OpenVPN], #[a(href='https://wiki.archlinux.org/index.php/WireGuard') WireGuard]
-    p WireGuard is a very modern (but very new) VPN. If you are setting up a new VPN, and it meets your needs, use it!
+    p WireGuard is a very modern VPN. If you are setting up a new VPN, and it meets your needs, use it!
+    p https://pivpn.io for a quick script to run a VPN server
+  section
+    h2 DNS
+    p Choose a 'better' DNS provider!
+    ul
+      li #[a(href='https://www.quad9.net') Quad9]
+      li #[a(href='https://1.1.1.1') 1.1.1.1]
+      li #[a(href='https://developers.google.com/speed/public-dns/') Google DNS]
+      li #[a(href='https://adguard-dns.io/en/welcome.html') Adguard DNS]
+    p Setting up a server is out of scope. Here are some guides: #[a(href='https://github.com/AdguardTeam/AdGuardHome#getting-started') AdGuardHome], #[a(href='https://pi-hole.net') Pi-Hole]
+    p #[a(href='https://adguard-dns.io/kb/general/dns-providers/') List of known DNS providers (Other than your ISP's)]
   section
     h2 Messengers
     ul
@@ -241,7 +276,19 @@ block slides
     p There are many other messengers but most offer no privacy at all.
   section.center
     p See #[a(href='https://privacytools.io') privacytools.io] for more privacy-focused alternatives to common software.
+    p See #[a(href='https://restoreprivacy.com/firefox-privacy/') Firefox Hardening] for a list of settings that reduces tracking.
+    p See #[a(href='https://www.privacytools.io/private-browser') privacytools.io: Private Browser] for a list of browsers that have focuses on privacy.
     p You could consider reducing your dependency on Google, for example, by moving to a different email #[a(href='https://mxroute.com') provider].
+  section
+    p Disposable email
+  section
+    h2 #[a(href="https://www.privacytools.io/privacy-frontends") Privacy frontends]
+    p type of software that provides a more private, ad-free, and user-friendly experience for accessing popular internet services such as social media networks
+    ul
+      li #[a(href='https://invidious.io/') Invidious]: Youtube alternative frontend
+      li #[a(href='https://nitter.net/') Nitter]: Twitter alternative frontend
+      li #[a(href='https://teddit.net/') Teddit]: Reddit alternative frontend
+    p #[a(href='https://libredirect.github.io') LibRedirect]: Browser extension that can be used to switch between instances
   section
     a(href='https://xkcd.com/1200/'): img(src='https://imgs.xkcd.com/comics/authorization.png', style='height: 25ex;')
   section
