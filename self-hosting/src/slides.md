@@ -20,7 +20,7 @@ fonts:
 layout: center
 ---
 
-# Hacker Toolbox: **Self Hosting**
+# Hackers' Toolbox: **Self Hosting**
 
 
 ---
@@ -59,7 +59,7 @@ layout: center
 ## What we **will** cover
 
 * Motivations of Self-Hosting
-* How to set up your ownn server
+* How to set up your own server
 * Hardening your server
 * Basic server administrations
 * Setting up your own services
@@ -71,10 +71,9 @@ class: self-center px-10
 
 ## What is Self Hosting?
 
-**Self Hosting** is essentially is the practice of locally hosting (on premises & private web servers) and managing software applications by a person or organization instead of monthly subscriptions from Software as a service (SaaS) providers.
+**Self Hosting** is essentially is the practice of locally hosting (on premises & private web servers) and managing software applications by a person or organization.
 
-
-There’s a subset of self-hosting I’ll briefly mention exists, that is **homelabbing**. Homelabbing is probably a lesser-known term, but it's basically just setting up a "lab" at
+**Homelabbing** is probably a lesser-known term, but it's basically just setting up a "lab" at
 home to experiment with "enterprise-y" things
 
 ::right::
@@ -104,7 +103,7 @@ layout: two-cols
 class: px-5 py-20
 ---
 
-# No-cost options
+## No-cost options
 
 For small projects, or for people who just want to get started, this is a great way to learn without breaking the wallet!
 
@@ -122,7 +121,7 @@ layout: center
 
 A **virtual private server**, also known as a VPS, acts as an isolated, virtual environment on a physical server, which is owned and operated by a cloud or web hosting provider.
 
-You can use your student email get free credits for popular VPS providers, or if you want to go cheap, lesser known VPS, there’s always [lowendbox.com](lowendbox.com)
+You can use your student email to get free credits for popular VPS providers, or if you want to go cheap, lesser known VPS, there’s always [lowendbox.com](lowendbox.com)
 
 ---
 layout: center
@@ -171,6 +170,7 @@ layout: center
 - Select Billing Account
 - Allow Compute Engine. This will take awhile
 - Create a new e2-micro instance. Don’t worry about the giant bill on the right side, Google should waive all costs for it unless you have multiple e2-micro instances running.
+- When selecting a boot disk, make sure to select Ubuntu
 > Note: For GCP Always Free, make sure your region is `us-west1`, `us-central1`, or `us-east1`
 
 
@@ -203,7 +203,7 @@ layout: center
 ## Domain Names
 So, now we’ve got a server up and a way to access it. But you notice an IP address is kind of ugly and hard to remember… that’s where **domain names** come into play! If you’ve ever typed a website URL, you’ve effectively typed a domain name.
 
-Well, how to IP Addresses turn into domain names? All you need to know is there are a lot of servers out there maintaining a large table of IP addresses to domain name mappings. These are known as **DNS servers**.
+Well, how do IP Addresses turn into domain names? All you need to know is there are a lot of servers out there maintaining a large table of IP addresses to domain name mappings. These are known as **DNS servers**.
 
 ---
 layout: center
@@ -261,7 +261,7 @@ layout: cover
 background: none
 ---
 
-# Step 3: Hardening your server
+## Step 3: Hardening your server
 Now we’ve got the high-level stuff out of the way, it’s time to actually work on our server!
 
 ---
@@ -270,7 +270,11 @@ layout: center
 
 ## Creating you own user and disabling root login
 
-This is important if you are logged into your server as **root.** As root is a common username, there will be people enumerating through common usernames on every possible IP address just to try their luck and compromise servers
+This is important if you are logged into your server as **root.** As root is a common username, there will be people enumerating through common usernames on every possible IP address just to try their luck and compromise servers. In GCP, they'll probably give you a non-root account to start with.
+
+```bash
+sudo passwd # Change your password
+```
 
 With that said, we also want to disable root login for the same reason
 
@@ -279,7 +283,7 @@ With that said, we also want to disable root login for the same reason
 ```bash
 useradd -m -d /home/<username> <username> # Add user
 usermod -a -G sudo,adm <username> # Give permissions
-passwd <username> # To create a password for the user
+sudo passwd <username> # To create a password for the user
 ```
 
 ---
@@ -318,7 +322,7 @@ layout: center
 You can then give your public keys to trusted servers to allow you to connect to them
 without password auth.
 
-```
+```bash
 ssh-copy-id -i ~/.ssh/tatu-key-ecdsa user@host
 ```
 
@@ -331,11 +335,11 @@ layout: center
 The `scp` command is a special command that uses `ssh` to securely copy files between
 local and host machines.
 
-```
-// Copy from remote location to local directory
+```bash
+# Copy from remote location to local directory
 scp [options] username@source_host:directory/filename1 <local directory>
 
-// Copy from local directory to remote location
+# Copy from local directory to remote location
 scp [options] <local directory> username@source_host:directory/filename1
 ```
 
@@ -345,18 +349,17 @@ layout: center
 
 ## Activities
 
-Before we move on, let's quickly get some practice:
+Before we move on, let's quickly get some recap and practice:
 
 - If you haven't already, set up your ssh keys on your remote
-(try using `scp` instead of ssh-copy-id!)
-- If you don't have a remote, but have a GitHub account, try using ssh-keygen to generate a key for GitHub! More details [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+- Let's try copying a file from our local machine over to our server using `scp`
 
 ---
 layout: center
 ---
 
 ## Setting up SSH keys for SSH access (Summary)
-While some service providers have a webshell, it’s much nice to be able to work in your own terminal (and significantly less laggy).
+While some service providers have a webshell, it’s much nicer to be able to work in your own terminal (and significantly less laggy).
 
 - `ssh-keygen -t ed25519`
 - After that, take the pubkey string, then:
@@ -364,6 +367,8 @@ While some service providers have a webshell, it’s much nice to be able to wor
 - `nano .ssh/authorized_keys`
 - paste in pubkey string or use ssh-copy-id
 - `chmod -R go-rwx .ssh`
+
+> Note: This is a manual way of adding keys, some cloud providers have automatic ways that screw with this. (ahem ahem GCP)
 
 ---
 layout: center
@@ -376,7 +381,10 @@ Some service providers have built-in firewalls on their dashboard. Otherwise you
 - Important Ports to open
     - SSH
     - HTTP/HTTPS
-    - Any apps for later
+    - 8443, 8081 for telegram bots
+
+For GCP, we can configure our firewall here:
+https://console.cloud.google.com/net-security/firewall-manager
 
 ---
 layout: cover
@@ -391,6 +399,19 @@ background: none
 ---
 
 # Step 4: Basic System Administration
+
+---
+layout: center
+---
+
+## Keeping your system up to date
+
+To ensure your system is always up to date with the latest packages, do:
+
+```bash
+sudo apt-get update && sudo apt-get upgrade
+```
+You should do this if you are about to install a package as well, otherwise the package manager will complain.
 
 ---
 layout: center
@@ -463,8 +484,8 @@ layout: center
 ---
 
 ## Monitoring
-- top, htop and how to use them
-- searching and killing resources
+- `top`, `htop` and how to use them
+- Searching and killing resources
 
 ---
 layout: center
@@ -564,6 +585,8 @@ The crontab command allows you to install, view , or open a crontab file for edi
 - `crontab -i` - Remove your current crontab file with a prompt before removal.
 - `crontab -u <username>` - Edit other user crontab file. This option requires system administrator privileges.
 
+> `htop` is a much nicer and user-friendly alternative to `top`. To try it out, do `sudo apt-get install htop`
+
 ---
 layout: center
 ---
@@ -636,10 +659,11 @@ layout: center
 ---
 
 ## Activities: Hosting a web page
+
 - `nginx` is a great web server for these things, but you can pick whatever you want, or are
 more familiar with
 - On Ubuntu, this is pretty simple: apt install nginx
-- Enable it and start it: `systemctl enable nginx`, `systemctl start nginx`
+- Enable it and start it: `sudo systemctl enable nginx`, `sudo systemctl start nginx`
 - Open up your browser and head to http://host/ — you should see a page there
 - edit files in /var/www/html/..., etc: try replacing index.html? with "hello world"
 - check http://host/ again
@@ -650,14 +674,23 @@ layout: center
 
 ## Activities: Try running a telegram bot!
 
-Here's a cool bot: https://github.com/xTeixeira/xkcdbot
+Here's a cool bot: https://github.com/Devanshshah1309/nusmods-bot.git
 Let's run it!
 
-* Find the ports required to run the telegram bot and open it in our firewall (443, 80, 88, 8443)
+* Find the ports required to run the telegram bot and open it in our firewall (443, 80, 8443, 8001)
+* Install some dependencies
+```bash
+sudo apt-get install git python3 python3-pip
+pip3 install python-telegram-bot requests
+```
+* Clone the repository
+```bash
+git clone https://github.com/Devanshshah1309/nusmods-bot.git
+```
 * Get a bot token from @BotFather
 * Edit the script and run and detach it.
 ```bash
-python main.py & # The & tells the shell to run in background
+python officialNUSmodsBot.py & # The & tells the shell to run in background
 ```
 
 ---
