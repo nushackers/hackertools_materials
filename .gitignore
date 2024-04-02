@@ -2,6 +2,8 @@
 # Created by https://www.gitignore.io/api/vim,latex,macos
 # Edit at https://www.gitignore.io/?templates=vim,latex,macos
 
+node_modules
+
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
 *.aux

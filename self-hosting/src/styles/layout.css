@@ -1,0 +1,175 @@
+/* Dracula spec: https://spec.draculatheme.com/ */
+
+:root {
+  /*
+    default theme color
+    can be overrided by uses `themeConfig` option
+   */
+
+  /* Dracula colors: https: //draculatheme.com/contribute */
+  --background: hsl(231, 15%, 18%);
+  --current-line: hsl(232, 14%, 31%);
+  --foreground: hsl(60, 30%, 96%);
+  --comment: hsl(225, 27%, 51%);
+  --cyan: hsl(191, 97%, 77%);
+  --green: hsl(135, 94%, 65%);
+  --orange: hsl(31, 100%, 71%);
+  --pink: hsl(326, 100%, 74%);
+  --purple: hsl(265, 89%, 78%);
+  --red: hsl(0, 100%, 67%);
+  --yellow: hsl(65, 92%, 76%);
+}
+
+/* ℹ️ #app increases the specificity of .dark selector from upstream layout styles  */
+#app {
+  #slide-content {
+
+    --at-apply: text-$foreground bg-$background !important;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      --at-apply: text-$purple font-semibold;
+    }
+
+    strong {
+      --at-apply: text-$orange;
+    }
+
+    em {
+      --at-apply: text-$yellow;
+    }
+
+    a {
+      --at-apply: text-$cyan;
+    }
+
+    ul,
+    ol {
+      li::marker {
+        --at-apply: text-$cyan;
+      }
+    }
+
+    blockquote {
+      --at-apply: bg-transparent text-$yellow border-none;
+
+      /* ℹ️ "font-italic" isn't working */
+      font-style: italic;
+    }
+
+    kbd {
+      --at-apply: text-$green;
+    }
+
+    /* ℹ️ Update background color of code. We made it darker so we don't get same color for slide bg & code bg. */
+    .slidev-code.shiki {
+      background: hsl(231, 15%, 10%) !important;
+    }
+
+    :not(pre)>code {
+      --at-apply: bg-transparent text-$green;
+    }
+  }
+
+  /* Layout: Cover, Intro */
+  .slidev-layout.cover,
+  .slidev-layout.intro {
+    --at-apply: h-full grid;
+
+    h1 {
+      --at-apply: text-6xl leading-20 text-$purple;
+    }
+
+    h1+p {
+      --at-apply: -mt-2 text-$comment mb-4;
+    }
+
+    p+h2,
+    ul+h2,
+    table+h2 {
+      --at-apply: mt-10;
+    }
+  }
+
+  /* Layout: Face */
+  .slidev-layout.fact {
+    --at-apply: text-center grid h-full;
+
+    h1 {
+      --at-apply: text-8xl font-700;
+    }
+
+    h1+p {
+      --at-apply: font-700 text-2xl;
+    }
+  }
+
+  /* Layout: Statement */
+  .slidev-layout.statement {
+    --at-apply: text-center grid h-full;
+
+    h1 {
+      --at-apply: text-6xl font-700;
+    }
+  }
+
+  /* Layout: Section */
+  .slidev-layout.section {
+    h1 {
+      --at-apply: text-6xl font-500 leading-20;
+    }
+  }
+
+  /* Layout: Face */
+  .slidev-layout.fact {
+    --at-apply: text-center grid h-full;
+
+    h1 {
+      --at-apply: text-8xl font-700;
+    }
+
+    h1+p {
+      --at-apply: font-700 text-2xl;
+    }
+  }
+
+  /* Layout: Quote */
+  .slidev-layout.quote {
+    --at-apply: grid h-full;
+
+    h1+p {
+      --at-apply: mt-2;
+    }
+  }
+
+  /* Layout: Author */
+  .slidev-layout.author {
+    img {
+      --at-apply: rounded-full mx-auto;
+    }
+
+    h1 {
+      --at-apply: text-3xl font-600 mb-0 next-[p]-mt-2;
+    }
+
+    h1+p {
+      --at-apply: max-w-40ch mx-auto;
+    }
+
+    footer {
+      --at-apply: pt-16 text-sm flex justify-center items-center;
+
+      a {
+        --at-apply: ms-2 me-6;
+      }
+
+      a:not(:hover) {
+        color: inherit !important;
+      }
+    }
+  }
+}
