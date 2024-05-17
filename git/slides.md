@@ -1056,6 +1056,8 @@ Slides: <https://hs2010-git.github.io/adv>
 
 Remember to give us feedback here: [https://bit.ly/orbital24-mc1-feedback](https://bit.ly/orbital24-mc1-feedback)
 
+![feedbackQr](feedbackQr.png)
+
 ---
 
 ## End
