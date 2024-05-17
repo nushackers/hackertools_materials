@@ -6,7 +6,7 @@
 
 ## Slides
 
-https://hckr.cc/hackerstoolsbox-git
+[https://hckr.cc/orbital24-git-slides](https://hckr.cc/orbital24-git-slides)
 
 ---
 
@@ -1026,6 +1026,7 @@ Additional readings:
 - [Git manual](https://git-scm.com/docs)
 - [Pro Git](https://git-scm.com/book/en/v2)
 - [NUS Hackers Git Cheatsheet](https://hckr.cc/ht-git-cs)
+- [NUS Hackers Git Wiki](https://wiki.nushackers.org/orbital/git)
 - Look into [Gitworkflows](https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#ch05-distributed-git)
 - [Atlassian\'s collaboration guide](https://www.atlassian.com/git/tutorials/syncing)
 
@@ -1053,7 +1054,9 @@ Slides: <https://hs2010-git.github.io/adv>
 
 ## Feedback
 
-Remember to give us feedback here: https://hckr.cc/ht2324s1-w4-feedback!
+Remember to give us feedback here: [https://bit.ly/orbital24-mc1-feedback](https://bit.ly/orbital24-mc1-feedback)
+
+![feedbackQr](feedbackQr.png)
 
 ---
 
