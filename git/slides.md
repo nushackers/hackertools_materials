@@ -1,12 +1,45 @@
-% Introduction to Git (and GitHub)
-% [![](../nushackers_svg.svg){.logo-img style="height: 5ex;"}](https://nushackers.org){target="_blank"}
-% 5th Sep, 2023
+---
+marp: true
+theme: uncover
+class:
+    - modern
+style: |
+  .left-heavy-two-column {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+  }
+
+  .even-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+  }
+---
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'dark'
+  });
+</script>
+
+[![](../nushackers_svg.svg)](https://nushackers.org)
+
+PRESENTS
+
+Introduction to Git (and GitHub)
+18 May 2024
 
 ---
 
-## Slides
+## References
 
-[https://hckr.cc/orbital24-git-slides](https://hckr.cc/orbital24-git-slides)
+These slides are complemented by the wiki so please refer to it for more details/information
+
+[Wiki](https://wiki.nushackers.org/orbital/git)
+[Slides](https://hckr.cc/orbital24-git-slides)
 
 ---
 
@@ -15,18 +48,32 @@
 Quick check: Did anyone face any problems setting up Git on your machine or creating an account on
 GitHub?
 
+If you have any issues, refer to the [setup guide provided in the wiki.](https://wiki.nushackers.org/orbital/git/setup)
+
 ---
 
 ## Things you need
 
+[![](git-logo.svg)](https://git-scm.com)
 
-[![](git-logo.svg){.logo-img style="height: 5ex;"}](https://git-scm.com)
-
-[![](github-logo.svg){.logo-img style="height: 5ex;"}](https://github.com)
+[![](github-logo.svg)](https://github.com)
 
 ---
 
-## What is **version control** and why should you care?
+# Fundamental Concepts
+
+---
+
+## What is Git?
+
+- Distributed version control system (DVCS)
+- Created by Linus Torvalds in 2005 as a replacement for existing VCS for the Linux kernel
+
+<!-- ![](snapshots.svg){.white-bg} -->
+
+---
+
+## What is **version control**?
 
 - A **version control system (VCS)** helps to record changes to a file or a set of files over time
 - It allows you to revert a project to a previous state, or to compare changes over time
@@ -34,488 +81,230 @@ GitHub?
 
 ---
 
-## What is Git?
+## Local vs remote repositories
 
-- Created by Linus Torvalds in 2005 as a replacement for existing VCS for the Linux kernel
-- A distributed version control system (DVCS)
-- Every commit is a *snapshot* of your files
-- GitHub != Git
-
-![](snapshots.svg){.white-bg}
+- **Repository:** parent folder that Git monitors for changes
+- **Local:** exists on local machine
+- **Remote:** exists on external server such as Github
 
 ---
 
-## The three \"areas\"
+## Thinking in commits
+
+- Snapshot of the instance of the codebase at a given point in time
+- Incrementally added over past snapshots as a set of changes
+- Visualized as a Directed Acyclic Graph (DAG)
+
+![alt text](dag.png)
+
+---
+
+## Branching away
+
+- Independent line of work that stems/branches off from a point in development
+- Useful for isolating bug fixes/features
+- Default branch: `main`
+
+---
+
+## Adding files to a snapshot
 
 - Working directory: where you actually work
 - Index/\"staging\" area: where you construct a commit
 - Repository/commit: the repository itself
 
-![](areas.png){.white-bg style="height: 15ex"}
+<div>
+<img src="areas.png" width="600">
+</div>
 
 ---
 
-## Getting started
+# Getting Started
 
-In each commit, Git stores the author and committer\'s name and email
+---
 
-You need to configure Git:
+## Creating a local repository
 
-```
-git config --global user.name "Your Name"
-git config --global user.email "your@email.com"
+```sh
+mkdir new-folder/
+cd new-folder/
+git init
 ```
 
 ---
 
-## Setting your editor
+## Adding a file
 
-Git sometimes launches an editor e.g. when you `commit`, to edit the
-commit message
-
-Configure your favourite editor:
+```sh
+echo 'Hello world' >> hello.txt
 ```
-git config --global core.editor nano
-git config --global core.editor emacs
-# VS Code
-git config --global core.editor "code --wait --new-window"
-# For Windows
-git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -nosession"
-git config --global core.editor "'C:/Program Files/Microsoft VS Code/code.exe' -n -w"
-```
-
-Now, we will create a new repository for this session.
 
 ---
 
-## Allowing your local machine to access your GitHub account
+## Adding `hello.txt` to your snapshot
 
-This can be done by setting up an SSH key or an HTTPS Personal Access Token (PAT)
+```sh
+git add hello.txt
+```
 
 ---
 
-## Setting up a PAT
+## Taking the snapshot
 
-PATs are used to provide access to repositories with finer control/settings.
+```sh
+git commit -m "First commit"
+```
 
-You can learn more about them [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+---
+
+# Integrating Remote Repositories
 
 ---
 
 ## Creating a new GitHub repository
 
-<!-- TODO: Use new image -->
-![](github-new.png)
+Go to <https://github.com/new>
+
+<div>
+<img src="github-new.png" width=1200>
+<img src="github-new-2.png" width=400>
+</div>
 
 ---
 
 ## Creating a new GitHub repository
 
-<!-- TODO: Use new image -->
-![](github-new-2.png)
+<div>
+<img src="github-new-3.png" width=700>
+</div>
 
 ---
 
 ## Creating a new GitHub repository
 
-<!-- TODO: Use new image -->
-![](github-new-3.png){style="height: 22ex;"}
+<div>
+<img src="github-new-4.png" width=750>
+</div>
 
 ---
 
-## Cloning the repository
+## Connecting local repository to remote repository
+
+```sh
+git remote add origin git@github.com:<github username>/<repository name>.git
+git branch -M main
+```
+
+---
+
+## Uploading local repository snapshots
+
+```sh
+git push -u orign main
+```
+
+---
+
+## Cloning remote repositories
 
 Downloading a local copy of the repository
 
 ```
-git clone https://github.com/<your GitHub username>/learning-git.git
-```
-The server (i.e. GitHub) stores the remote copy (like a single source of truth)
-
-
----
-
-## Initialising a repository
-
-Let\'s create a new Git repository.
-
-```
-$ mkdir my-git-repo
-$ cd my-git-repo
-$ git init
-Initialized empty Git repository in my-git-repo/.git/
+cd ../
+git clone git@github.com:<github username>/<repository name>.git another-folder/
 ```
 
 ---
 
-## Stage a file
-
-Create a new file in `hello.txt`, however you want. Then add it:
-
-```
-$ echo 'Hello world' > hello.txt
-$ git add hello.txt
-```
-
-Staging tells Git that you want to include the file in your next snapshot.
+# Branching
 
 ---
-
-## Check the status
-
-We\'ve just staged a file! So what is the state of the repository?
-
-```
-$ git status
-```
-
-```
-On branch master
-
-No commits yet
-
-Changes to be committed:
-    (use "git rm --cached <file>..." to unstage)
-
-    new file:   hello
-```
-
----
-
-## Make your first commit
-
-Committing files is taking the snapshot of the files that have been staged.
-
-```
-$ git commit -m "Add hello"
-```
-
-```
-[master (root-commit) 5d74ce3] Add hello
-    1 file changed, 1 insertion(+)
-    create mode 100644 hello
-```
-
-You can leave the `-m ...` part out. Git will open your editor
-for you to compose a commit message.
-
----
-
-## Push your changes to GitHub
-After committing your changes, you can now `push` these changes to GitHub
-```
-$ git push origin main
-```
-`origin` is a shorthand name for the remote repo that the project was
-cloned from. It is used instead of the URL for convenience.
-
-
----
-
-## Make some changes, and look at them
-Make edits to `hello.txt` (or whatever file you made), then
-
-```
-$ git diff
-```
-
-```
-diff --git a/hello b/hello
-index 802992c..5d56d4d 100644
---- a/hello
-+++ b/hello
-@@ -1 +1 @@
--Hello world
-+Hello Hackerschool!
-```
-
-`git diff` shows the changes to file content.
-
----
-
-## Viewing commit history
-
-```
-$ git log
-```
-
-```
-commit 19c32155172a20f2fd14fe0e6c0fea954c17296b (HEAD -> master)
-Author: Your Name <your@email.com>
-Date:   Sat May 8 21:36:58 2021 +0800
-
-    Change world to Hackerschool!
-
-commit dc37b1cb2627f9829db0072cfa7d3d6bf9eb6822
-Author: Your Name <your@email.com>
-Date:   Sat May 8 21:16:45 2021 +0800
-
-    Add hello
-```
-
----
-
-## Summary so far
-
-::: {.font75}
--   [`git init`](https://git-scm.com/docs/git-init): Initialise
-    repository
--   [`git add`](https://git-scm.com/docs/git-add): Stage changes
--   [`git diff`](https://git-scm.com/docs/git-diff)` `[`(--staged)`](https://git-scm.com/docs/git-diff#Documentation/git-diff.txt-emgitdiffemltoptionsgt--ltpathgt82308203):
-    Look at differences between working tree and index (`--staged`:
-    index and current commit)
--   [`git status`](https://git-scm.com/docs/git-status): Look at
-    repository status
--   [`git commit`](https://git-scm.com/docs/git-commit)` `[`(-m)`](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--mltmsggt):
-    Commit staged changes (`-m`: with this commit message)
--   [`git show`](https://git-scm.com/docs/git-show): Show current commit
--   [`git log`](https://git-scm.com/docs/git-log): View the log
--   [`git push`](https://git-scm.com/docs/git-push): Push your branch to
-    a remote
-
-The commands\' manuals are linked. (They all have *many* more options
-than what we\'ve covered.)
-
-:::
-
----
-
-## Intermission
-
-5 minutes...
-
-In the meantime, try out the commands that you have learnt! Add new files, edit them,
-commit them, and stage them!
-
----
-
-## Collaborating with others
-
----
-
-## Collaboration Workflows
-
-1. Branch & PR
-2. Fork & PR
-
-This workshop focuses on the former - "Branch & PR"
-
-::: { .font50 }
-
-For more information about "Fork & PR", you [can visit this link here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
-
-:::
 
 ## What is a branch?
 
 A branch is an independent line of development, often used for features or bug fixes
-that should not be directly and immediately saved onto the main branch
 
-![](./branch.svg)
+<div>
+<img src="branch.svg" width=650>
+</div>
 
-## What is a branch?
-
-Main branch is the initial and primary place where most development occurs (`main` is traditionally used but can be named anything, used to be known as `master` branch)
+---
 
 ## HEAD
 
 `HEAD` is a special name given to the current commit of your current branch for ease of reference
 
-![](head-to-master.png){.white-bg style="height: 20ex;"}
-
----
-
-## Why use branching?
-
-::: {.font75}
-
--   work on **different versions of our code simultaneously**. Think of branches as alternative timelines.
--   create separate contexts where we can try new things or even **work on multiple ideas in parallel** without risking the codebase.
--   if feature A and feature B are being developed, if A breaks, it doesn't affect B.
-
-:::
+<div>
+<img src="head-to-master.png" width=650>
+</div>
 
 ---
 
 ## Creating a branch
 
-```
-$ git checkout -b new-feature
-Switched to a new branch 'new-feature'
+```sh
+git checkout -b new-feature
 ```
 
 Alternatively:
 
-```
-$ git branch new-feature
-$ git checkout new-feature
-Switched to branch 'new-feature'
-```
-
----
-
-## Creating a branch
-
-![](branch-1.svg){.white-bg}
-
----
-
-## Listing branches
-
-```
-$ git branch
-    main
-* new-feature
+```sh
+git branch new-feature
+git checkout new-feature
 ```
 
 ---
 
 ## Changing branches
 
-```
-$ git checkout main
-Switched to branch 'main'
-```
-
----
-
-## Branch & PR Workflow
-
-Each member owns their copy of the repository locally (through cloning)
-
-When working on a new feature or bug fix, each member will
-
----
-
-## Branch & PR Workflow
-
-1. Pull the latest changes from the remote repository
-2. Create a branch per feature/bug fix on their local copy
-3. Edit the files in their respective branch
-4. Push their local branch to the repository
-5. Make a pull request of their feature/bug fix branch to the `main` branch (remote copy)
-
----
-
-## Hands-on Time!
-
----
-
-## Setup
-
-Add your teammate as a collaborator to your newly created GitHub repository (Settings > Manage access > Invite a collaborator)
-
-![](./collaborator.png)
-
----
-
-## Setup
-
-Clone their repository onto your machine (name it something different from your own):
-
-```
-$ git clone https://github.com/<your teammate's GitHub name>/my-new-repo.git my-friend-repo/
-$ cd my-friend-repo/
+```sh
+git checkout main
 ```
 
 ---
 
-## Creating a branch
+## Viewing all branches
 
-```
-$ git checkout -b feature-1
-```
-
----
-
-## Making your changes
-
-Edit your friend's `hello.txt` to have whatever content you want and then stage and commit the file:
-
-```
-$ git add hello.txt
-$ git commit -m "Update hello.txt"
+```sh
+git branch -v
 ```
 
----
+## Deleting a branch
 
-## Pushing local changes to the remote repository
-
-```
-$ git push origin feature-1
-```
-`origin` is a shorthand name for the remote repo that the project was
-cloned from. It is used instead of the URL for convenience.
-
----
-
-## Opening a pull request on the repository
-
-Repository page > Pull Requests > New pull request
-
-![](github-pr-1.png){style="height: 12ex"}
-
----
-
-## Creating pull request
-
-Ensure that the `compare` branch is your local feature branch and `base` branch
-is `main` branch
-
-<!-- TODO: Add updated screenshot -->
-![](./pr-page.png)
-
----
-
-## Creating pull request
-
-Confirm pull request with "Create pull request"
-
-<!-- TODO: Add updated screenshot -->
-![](./pr-details.png)
-
----
-
-## Reviewing pull requests
-
-Your repository > Pull Requests > Select your friend's pull request
-
-![](./view-pr.png)
-
-View the commits and the files changed through the tabs.
-
----
-
-## Accepting pull requests
-
-If the files are in order, click "Merge pull request" to accept their changes into
-your repository's `main` branch
-
----
-
-## Getting latest remote copy on your local copy
-
-```
-git pull origin main
+```sh
+git branch -d <branch name>
 ```
 
-`origin` is a shorthand name for the remote repo that the project was
-cloned from. It is used instead of the URL for convenience.
+## Renaming a branch
+
+```sh
+git branch -m <new branch name>
+```
 
 ---
 
-## Merging
+## Combining changes of branches
 
-Combining your branch to another branch
+`main` is the target branch, `feature-A` is the source branch
 
-![](./merge.png)
+```sh
+git checkout main
+git merge feature-A
+```
 
 ---
 
-## Handling (merge) conflicts
+# Merge Conflicts
 
-Merge conflicts arise when the same line of code is changed across two commits
-so there is a conflict in which to be used
+---
+
+## Merge conflicts
+
+Occur when two (or more) modifications are made to the same line of a file; creating a state of confusion for Git
+
+<div>
+<img src="merge-conflict.png" width=700>
+</div>
 
 ---
 
@@ -523,22 +312,16 @@ so there is a conflict in which to be used
 
 In your repository, create branch `conflict-1` from `main` and edit the first line of `hello.txt`
 
-```
-$ git checkout -b conflict-1
+```sh
+git checkout -b conflict-1
 ```
 
 Return to `main` and create another branch `conflict-2` from `main` and edit the first line of `hello.txt` again
 
+```sh
+git checkout main
+git checkout -b conflict-2
 ```
-$ git checkout main
-$ git checkout -b conflict-2
-```
-
----
-
-## Merge conflicts
-
-![](conflict-1.svg){.white-bg}
 
 ---
 
@@ -546,13 +329,26 @@ $ git checkout -b conflict-2
 
 Now, try to merge `conflict-1` and `conflict-2` into `main`.
 
+```sh
+git merge conflict-1
 ```
-$ git merge conflict-1
+
+```text
 Updating b53e9cf..87a92c3
 Fast-forward
     hello.txt | 2 +-
     1 file changed, 1 insertion(+), 1 deletion(-)
-$ git merge conflict-2
+```
+
+---
+
+## Merge conflicts
+
+```sh
+git merge conflict-2
+```
+
+```text
 Auto-merging hello.txt
 CONFLICT (content): Merge conflict in hello.txt
 Automatic merge failed; fix conflicts and then commit the result.
@@ -563,7 +359,6 @@ Automatic merge failed; fix conflicts and then commit the result.
 ## Handling merge conflicts
 
 ```
-$ git status
 On branch master
 Your branch is ahead of 'origin/master' by 1 commit.
 (use "git push" to publish your local commits)
@@ -593,9 +388,9 @@ Farewell!
 >>>>>>> conflict-2
 ```
 
-[What we have in `main`]{.mark}
+Top half: current content in branch
 
-[What we want to merge in `conflict-2`]{.mark-red}
+Bottom half: content that is about to be merged
 
 ---
 
@@ -606,34 +401,91 @@ Edit `hello.txt` as such...
 
 ---
 
-## Handling merge conflicts
+## Completing the process
 
-![](conflict-2.svg){.white-bg}
+Commit the conflicting file
 
----
-
-## Summary
-
--   [`git checkout`](https://git-scm.com/docs/git-checkout): Checkout a
-    branch (and also files, etc)
--   [`git merge`](https://git-scm.com/docs/git-merge): Merge a branch
--   [`git clone`](https://git-scm.com/docs/git-clone): Clone a remote
-    repository
--   [`git remote`](https://git-scm.com/docs/git-remote): Manage remotes
--   [`git push`](https://git-scm.com/docs/git-push): Push your branch to
-    a remote
--   [`git pull`](https://git-scm.com/docs/git-pull): Pull updates from a
-    remote to your repository
+```sh
+git commit
+```
 
 ---
 
-## Intermission!
+# Intermission
+
+5 minutes...
+
+In the meantime, try out the commands that you have learnt!
+
+Add new files, edit them, commit them, and stage them!
+
+---
+
+# Collaborative Workflows
+
+---
+
+## Common Workflows
+
+1. Fork & PR
+2. Branch & PR
+
+This workshop focuses on the former - "Fork & PR"
+
+The wiki contains more information about [Branch & PR](https://wiki.nushackers.org/orbital/git/collaborative-workflows/branch-and-pr-workflow)
+
+---
+
+## What is a PR?
+
+Pull requests are like a Request for Comments for a set of changes made on a separate branch
+
+Allows developers and contributors to share their comments on the changes
+
+---
+
+## Creating a PR
+
+Push a local branch to a remote repository
+
+```sh
+git checkout -b sample-pr
+vim hello.txt
+git add hello.txt
+git commit -m "new changes"
+git push origin sample-pr
+```
+
+Visit GitHub to create the PR ([screenshots on the wiki](https://wiki.nushackers.org/orbital/git/collaborative-workflows))
+
+---
+
+## Fork & PR workflow
+
+**Forking:** creating an at-the-time copy of a remote repository (only needs to be done once per remote repository)
+
+**Upstream:** common name for the original repository
+
+---
+
+## Hands-on time!
+
+1. Create a fork of the demo repository
+2. Clone the fork to local machine
+3. Make changes to the repository
+4. Commit changes
+5. Push changes to forked repository
+6. Create PR through Github
+
+---
+
+# Intermission!
 
 5 minute break and Q&A!
 
 ---
 
-## Additional Notes
+## Additional concepts
 
 ---
 
@@ -645,7 +497,7 @@ Edit `hello.txt` as such...
 
 Undo accidental changes made
 
-```
+```sh
 $ git log --graph --oneline
 * d1f4fcc (HEAD -> master, origin/master, origin/HEAD) Add file3
 * 643aec6 Update file to c
@@ -653,13 +505,13 @@ $ git log --graph --oneline
 * 055cab4 Initial commit
 ```
 
-Suppose we want to revert [this]{.mark} commit.
+Suppose we want to revert to commit `643aec6`.
 
 ---
 
 ## Revert
 
-```
+```sh
 $ git revert 643aec6
 [master 7b73baf] Revert "Update file to c"
     1 file changed, 1 insertion(+), 1 deletion(-)
@@ -688,8 +540,6 @@ index f2ad6c7..6178079 100644
 Undo `git add`.
 
 ```
-$ echo e > file
-$ git add file
 $ git status
 On branch master
 Changes to be committed:
@@ -731,16 +581,6 @@ nothing to commit, working tree clean
 
 ---
 
-## Summary
-
--   [`git revert`](https://git-scm.com/docs/git-revert): Revert a commit
--   [`git reset`](https://git-scm.com/docs/git-reset): Unstage files
--   [`git checkout`](https://git-scm.com/docs/git-checkout): Checkout
-    files (and also a branch)
-    commits
-
----
-
 ## Ignoring files
 
 Sometimes we don\'t want Git to track a certain file
@@ -778,19 +618,8 @@ $ git status
 
 ---
 
-## Ignoring files
+## Viewing ignored files
 
-~~~ {.bash-strong}
-$ git add .gitignore && git commit -m "Add .gitignore"
-~~~
-    [master 5ada1cf] Add .gitignore
-     1 file changed, 1 insertion(+)
-     create mode 100644 .gitignore
-~~~ {.bash-strong}
-$ git status
-~~~
-    On branch master
-    nothing to commit, working tree clean
 ~~~ {.bash-strong}
 $ git status --ignored
 ~~~
@@ -816,7 +645,6 @@ are usually derived from the human-authored code in the repository. E.g.
 -   personal configuration files e.g. of your IDE
 
 ---
-
 
 ## `.gitignore` format
 
@@ -846,7 +674,6 @@ repository.
 
 ## Or it kinda does
 
-::: { .font75 }
 Using your GitHub password is no longer allowed after **August 13, 2021**. If you use HTTPS, you'll need to create a Personal Access Token (PAT).
 
 In your GitHub account, go to
@@ -854,8 +681,6 @@ In your GitHub account, go to
 `Settings > Developer Settings > Personal Access Token`
 
 to generate one.
-
-:::
 
 ---
 
@@ -894,101 +719,30 @@ so that our users don't feel like we are being too informal. Blah blah blah blah
 Blah blah.
 ```
 
-## Forking and PR setup
+---
 
-Clone this repository:
-[fork-me](https://github.com/hackerschool-git/fork-me).
+## Branch & PR Workflow
 
-    $ git clone https://github.com/hackerschool-git/fork-me.git
-    Cloning into 'fork-me'...
-    remote: Enumerating objects: 3, done.
-    remote: Counting objects: 100% (3/3), done.
-    remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
-    Unpacking objects: 100% (3/3), done.
+Each member owns their copy of the repository locally (through cloning)
+
+When working on a new feature or bug fix, each member will
 
 ---
 
-## Forking and PR
+## Branch & PR Workflow
 
-You\'ve made some improvements, and now you want it upstreamed!
-
-    $ cd fork-me/
-    $ nano hello # Edit hello
-    $ git add hello && git commit -m "Improve hello"
-    [master df48f95] Improve hello
-     1 file changed, 1 insertion(+), 1 deletion(-)
+1. Pull the latest changes from the remote repository
+2. Create a branch per feature/bug fix on their local copy
+3. Edit the files in their respective branch
+4. Push their local branch to the repository
+5. Make a pull request of their feature/bug fix branch to the `main` branch (remote copy)
 
 ---
 
-## Forking and PR
+## Commit message from the [Linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=37c0aead7902b1ddf1b668e1ab74c80b9a7fd183)
 
-Fork the repository:
-
-![](github-fork-1.png)
-
----
-
-## Forking and PR
-
-Get the URL:
-
-![](github-fork-2.png)
-
----
-
-## Update your repository
-
-Make sure there haven\'t been new changes made to the upstream.
-
-    $ git pull --rebase
-    Already up to date.
-
-We use `--rebase` because merge commits are generally frowned-upon in
-GitHub-style PRs.
-
-Also merge commits will look extremely funky in your PRs.
-
----
-
-## Forking and PR
-
-Add the remote, and push
-
-    $ git remote add fork git@github.com:.../fork-me.git
-    $ git push fork master
-    Enumerating objects: 5, done.
-    Counting objects: 100% (5/5), done.
-    Writing objects: 100% (3/3), 248 bytes | 248.00 KiB/s, done.
-    Total 3 (delta 0), reused 0 (delta 0)
-    To github.com:.../fork-me.git
-       18cac44..df48f95  master -> master
-
----
-
-## Forking and PR
-
-![](github-fork-3.png)
-
----
-
-## Forking and PR
-
-![](github-fork-4.png)
-
----
-
-## Forking and PR
-
-![](github-fork-5.png)
-
----
-
-## A real commit message
-
-[Randomly chosen from the Linux
-kernel.](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=37c0aead7902b1ddf1b668e1ab74c80b9a7fd183)
-
-``` font45
+<div style="font-size:12px">
+<code>
 net_sched: sch_fq: handle non connected flows
 
 FQ packet scheduler assumed that packets could be classified
@@ -1016,7 +770,8 @@ in fq packet scheduler.
 
 Signed-off-by: Eric Dumazet <edumazet@google.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
-```
+</code>
+</div>
 
 ---
 
