@@ -19,8 +19,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -111,17 +114,18 @@
   <p class="author"><a href="https://nushackers.org"
 target="_blank"><img data-src="../nushackers_svg.svg" class="logo-img"
 style="height: 5ex;" /></a></p>
-  <p class="date">20th May, 2023</p>
+  <p class="date">18th May, 2024</p>
 </section>
 
 <section id="slides" class="slide level2">
 <h2>Slides</h2>
-<p>https://hckr.cc/orbital23-git-slides</p>
+<p><a
+href="https://hckr.cc/orbital24-git-slides">https://hckr.cc/orbital24-git-slides</a></p>
 </section>
 <section id="setup-issues" class="slide level2">
 <h2>Setup Issues</h2>
-<p>Answer the Zoom poll to tell us about any setup issues that we can
-address</p>
+<p>Quick check: Did anyone face any problems setting up Git on your
+machine or creating an account on GitHub?</p>
 </section>
 <section id="things-you-need" class="slide level2">
 <h2>Things you need</h2>
@@ -919,8 +923,9 @@ Signed-off-by: David S. Miller &lt;davem@davemloft.net&gt;</code></pre>
 <h2>Where to go from here?</h2>
 <p>Additional readings: - <a href="https://git-scm.com/docs">Git
 manual</a> - <a href="https://git-scm.com/book/en/v2">Pro Git</a> - <a
-href="https://hckr.cc/ht-git-cs">NUS Hackers Git Cheatsheet</a> - Look
-into <a
+href="https://hckr.cc/ht-git-cs">NUS Hackers Git Cheatsheet</a> - <a
+href="https://wiki.nushackers.org/orbital/git">NUS Hackers Git Wiki</a>
+- Look into <a
 href="https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#ch05-distributed-git">Gitworkflows</a>
 - <a href="https://www.atlassian.com/git/tutorials/syncing">Atlassian's
 collaboration guide</a></p>
@@ -952,8 +957,12 @@ class="uri">https://hs2010-git.github.io/adv</a></p>
 </section>
 <section id="feedback" class="slide level2">
 <h2>Feedback</h2>
-<p>Remember to give us feedback <a
-href="https://bit.ly/orbital23-mc2-feedback">here</a>!</p>
+<p>Remember to give us feedback here: <a
+href="https://bit.ly/orbital24-mc1-feedback">https://bit.ly/orbital24-mc1-feedback</a></p>
+<figure>
+<img data-src="feedbackQr.png" alt="feedbackQr" />
+<figcaption aria-hidden="true">feedbackQr</figcaption>
+</figure>
 </section>
 <section id="end" class="slide level2">
 <h2>End</h2>
@@ -991,7 +1000,7 @@ href="https://bit.ly/orbital23-mc2-feedback">here</a>!</p>
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: true,
+        slideNumber: false,
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
