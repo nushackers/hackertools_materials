@@ -1,6 +1,6 @@
 % Introduction to Git (and GitHub)
 % [![](../nushackers_svg.svg){.logo-img style="height: 5ex;"}](https://nushackers.org){target="_blank"}
-% 5th Sep, 2023
+% 18th May, 2024
 
 ---
 
