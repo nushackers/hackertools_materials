@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Replace these with your actual Telegram bot token and chat ID
-TELEGRAM_BOT_TOKEN="6614915150:AAFOKUgukLQe4spwN87OBhPVVJL9xCQUqbY"
-CHAT_ID="822103678"
+TELEGRAM_BOT_TOKEN="INSERT_BOT_TOKEN"
+CHAT_ID="INSERT_CHAT_ID"
 TELEGRAM_API_URL="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage"
 
 # Replace this with your actual curl command that fetches the JSON weather data

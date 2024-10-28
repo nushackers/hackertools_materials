@@ -231,6 +231,7 @@ ssh-keygen -t ed25519
 On your **remote** machine:
 
 ```bash
+su <username>
 mkdir .ssh
 nano .ssh/authorized_keys
 ## Paste in your public key
