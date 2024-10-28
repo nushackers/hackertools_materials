@@ -285,9 +285,15 @@ layout: center
 
 ## Activities: Hosting a web page
 
+To get the webpage we want, do the following command (or get your own webpage!):
+
+```bash
+wget https://raw.githubusercontent.com/PaulineLabaisse/Motherfuckingwebsite/refs/heads/master/Motherfuckerwebsite.html
+```
+
 - `nginx` is a great web server for these things, but you can pick whatever you want, or are
 more familiar with
-- On Ubuntu, this is pretty simple: apt install nginx
+- On Ubuntu, this is pretty simple: `sudo apt install nginx`
 - Enable it and start it: `sudo systemctl enable nginx`, `sudo systemctl start nginx`
 - Open up your browser and head to http://host/ — you should see a page there
 - edit files in /var/www/html/..., etc: try replacing index.html? with "hello world"
