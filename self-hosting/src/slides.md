@@ -21,6 +21,7 @@ layout: center
 ---
 
 # Hackers' Toolbox: **Self Hosting**
+Three Easy Pieces
 
 
 ---
@@ -30,9 +31,11 @@ layout: center
 # Slides
 Thanks to zhongfu for the initial iteration!
 
-[https://nushackers.github.io/hackertools_materials/self-hosting](https://nushackers.github.io/hackertools_materials/self-hosting)
+Slides and materials are in the wiki!
 
-<img src="/slides_link.png" class="m-10 h-60" />
+[https://hckr.cc/wiki](https://hckr.cc/wiki)
+
+<img src="/slides_link.png" class="m-11 h-60" />
 
 ---
 layout: center
@@ -40,8 +43,7 @@ layout: center
 
 Hi I'm **Chun Yu**! My GitHub is: https://github.com/gunbux/
 
-* I'm a Y3 CS undergraduate that enjoys hacking and building systems
-* I play the violin (sometimes)
+* I'm a Y4 CS undergraduate that enjoys hacking and building systems
 
 ---
 layout: center
@@ -50,7 +52,7 @@ layout: center
 # Prerequisites
 
 * **Some** basic knowledge of the command line
-* A remote environment we can play with (we'll set one up together later)
+* A remote environment we can play with (we have one set up already!)
 
 ---
 layout: center
@@ -58,11 +60,10 @@ layout: center
 
 ## What we **will** cover
 
-* Motivations of Self-Hosting
-* How to set up your own server
-* Hardening your server
-* Basic server administrations
-* Setting up your own services
+1. What is Self-Hosting?
+2. Setting up your own server
+3. Running services on your server
+4. Monitoring your server
 
 ---
 layout: two-cols
@@ -71,10 +72,9 @@ class: self-center px-10
 
 ## What is Self Hosting?
 
-**Self Hosting** is essentially is the practice of locally hosting (on premises & private web servers) and managing software applications by a person or organization.
+The act of **providing or serving digital content or an online service**, typically delivered by a business.
 
-**Homelabbing** is probably a lesser-known term, but it's basically just setting up a "lab" at
-home to experiment with "enterprise-y" things
+The service or content is generally served locally from your own hardware. Often "self-hosters" use older Enterprise-grade hardware from their home internet connections however they also use other hosting providers hardware. This is still considered self-hosting.
 
 ::right::
 
@@ -96,7 +96,7 @@ layout: cover
 background: none
 ---
 
-# Step 1: Procuring a server
+# Step 1: Setting up a server
 
 ---
 layout: two-cols
@@ -140,129 +140,46 @@ layout: cover
 background: none
 ---
 
-# Step 2: Setting up your own server
+# Setting up our servers for the workshop
 
 ---
-layout: two-cols
-class: px-5 self-center
+layout: center
 ---
 
 ## Setting up your own server
 
 For the ease of teaching this workshop, we’ll be using a **VPS**. While this strays away from a lot of the “self-custody of your data” side of self-hosting, it’s the easiest way for us to teach overarching concepts of self-hosting, and you can apply this to your own hardware.
 
-In this workshop, I’ll use **Google Cloud Platform** as our platform of choice.
-
-https://console.cloud.google.com
-
-::right::
-
-![console](/console.png)
-
----
-layout: center
----
-
-## Steps
-
-- You’ll need to add billing information in order to get started. Don’t worry though, you’ll only get a test charge, it’s only for verification purposes
-- Click on “Create a VM”
-- Select Billing Account
-- Allow Compute Engine. This will take awhile
-- Create a new e2-micro instance. Don’t worry about the giant bill on the right side, Google should waive all costs for it unless you have multiple e2-micro instances running.
-- When selecting a boot disk, make sure to select Ubuntu
-> Note: For GCP Always Free, make sure your region is `us-west1`, `us-central1`, or `us-east1`
-
-
-You should now have your own “server”!
-
----
-layout: center
----
-
-## IP Addresses and Networking
-
-Once you have a server set up, we want to go to https://console.cloud.google.com/networking/addresses/list, and promote our IP addresses to be static.
-
-An **IP Address** is essentially a “Unique ID” assigned to your server and *how you locate different servers across the internet*. Generally, you want to have a static IP address, that is, you IP address doesn’t change over time (some ISPs and Cloud Providers return the IP Addresses to a pool of reserved IP Addresses to be reused)
-
----
-layout: center
----
-
-Now you can ping your own server! Try opening up a command line and doing:
-
-```bash
-ping <ip-address>
-```
-
----
-layout: center
----
-
-## Domain Names
-So, now we’ve got a server up and a way to access it. But you notice an IP address is kind of ugly and hard to remember… that’s where **domain names** come into play! If you’ve ever typed a website URL, you’ve effectively typed a domain name.
-
-Well, how do IP Addresses turn into domain names? All you need to know is there are a lot of servers out there maintaining a large table of IP addresses to domain name mappings. These are known as **DNS servers**.
-
----
-layout: center
----
-
-## Getting your own domains
-
-For purposes of this workshop, if you have the Github Student Developer Pack, you should be able to get a domain name from .tech for free for a year.
-
-https://get.tech/github-student-developer-pack
-
-If you want to get a cool domain name, you can use this to compare prices from different registrars:
-
-https://tld-list.com
-
 ---
 layout: two-cols
 class: px-5 self-center
 ---
 
-Every domain will have the following structure
+## Servers for the workshop
 
-```
-<domain name>:<tld>
-nushackers.org
-```
+The Cubiclerebels is a collective of multi-disciplinary senior software engineers who love to build and host applications and platforms.
+
+We also run The Little Host, a fully independent hosting provider with our own Autonomous System (ASN 151361)
+
+They've kindly provided the VPS for purposes of this workshop, do check them out!
 
 ::right::
 
-For every domain, you can also have a bunch of records for **subdomains**
-
-```
-www.nushackers.org (www subdomain)
-school.nushackers.org (school subdomain)
-```
+<img src="/cubiclerebels.png" class="m-10 h-60" />
 
 ---
 layout: center
 ---
 
-## Configuring your own DNS Records
+Let's start by ssh-ing into our server:
 
-We’ll start by creating a bunch of A records:
+```
+ssh <username>:<ip-address>
+```
 
-- Leaving the hostname blank will just lead to the main domain
-- Add * as the hostname will route all empty subdomains to a single address
-- Time to Live (TTL) is a field on DNS records that controls how long each record is valid and — as a result — how long it takes for record updates to reach your end users.
+You should have an IP address provided, and your username should be `nus`. You should also be prompted to enter a password.
 
-> The industry standard is to use Cloudflare DNS, they have some great features such as Proxying.
-
-Now, you have a cool domain for your server!
-
----
-layout: cover
-background: none
----
-
-## Step 3: Hardening your server
-Now we’ve got the high-level stuff out of the way, it’s time to actually work on our server!
+What is **SSH**? SSH is a secure shell that allows you to connect and run commands on a remote server securely.
 
 ---
 layout: center
@@ -270,7 +187,7 @@ layout: center
 
 ## Creating you own user and disabling root login
 
-This is important if you are logged into your server as **root.** As root is a common username, there will be people enumerating through common usernames on every possible IP address just to try their luck and compromise servers. In GCP, they'll probably give you a non-root account to start with.
+This is important if you are logged into your server as **root.** As root is a common username, there will be people enumerating through common usernames on every possible IP address just to try their luck and compromise servers.
 
 ```bash
 sudo passwd # Change your password
@@ -290,6 +207,40 @@ sudo passwd <username> # To create a password for the user
 layout: center
 ---
 
+## Setting up SSH Keys
+
+Keys are a secure way to log into remote computers without using passwords. Here's a simple explanation:
+* SSH keys come in pairs: a public key and a private key
+* The public key is like a padlock that you put on the remote server
+* The private key is like the key to that padlock, which you keep on your local computer
+* When you try to log in, your computer uses the private key to prove it can "unlock" the padlock
+* **If successful, the server lets you in without asking for a password**
+
+---
+layout: center
+---
+
+## Adding your SSH keys
+
+On your **host** machine (your laptop, not your ssh server):
+
+```bash
+ssh-keygen -t ed25519
+```
+
+On your **remote** machine:
+
+```bash
+mkdir .ssh
+nano .ssh/authorized_keys
+## Paste in your public key
+chmod -R go-rwx .ssh
+```
+
+---
+layout: center
+---
+
 ## SSH Hardening
 
 - `sudo nano /etc/ssh/sshd_config`
@@ -300,105 +251,19 @@ maybe just leave them on for now especially if you have no way of recovering
 - Then, `systemctl restart ssh`
 
 ---
-layout: center
----
-
-## Keygen
-
-Without going into details into public/private key, it basically gives you a way to
-identify yourself to server without a password
-
-- `ssh-keygen -t rsa -b 4096`
-- `ssh-keygen -t dsa`
-- `ssh-keygen -t ecdsa -b 521`
-- `ssh-keygen -t ed25519`
-
----
-layout: center
----
-
-## Keygen
-
-You can then give your public keys to trusted servers to allow you to connect to them
-without password auth.
-
-```bash
-ssh-copy-id -i ~/.ssh/tatu-key-ecdsa user@host
-```
-
----
-layout: center
----
-
-## Using `scp`
-
-The `scp` command is a special command that uses `ssh` to securely copy files between
-local and host machines.
-
-```bash
-# Copy from remote location to local directory
-scp [options] username@source_host:directory/filename1 <local directory>
-
-# Copy from local directory to remote location
-scp [options] <local directory> username@source_host:directory/filename1
-```
-
----
-layout: center
----
-
-## Activities
-
-Before we move on, let's quickly get some recap and practice:
-
-- If you haven't already, set up your ssh keys on your remote
-- Let's try copying a file from our local machine over to our server using `scp`
-
----
-layout: center
----
-
-## Setting up SSH keys for SSH access (Summary)
-While some service providers have a webshell, it’s much nicer to be able to work in your own terminal (and significantly less laggy).
-
-- `ssh-keygen -t ed25519`
-- After that, take the pubkey string, then:
-- `mkdir .ssh`
-- `nano .ssh/authorized_keys`
-- paste in pubkey string or use ssh-copy-id
-- `chmod -R go-rwx .ssh`
-
-> Note: This is a manual way of adding keys, some cloud providers have automatic ways that screw with this. (ahem ahem GCP)
-
----
-layout: center
----
-
-## Firewalls
-
-Some service providers have built-in firewalls on their dashboard. Otherwise you would need a command-line equivalent like `firewalld` or `ufw` for this.
-
-- Important Ports to open
-    - SSH
-    - HTTP/HTTPS
-    - 8443, 8081 for telegram bots
-
-For GCP, we can configure our firewall here:
-https://console.cloud.google.com/net-security/firewall-manager
-
----
 layout: cover
 background: none
 ---
 
 # Break Time!
 
+
 ---
 layout: cover
 background: none
 ---
 
-# Step 4: Basic System Administration
+# Step 2: Running some services
 
 ---
 layout: center
@@ -412,6 +277,137 @@ To ensure your system is always up to date with the latest packages, do:
 sudo apt-get update && sudo apt-get upgrade
 ```
 You should do this if you are about to install a package as well, otherwise the package manager will complain.
+
+---
+layout: center
+---
+
+## Activities: Hosting a web page
+
+- `nginx` is a great web server for these things, but you can pick whatever you want, or are
+more familiar with
+- On Ubuntu, this is pretty simple: apt install nginx
+- Enable it and start it: `sudo systemctl enable nginx`, `sudo systemctl start nginx`
+- Open up your browser and head to http://host/ — you should see a page there
+- edit files in /var/www/html/..., etc: try replacing index.html? with "hello world"
+- check http://host/ again
+
+---
+layout: center
+---
+
+## Cronjobs
+
+One of the best things about a server is that it's meant to run 24/7, something that our laptops or desktops aren't great at doing. This means it's really good at running things constantly at a scheduled interval. To do such a thing, we'll use something known as cron jobs.
+
+- Cron is a scheduling daemon that executes tasks at specified intervals.
+- These tasks are called cron jobs and are mostly used to automate system maintenance or administration.
+
+---
+layout: center
+---
+
+## Cron jobs
+The crontab command allows you to install, view , or open a crontab file for editing:
+
+- `crontab -e` - Edit crontab file, or create one if it doesn’t already exist.
+- `crontab -l` - Display crontab file contents.
+- `crontab -r` - Remove your current crontab file.
+- `crontab -i` - Remove your current crontab file with a prompt before removal.
+- `crontab -u <username>` - Edit other user crontab file. This option requires system administrator privileges.
+
+---
+layout: center
+---
+
+## Cron Syntax
+
+- [https://crontab.guru/](https://crontab.guru/)
+
+```
+Syntax:
+* * * * * command(s)
+- - - - -
+| | | | |
+| | | | ----- Day of week (0 - 7) (Sun=0 or 7)
+| | | ------- Month (1 - 12)
+| | --------- Day of month (1 - 31)
+| ----------- Hour (0 - 23)
+------------- Minute (0 - 59)
+
+Example:
+*/5 * * * * /path/to/script.sh # Run every 5 minutes
+```
+
+---
+layout: center
+---
+
+## Activities
+
+- We have an API that gives us the 24 hour weather forecast in Singapore. We want to:
+  - Check this forecast every morning.
+  - If it's about to rain, send us an alert. For simplicity, lets send a telegram message!
+
+```bash
+## To quickly get the script:
+wget https://raw.githubusercontent.com/nushackers/hackertools_materials/refs/heads/main/self-hosting/src/scripts/cron.sh
+```
+
+- To get a telegram bot id, just go to @BotFather, and create a new bot, enter the token we receive inside
+- To get your chat id, just go to @getmyid_bot and copy your chat id there
+- You'll need to start a chat with your bot first, go to your bot and do '/start' before you try running the script
+
+---
+layout: center
+---
+
+Let's make it run every morning at 9am!
+```bash
+0 9 * * * /path/to/cron.sh
+```
+
+---
+layout: center
+---
+
+## Activities
+
+- Try modifying the cron job to run every minute.
+- Let's extend that further: Can we make it run every day, every hour, on the hour,
+from 8 AM through 4 PM?
+
+---
+layout: center
+---
+
+## Activities
+
+- Try creating a cron job that runs every minute and prints out the current time.
+- **Solution: `0 * * * * /path/to/cron.sh`**
+- Let's extend that further: Can we make it run every day, every hour, on the hour,
+from 8 AM through 4 PM?
+- **Solution: `00 08-16 * * * /path/to/cron.sh`**
+- Try doing this with a bunch of APIs! Here's a few:
+https://github.com/jackveiga/singapore-apis
+
+---
+layout: center
+---
+
+## Other things you should try:
+
+* File syncing with Syncthing
+* Hosting your own VPN
+* Hosting your own LLM using Ollama
+* Hosting your own game servers
+
+---
+layout: cover
+background: none
+---
+
+# Step 3: Monitoring
 
 ---
 layout: center
@@ -495,6 +491,8 @@ layout: center
 - top command is used to show the Linux processes. It provides a dynamic real-time view of the running system.
 - Think of it as a super powerful task manager for Linux.
 
+> `htop` is a much nicer and user-friendly alternative to `top`. To try it out, do `sudo apt-get install htop`
+
 ---
 layout: center
 ---
@@ -555,152 +553,6 @@ layout: center
     - `top -> Shift + M` -> `k`
 - I want to see what processes start running when I start my computer.
     - `top` -> `f` -> `PID` -> `s` -> `q` -> `Shift + R`
-
----
-layout: cover
-background: none
----
-
-# Running some services
-
----
-layout: center
----
-
-## Cronjobs
-
-- Cron is a scheduling daemon that executes tasks at specified intervals.
-- These tasks are called cron jobs and are mostly used to automate system maintenance or administration.
-
----
-layout: center
----
-
-## Cron jobs
-The crontab command allows you to install, view , or open a crontab file for editing:
-
-- `crontab -e` - Edit crontab file, or create one if it doesn’t already exist.
-- `crontab -l` - Display crontab file contents.
-- `crontab -r` - Remove your current crontab file.
-- `crontab -i` - Remove your current crontab file with a prompt before removal.
-- `crontab -u <username>` - Edit other user crontab file. This option requires system administrator privileges.
-
-> `htop` is a much nicer and user-friendly alternative to `top`. To try it out, do `sudo apt-get install htop`
-
----
-layout: center
----
-
-## Cron Syntax
-
-- [https://crontab.guru/](https://crontab.guru/)
-
-```
-Syntax:
-* * * * * command(s)
-- - - - -
-| | | | |
-| | | | ----- Day of week (0 - 7) (Sun=0 or 7)
-| | | ------- Month (1 - 12)
-| | --------- Day of month (1 - 31)
-| ----------- Hour (0 - 23)
-------------- Minute (0 - 59)
-
-Example:
-*/5 * * * * /path/to/script.sh # Run every 5 minutes
-```
-
----
-layout: two-cols
-class: self-center px-10
----
-
-## Activities
-
-- Here's a script that gets the current traffic incidents live.
-- You'll need to request for access and get a key here: https://datamall.lta.gov.sg
-- Try creating a cron job that runs every hour and gets the traffic incidents
-- Let's extend that further: Can we make it run every day, every hour, on the hour,
-from 8 AM through 4 PM?
-
-::right::
-
-```bash
-#!/bin/bash
-
-# The URL to fetch data from
-URL="http://datamall2.mytransport.sg/ltaodataservice/TrafficIncidents"
-ACCOUNT_KEY="Enter your key"
-
-# The location to save the fetched data
-OUTPUT_FILE="/path/to/traffic_incidents_$(date +'%Y-%m-%d_%H%M%S').json"
-
-# Use curl to fetch data, including the AccountKey in the header for authorization
-curl -X GET "$URL" -H "accept: application/json" -H "AccountKey: ${ACCOUNT_KEY}" -o "$OUTPUT_FILE"
-
-```
-
----
-layout: center
----
-
-## Activities
-
-- Try creating a cron job that runs every minute and prints out the current time.
-- **Solution: `0 * * * * /path/to/cron.sh`**
-- Let's extend that further: Can we make it run every day, every hour, on the hour,
-from 8 AM through 4 PM?
-- **Solution: `00 08-16 * * * /path/to/cron.sh`**
-- Try doing this with a bunch of APIs! Here's a few:
-https://github.com/jackveiga/singapore-apis
-
----
-layout: center
----
-
-## Activities: Hosting a web page
-
-- `nginx` is a great web server for these things, but you can pick whatever you want, or are
-more familiar with
-- On Ubuntu, this is pretty simple: apt install nginx
-- Enable it and start it: `sudo systemctl enable nginx`, `sudo systemctl start nginx`
-- Open up your browser and head to http://host/ — you should see a page there
-- edit files in /var/www/html/..., etc: try replacing index.html? with "hello world"
-- check http://host/ again
-
----
-layout: center
----
-
-## Activities: Try running a telegram bot!
-
-Here's a cool bot: https://github.com/Devanshshah1309/nusmods-bot.git
-Let's run it!
-
-* Find the ports required to run the telegram bot and open it in our firewall (443, 80, 8443, 8001)
-* Install some dependencies
-```bash
-sudo apt-get install git python3 python3-pip
-pip3 install python-telegram-bot requests
-```
-* Clone the repository
-```bash
-git clone https://github.com/Devanshshah1309/nusmods-bot.git
-```
-* Get a bot token from @BotFather
-* Edit the script and run and detach it.
-```bash
-python officialNUSmodsBot.py & # The & tells the shell to run in background
-```
-
----
-layout: center
----
-
-## Other things you should try:
-
-* Hosting your own LLM using Ollama
-* Hosting your own game servers
 
 ---
 layout: center

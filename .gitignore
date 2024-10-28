@@ -3,6 +3,8 @@
 # Edit at https://www.gitignore.io/?templates=vim,latex,macos
 
 node_modules
+.direnv
+dist
 
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
