@@ -33,7 +33,9 @@ Thanks to zhongfu for the initial iteration!
 
 Slides and materials are in the wiki!
 
-[https://hckr.cc/wiki](https://hckr.cc/wiki)
+[https://hckr.cc/wiki](https://wiki.nushackers.org/hackers-toolbox/self-hosting-three-easy-pieces)
+
+[https://hckr.cc/ht2425sq-w11-slides](https://hckr.cc/ht2425sq-w11-slides)
 
 <img src="/slides_link.png" class="m-11 h-60" />
 
@@ -174,7 +176,7 @@ layout: center
 Let's start by ssh-ing into our server:
 
 ```
-ssh <username>:<ip-address>
+ssh <username>@<ip-address>
 ```
 
 You should have an IP address provided, and your username should be `nus`. You should also be prompted to enter a password.
@@ -198,7 +200,7 @@ With that said, we also want to disable root login for the same reason
 - Creating a new user with `useradd` and `passwd`
 
 ```bash
-useradd -m -d /home/<username> <username> # Add user
+useradd -m -d /home/<username> -s /bin/bash <username> # Add user
 usermod -a -G sudo,adm <username> # Give permissions
 sudo passwd <username> # To create a password for the user
 ```
