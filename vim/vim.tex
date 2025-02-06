@@ -45,9 +45,9 @@
 \usepackage{minted}
 \setminted[bash]{fontsize=\small, tabsize=2, breaklines}
 
-\title{Hackers Toolbox: \\Vim}
-\author{Taufiq Mohammed, Toh Li Heng}
-\date{06 Feb 2024 \\ Slides at \url{https://hckr.cc/ht2324s2-w4-slides}}
+\title{Hackerschool: \\Vim}
+\author{Chun Yu}
+\date{07 Feb 2024 \\ Slides at \url{https://hckr.cc/ht2425s2-w4-slides}}
 
 \begin{document}
 
@@ -77,11 +77,11 @@
 \end{frame}
 
 \begin{frame}{About Me}
-    Hi, I'm Taufiq!
+    Hi, I'm Chun Yu!
 
-    Year 2 CS undergrad. Interested in finding wacky problems to solve.
+    Year 4 CS undergrad. I don't like anime.
 
-    I've used Vim (casually) for 3 years.
+    I use vim for everything.
 \end{frame}
 
 \begin{frame}{Required Software}
@@ -142,15 +142,6 @@
     \end{itemize}{}
 \end{frame}{}
 
-\begin{frame}{Benefits of Vim}
-    \begin{itemize}
-        \item Vi(m) is the de facto default editor in any Unix-based system. You can probably find vi/vim in
-              any and every Unix-based system today
-        \item Vim is also extremely customizable and programmable
-        \item There is a huge community and plugin support for almost anything imaginable
-    \end{itemize}{}
-\end{frame}{}
-
 \begin{frame}{Philosophy of Vim}
     \begin{itemize}
         \item Vim is a \textbf{modal text editor}
@@ -159,6 +150,14 @@
               writing big essays in one big go.
     \end{itemize}{}
 \end{frame}{}
+
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item Vim is built to be as efficient as possible
+        \item Vim itself is a programmable interface: individual keystrokes become our commands and we can combine them to do some cool stuff.
+        \item Vim tends to avoid anything that requires the movement of the hand off the homerow of the keyboard. This means less emphasis on arrow keys and the mouse, even though they still work in vim.
+    \end{itemize}
+\end{frame}
 
 \section{Using Vim}
 \subsection{}
@@ -379,6 +378,12 @@
     We can use these selections along with the above commands: \keys{y}ank, \keys{d}elete, and \keys{c}hange.
 \end{frame}{}
 
+\begin{frame}{Practice 2}
+    \url{https://hckr.cc/ht-vim-p2}
+
+    It seems like the data from the first 3 columns are corrupted, let's remove them!
+\end{frame}{}
+
 \begin{frame}{Opening Files and other commands}
     Aside from saving and quitting, there are a couple of pretty important commands to know:
     \begin{itemize}
@@ -398,11 +403,7 @@
 
 \end{frame}{}
 
-\begin{frame}{Practice 2}
-    \url{https://hckr.cc/ht-vim-p2}
-
-    It seems like the data from the first 3 columns are corrupted, let's remove them!
-
+\begin{frame}{Practice 3}
     \url{https://hckr.cc/ht-vim-p3}
 
     Let's use a macro to extract the names from these emails!
@@ -416,30 +417,22 @@
     \begin{itemize}
         \item \url{https://github.com/amix/vimrc}
         \item \url{https://vimconfig.com}
-        \item \url{https://github.com/gunbux/dotfiles}
+        \item \url{https://missing.csail.mit.edu/2020/files/vimrc}
     \end{itemize}{}
 \end{frame}{}
 
 \begin{frame}{Getting productive quickly}
-    There are many (neo)vim-based distributions that are pre-configured with sane defaults and plugins to get you productive immediately:
-
-    \begin{itemize}
-        \item \url{https://www.lunarvim.org/}
-        \item \url{https://astronvim.github.io/}
-        \item \url{https://nvchad.com/}
-    \end{itemize}
+   Without giving a long, non-exhaustive list of plugins, here are some really cools ones you should try out!
+   \begin{itemize}
+       \item \url{https://github.com/preservim/nerdtree}
+       \item \url{https://github.com/nvim-telescope/telescope.nvim}
+       \item \url{https://github.com/itchyny/calendar.vim}
+   \end{itemize}
+   These plugins not only try to speed up your vim workflows, but also add additional functionality to vim.
 \end{frame}{}
 
 \begin{frame}{Others}
-    We covered the base fundamentals of operating vim. Here's some things we did not cover, but are really
-    useful:
-
-    \begin{itemize}
-        \item \keys{di(} - delete everything inside the nearest brackets
-        \item find and replace
-        \item buffers, windows, and tabs
-        \item ...a lot more!
-    \end{itemize}{}
+    We covered the base fundamentals of operating vim. We can’t teach you all of these kinds of things, but you’ll learn them as you go. A good heuristic: whenever you’re using your editor and you think “there must be a better way of doing this”, there probably is: look it up online.
 \end{frame}{}
 
 \section{Conclusion}
@@ -466,15 +459,5 @@
         \item There are tons of vim wikis, guides and cheatsheets out there, just search for them!
     \end{itemize}{}
 \end{frame}{}
-
-\begin{frame}
-    \frametitle{Talk to us!}
-    \begin{itemize}
-        \item \textbf{Feedback form}: \url{https://hckr.cc/ht-feedback}
-
-        \item \textbf{Upcoming Hackerschool}:
-              Tomorrow -- Introduction to Rust: \url{https://hckr.cc/hs2324s2-w4-signup}
-    \end{itemize}
-\end{frame}
 
 \end{document}
