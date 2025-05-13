@@ -30,7 +30,7 @@ style: |
 PRESENTS
 
 Introduction to Git (and GitHub)
-18 May 2024
+17 May 2025
 
 ---
 
