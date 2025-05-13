@@ -18,13 +18,13 @@ style: |
 lang: en-US
 ---
 
-<!-- <script type="module">
+<script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
   mermaid.initialize({
     startOnLoad: true,
     theme: 'dark'
   });
-</script> -->
+</script>
 
 [![](../nushackers_svg.svg)](https://nushackers.org)
 
@@ -166,22 +166,22 @@ git commit -m "First commit"
 
 Go to <https://github.com/new>
 
-<div>
+<!-- <div>
 <img src="github-new.png" width=1200>
 <img src="github-new-2.png" width=400>
-</div>
+</div> -->
 
 ---
 
-## Creating a new GitHub repository
+<!-- ## Creating a new GitHub repository -->
 
 <div>
-<img src="github-new-3.png" width=700>
+<img src="github-new-3.png" width=750>
 </div>
 
 ---
 
-## Creating a new GitHub repository
+<!-- ## Creating a new GitHub repository -->
 
 <div>
 <img src="github-new-4.png" width=750>
@@ -280,11 +280,15 @@ git checkout main
 git branch -v
 ```
 
+---
+
 ## Deleting a branch
 
 ```sh
 git branch -d <branch name>
 ```
+
+---
 
 ## Renaming a branch
 

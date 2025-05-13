@@ -3,6 +3,10 @@
 The git slides use [`marp-cli`](https://github.com/marp-team/marp-cli):
 
 ```
-marp slides.md -o index.html
-marp slides.md -o slides.pdf --allow-local-files
+# install
+npm install -g @marp-team/marp-cli@latest
+
+# convert
+marp slides.md -o index.html --html
+marp slides.md -o slides.pdf --html --pdf --allow-local-files
 ```
