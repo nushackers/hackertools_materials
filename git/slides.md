@@ -2,7 +2,7 @@
 marp: true
 theme: uncover
 class:
-    - modern
+  - modern
 style: |
   .left-heavy-two-column {
     display: grid;
@@ -15,15 +15,16 @@ style: |
     grid-template-columns: 1fr 1fr;
     gap: 0.3rem;
   }
+lang: en-US
 ---
 
-<script type="module">
+<!-- <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
   mermaid.initialize({
     startOnLoad: true,
     theme: 'dark'
   });
-</script>
+</script> -->
 
 [![](../nushackers_svg.svg)](https://nushackers.org)
 
@@ -190,6 +191,8 @@ Go to <https://github.com/new>
 
 ## Connecting local repository to remote repository
 
+`origin` is used as the name for the remote (it's just convention).
+
 ```sh
 git remote add origin git@github.com:<github username>/<repository name>.git
 git branch -M main
@@ -201,6 +204,14 @@ git branch -M main
 
 ```sh
 git push -u orign main
+```
+
+---
+
+## Receiving remote repository snapshots
+
+```sh
+git pull origin main
 ```
 
 ---
@@ -468,6 +479,24 @@ Visit GitHub to create the PR ([screenshots on the wiki](https://wiki.nushackers
 
 ---
 
+## Branch & PR Workflow
+
+Each member owns their copy of the repository locally (through cloning)
+
+When working on a new feature or bug fix, each member will
+
+---
+
+## Branch & PR Workflow
+
+1. Pull the latest changes from the remote repository
+2. Create a branch per feature/bug fix on their local copy
+3. Edit the files in their respective branch
+4. Push their local branch to the repository
+5. Make a pull request of their feature/bug fix branch to the `main` branch (remote copy)
+
+---
+
 ## Hands-on time!
 
 1. Create a fork of the demo repository
@@ -721,25 +750,7 @@ Blah blah.
 
 ---
 
-## Branch & PR Workflow
-
-Each member owns their copy of the repository locally (through cloning)
-
-When working on a new feature or bug fix, each member will
-
----
-
-## Branch & PR Workflow
-
-1. Pull the latest changes from the remote repository
-2. Create a branch per feature/bug fix on their local copy
-3. Edit the files in their respective branch
-4. Push their local branch to the repository
-5. Make a pull request of their feature/bug fix branch to the `main` branch (remote copy)
-
----
-
-## Commit message from the [Linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=37c0aead7902b1ddf1b668e1ab74c80b9a7fd183)
+<!-- ## Commit message from the [Linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=37c0aead7902b1ddf1b668e1ab74c80b9a7fd183)
 
 <div style="font-size:12px">
 <code>
@@ -773,7 +784,7 @@ Signed-off-by: David S. Miller <davem@davemloft.net>
 </code>
 </div>
 
----
+--- -->
 
 ## Where to go from here?
 
@@ -807,12 +818,23 @@ Slides: <https://hs2010-git.github.io/adv>
 
 ---
 
-## Feedback
+## Where to go from here?
+
+Check out Hackerschool: CI/CD with Github Actions\
+(last run on 1 Apr 2025)
+
+Recording: Coming Soon!
+
+Wiki: <https://wiki.nushackers.org/hackerschool/ci-cd-with-github-actions>
+
+---
+
+<!-- ## Feedback
 
 Remember to give us feedback here: [https://bit.ly/orbital24-mc1-feedback](https://bit.ly/orbital24-mc1-feedback)
 
 ![feedbackQr](feedbackQr.png)
 
----
+--- -->
 
 ## End
