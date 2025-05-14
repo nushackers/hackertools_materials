@@ -589,6 +589,13 @@ Suppose we want to revert to commit `643aec6`.
 $ git revert 643aec6
 [master 7b73baf] Revert "Update file to c"
     1 file changed, 1 insertion(+), 1 deletion(-)
+```
+
+---
+
+## Revert
+
+```sh
 $ git show
 commit 7b73baf229e2b8db19bc594c450743b50adf649d (HEAD -> master)
 Author: Your Name <your@email.com>
@@ -609,9 +616,26 @@ index f2ad6c7..6178079 100644
 
 ---
 
+## Diff
+
+View difference betwen commits/branches
+
+```sh
+$ git diff
+diff --git a/file b/file
+index 7898192..6178079 100644
+--- a/file
++++ b/file
+@@ -1 +1 @@
+-a
++b
+```
+
+---
+
 ## Reset
 
-Undo `git add`.
+Undo `git add`
 
 ```
 $ git status
@@ -635,7 +659,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ## Restore
 
-Undo changes to a file in the working tree.
+Undo changes to a file in the working tree
 
 ```
 $ echo e > file

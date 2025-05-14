@@ -1721,22 +1721,6 @@ git push origin sample-pr
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">$ git revert 643aec6
 [master 7b73baf] Revert <span class="hljs-string">&quot;Update file to c&quot;</span>
     1 file changed, 1 insertion(+), 1 deletion(-)
-$ git show
-commit 7b73baf229e2b8db19bc594c450743b50adf649d (HEAD -&gt; master)
-Author: Your Name &lt;your@email.com&gt;
-Date:   Tue May 11 01:21:31 2021 +0800
-
-    Revert <span class="hljs-string">&quot;Update file to c&quot;</span>
-
-    This reverts commit 643aec6d2a1b4cd485d678886fc1cef25b15bee0.
-
-diff --git a/file b/file
-index f2ad6c7..6178079 100644
---- a/file
-+++ b/file
-@@ -1 +1 @@
--c
-+b
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="61" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
@@ -1762,23 +1746,23 @@ index f2ad6c7..6178079 100644
   gap: 0.3rem;
 }
 ;--lang:en-US;">
-<h2 id="reset">Reset</h2>
-<p>Undo <code>git add</code>.</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>$ git status
-On branch master
-Changes to be committed:
-    (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
-    modified:   file
-$ git reset file
-Unstaged changes after reset:
-M   file
-$ git status
-On branch master
-Changes not staged for commit:
-    (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-    (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
-    modified:   file
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+<h2 id="revert-2">Revert</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">$ git show
+commit 7b73baf229e2b8db19bc594c450743b50adf649d (HEAD -&gt; master)
+Author: Your Name &lt;your@email.com&gt;
+Date:   Tue May 11 01:21:31 2021 +0800
+
+    Revert <span class="hljs-string">&quot;Update file to c&quot;</span>
+
+    This reverts commit 643aec6d2a1b4cd485d678886fc1cef25b15bee0.
+
+diff --git a/file b/file
+index f2ad6c7..6178079 100644
+--- a/file
++++ b/file
+@@ -1 +1 @@
+-c
++b
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="62" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
@@ -1804,8 +1788,85 @@ no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&q
   gap: 0.3rem;
 }
 ;--lang:en-US;">
+<h2 id="diff">Diff</h2>
+<p>View difference betwen commits/branches</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">$ git diff
+diff --git a/file b/file
+index 7898192..6178079 100644
+--- a/file
++++ b/file
+@@ -1 +1 @@
+-a
++b
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+;--lang:en-US;">
+<h2 id="reset">Reset</h2>
+<p>Undo <code>git add</code></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>$ git status
+On branch master
+Changes to be committed:
+    (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+    modified:   file
+$ git reset file
+Unstaged changes after reset:
+M   file
+$ git status
+On branch master
+Changes not staged for commit:
+    (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+    (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    modified:   file
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="64" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+;--lang:en-US;">
 <h2 id="restore">Restore</h2>
-<p>Undo changes to a file in the working tree.</p>
+<p>Undo changes to a file in the working tree</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code>$ echo e &gt; file
 $ git status
 On branch master
@@ -1821,7 +1882,7 @@ On branch master
 nothing to commit, working tree clean
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="65" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1858,7 +1919,7 @@ Untracked files:
 nothing added to commit but untracked files present (use &quot;git add&quot; to track)
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="64" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="66" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1896,7 +1957,7 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 </code></pre>
 <p><code>.gitignore</code> should be committed.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="65" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="67" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1931,7 +1992,7 @@ Ignored files:
 nothing to commit, working tree clean
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="66" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="68" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1965,7 +2026,7 @@ are usually derived from the human-authored code in the repository. E.g.</p>
 <li>personal configuration files e.g. of your IDE</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="67" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="69" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1999,7 +2060,7 @@ debug.log
 </code></pre>
 <p><a href="https://git-scm.com/docs/gitignore#_pattern_format">See the full pattern format.</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="68" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="70" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2032,7 +2093,7 @@ so that our users don't feel like we are being too informal. Blah blah blah blah
 Blah blah.
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="69" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="71" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2066,7 +2127,7 @@ Blah blah.
 <li><a href="https://www.atlassian.com/git/tutorials/syncing">Atlassian's collaboration guide</a></li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="70" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="72" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2096,7 +2157,7 @@ Blah blah.
 <li>Why stop at learning? <a href="https://github.com/codecrafters-io/build-your-own-x#build-your-own-git">Build your own Git!</a></li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="71" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="73" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2125,7 +2186,7 @@ Blah blah.
 <p>Recording: <a href="https://www.youtube.com/watch?v=pGAorBdZ6Y8">https://www.youtube.com/watch?v=pGAorBdZ6Y8</a></p>
 <p>Slides: <a href="https://hs2010-git.github.io/adv">https://hs2010-git.github.io/adv</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="72" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="74" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2154,7 +2215,7 @@ Blah blah.
 <p>Recording: Coming Soon!</p>
 <p>Wiki: <a href="https://wiki.nushackers.org/hackerschool/ci-cd-with-github-actions">https://wiki.nushackers.org/hackerschool/ci-cd-with-github-actions</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="73" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="75" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2183,7 +2244,7 @@ Blah blah.
 </script></foreignObject></svg></div><div class="bespoke-marp-note" data-index="0" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="6" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="7" tabindex="0"><p>![](snapshots.svg){.white-bg}</p></div><div class="bespoke-marp-note" data-index="13" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="20" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="21" tabindex="0"><p>&lt;div&gt;
 &lt;img src=&quot;github-new.png&quot; width=1200&gt;
 &lt;img src=&quot;github-new-2.png&quot; width=400&gt;
-&lt;/div&gt;</p></div><div class="bespoke-marp-note" data-index="22" tabindex="0"><p>## Creating a new GitHub repository</p></div><div class="bespoke-marp-note" data-index="23" tabindex="0"><p>## Creating a new GitHub repository</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="37" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="44" tabindex="0"><p>TODO: MUST DEMO TO EXPLAIN</p></div><div class="bespoke-marp-note" data-index="47" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="56" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="72" tabindex="0"><p>## Feedback
+&lt;/div&gt;</p></div><div class="bespoke-marp-note" data-index="22" tabindex="0"><p>## Creating a new GitHub repository</p></div><div class="bespoke-marp-note" data-index="23" tabindex="0"><p>## Creating a new GitHub repository</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="37" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="44" tabindex="0"><p>TODO: MUST DEMO TO EXPLAIN</p></div><div class="bespoke-marp-note" data-index="47" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="56" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="74" tabindex="0"><p>## Feedback
 
 Remember to give us feedback here: [https://bit.ly/orbital24-mc1-feedback](https://bit.ly/orbital24-mc1-feedback)
 
