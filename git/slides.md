@@ -32,6 +32,7 @@ PRESENTS
 
 Introduction to Git (and GitHub)
 17 May 2025
+<!-- Jeya -->
 
 ---
 
@@ -44,6 +45,14 @@ These slides are complemented by the wiki so please refer to it for more details
 
 ---
 
+## Things you need
+
+[![](git-logo.svg)](https://git-scm.com)
+
+[![](github-logo.svg)](https://github.com)
+
+---
+
 ## Setup Issues
 
 Quick check: Did anyone face any problems setting up Git on your machine or creating an account on
@@ -53,15 +62,24 @@ If you have any issues, refer to the [setup guide provided in the wiki.](https:/
 
 ---
 
-## Things you need
+## Config
 
-[![](git-logo.svg)](https://git-scm.com)
+---
 
-[![](github-logo.svg)](https://github.com)
+## Accessing GitHub
+
+Using your GitHub password is no longer allowed after **August 13, 2021**. If you use HTTPS, you'll need to create a Personal Access Token (PAT).
+
+In your GitHub account, go to
+
+`Settings > Developer Settings > Personal Access Token`
+
+to generate one.
 
 ---
 
 # Fundamental Concepts
+<!-- Leslie -->
 
 ---
 
@@ -121,6 +139,7 @@ If you have any issues, refer to the [setup guide provided in the wiki.](https:/
 ---
 
 # Getting Started
+<!-- Jeya -->
 
 ---
 
@@ -150,6 +169,14 @@ git add hello.txt
 
 ---
 
+## Check status
+
+```sh
+git status
+```
+
+---
+
 ## Taking the snapshot
 
 ```sh
@@ -158,7 +185,17 @@ git commit -m "First commit"
 
 ---
 
+## Check status
+
+```sh
+git status
+git log
+```
+
+---
+
 # Integrating Remote Repositories
+<!-- Leslie -->
 
 ---
 
@@ -228,6 +265,7 @@ git clone git@github.com:<github username>/<repository name>.git another-folder/
 ---
 
 # Branching
+<!-- Jeya -->
 
 ---
 
@@ -310,6 +348,7 @@ git merge feature-A
 ---
 
 # Merge Conflicts
+<!-- Leslie -->
 
 ---
 
@@ -437,6 +476,7 @@ Add new files, edit them, commit them, and stage them!
 ---
 
 # Collaborative Workflows
+<!-- Jeya -->
 
 ---
 
@@ -519,6 +559,7 @@ When working on a new feature or bug fix, each member will
 ---
 
 ## Additional concepts
+<!-- Leslie -->
 
 ---
 
@@ -592,7 +633,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ---
 
-## Checkout
+## Restore
 
 Undo changes to a file in the working tree.
 
@@ -606,7 +647,7 @@ Changes not staged for commit:
     modified:   file
 
 no changes added to commit (use "git add" and/or "git commit -a")
-$ git checkout -- file
+$ git restore file
 $ git status
 On branch master
 nothing to commit, working tree clean
@@ -693,51 +734,6 @@ are usually derived from the human-authored code in the repository. E.g.
 
 ---
 
-## HTTPS vs SSH
-
-It doesn\'t really matter.
-
-Use HTTPS if you don\'t have an SSH key set up with GitHub, or if it is
-a repository that you cannot write to.
-
-Use SSH if you have an SSH key set up, and you can write to the
-repository.
-
----
-
-## Or it kinda does
-
-Using your GitHub password is no longer allowed after **August 13, 2021**. If you use HTTPS, you'll need to create a Personal Access Token (PAT).
-
-In your GitHub account, go to
-
-`Settings > Developer Settings > Personal Access Token`
-
-to generate one.
-
----
-
-## Or does it?
-
-Some enteprise network/universities may block SSH connections. However, you can try using SSH over HTTPS port (443).
-
-    $ ssh -T -p 443 git@ssh.github.com
-    > Hi USERNAME! You've successfully authenticated, but GitHub does not
-    > provide shell access.
-
----
-
-## Or does it?
-
-If you get the success message, you can proceed to set SSH over HTTPS as a default connection by adding this to your `.ssh/config`
-
-    Host github.com
-    Hostname ssh.github.com
-    Port 443
-    User git
-
----
-
 ## Commit message discipline
 
 First line: 80-character title, phrased imperatively
@@ -753,42 +749,6 @@ Blah blah.
 ```
 
 ---
-
-<!-- ## Commit message from the [Linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=37c0aead7902b1ddf1b668e1ab74c80b9a7fd183)
-
-<div style="font-size:12px">
-<code>
-net_sched: sch_fq: handle non connected flows
-
-FQ packet scheduler assumed that packets could be classified
-based on their owning socket.
-
-This means that if a UDP server uses one UDP socket to send
-packets to different destinations, packets all land
-in one FQ flow.
-
-This is unfair, since each TCP flow has a unique bucket, meaning
-that in case of pressure (fully utilised uplink), TCP flows
-have more share of the bandwidth.
-
-If we instead detect unconnected sockets, we can use a stochastic
-hash based on the 4-tuple hash.
-
-This also means a QUIC server using one UDP socket will properly
-spread the outgoing packets to different buckets, and in-kernel
-pacing based on EDT model will no longer risk having big rb-tree on
-one flow.
-
-Note that UDP application might provide the skb->hash in an
-ancillary message at sendmsg() time to avoid the cost of a dissection
-in fq packet scheduler.
-
-Signed-off-by: Eric Dumazet <edumazet@google.com>
-Signed-off-by: David S. Miller <davem@davemloft.net>
-</code>
-</div>
-
---- -->
 
 ## Where to go from here?
 
