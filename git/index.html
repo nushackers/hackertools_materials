@@ -148,9 +148,200 @@ GitHub?</p>
   gap: 0.3rem;
 }
 ;--lang:en-US;">
-<h2 id="config">Config</h2>
+<h2 id="installation-of-git">Installation of Git</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">brew install git
+</code></pre>
+<h3 id="verify-installation">Verify Installation</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git --version
+</code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+;--lang:en-US;">
+<h2 id="config">Config</h2>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+;--lang:en-US;">
+<h2 id="list-your-commit">List your commit</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git config --list
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+;--lang:en-US;">
+<h2 id="set-your-email-the-email-should-match-your-github">Set Your Email (The email should match your github)</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git config --global user.email <span class="hljs-string">&quot;your.email@example.com&quot;</span>
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+;--lang:en-US;">
+<h1 id="ssh-key">SSH Key</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+;--lang:en-US;">
+<h2 id="generate-a-new-key">Generate a new key:</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;your.email@example.com&quot;</span>
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+;--lang:en-US;">
+<h2 id="add-your-key-to-github">Add your key to GitHub:</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh"><span class="hljs-built_in">cat</span> ~/.ssh/id_ed25519.pub
+</code></pre>
+<p>Paste it in GitHub &gt; Settings &gt; SSH and GPG keys</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+;--lang:en-US;">
+<h2 id="test-connection">Test connection:</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">ssh -T git@github.com
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -179,7 +370,7 @@ GitHub?</p>
 <p><code>Settings &gt; Developer Settings &gt; Personal Access Token</code></p>
 <p>to generate one.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -204,7 +395,7 @@ GitHub?</p>
 ;--lang:en-US;">
 <h1 id="fundamental-concepts">Fundamental Concepts</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -233,7 +424,7 @@ GitHub?</p>
 <li>Created by Linus Torvalds in 2005 as a replacement for existing VCS for the Linux kernel</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -263,7 +454,7 @@ GitHub?</p>
 <li>Acts as an &quot;undo&quot; button for your code and lets your collaborate with your team</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -293,7 +484,7 @@ GitHub?</p>
 <li><strong>Remote:</strong> exists on external server such as Github</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -324,7 +515,7 @@ GitHub?</p>
 </ul>
 <p><img src="dag.png" alt="alt text" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -354,7 +545,7 @@ GitHub?</p>
 <li>Default branch: <code>main</code></li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -387,7 +578,7 @@ GitHub?</p>
 <img src="areas.png" width="600" />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -412,7 +603,7 @@ GitHub?</p>
 ;--lang:en-US;">
 <h1 id="getting-started">Getting Started</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -440,8 +631,15 @@ GitHub?</p>
 <span class="hljs-built_in">cd</span> new-folder/
 git init
 </code></pre>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>&lt;!--
+</code></pre>
+<p>• mkdir: Makes a new folder to work in<br />
+• cd: Enters that folder<br />
+• git init: Tells Git to start watching this folder for any file changes<br />
+(You just created your first Git “project”)<br />
+--&gt;</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -467,8 +665,14 @@ git init
 <h2 id="adding-a-file">Adding a file</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;Hello world&#x27;</span> &gt;&gt; hello.txt
 </code></pre>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>&lt;!--
+</code></pre>
+<p>• Creates a file called hello.txt<br />
+• Inside that file, it writes the text Hello world<br />
+• This file now exists, but Git isn’t tracking it yet<br />
+--&gt;</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -495,7 +699,7 @@ git init
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git add hello.txt
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -522,7 +726,7 @@ git init
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git status
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -549,7 +753,7 @@ git init
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git commit -m <span class="hljs-string">&quot;First commit&quot;</span>
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -577,7 +781,7 @@ git init
 git <span class="hljs-built_in">log</span>
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -602,7 +806,7 @@ git <span class="hljs-built_in">log</span>
 ;--lang:en-US;">
 <h1 id="integrating-remote-repositories">Integrating Remote Repositories</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -628,7 +832,7 @@ git <span class="hljs-built_in">log</span>
 <h2 id="creating-a-new-github-repository">Creating a new GitHub repository</h2>
 <p>Go to <a href="https://github.com/new">https://github.com/new</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -654,7 +858,7 @@ git <span class="hljs-built_in">log</span>
 <img src="github-new-3.png" width=750 />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -680,7 +884,7 @@ git <span class="hljs-built_in">log</span>
 <img src="github-new-4.png" width=750 />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -709,7 +913,7 @@ git <span class="hljs-built_in">log</span>
 git branch -M main
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -736,7 +940,7 @@ git branch -M main
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git push -u orign main
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -763,7 +967,7 @@ git branch -M main
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git pull origin main
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -792,7 +996,7 @@ git branch -M main
 git clone git@github.com:&lt;github username&gt;/&lt;repository name&gt;.git another-folder/
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -817,7 +1021,7 @@ git clone git@github.com:&lt;github username&gt;/&lt;repository name&gt;.git ano
 ;--lang:en-US;">
 <h1 id="branching">Branching</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -846,7 +1050,7 @@ git clone git@github.com:&lt;github username&gt;/&lt;repository name&gt;.git ano
 <img src="branch.svg" width=650 />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -875,7 +1079,7 @@ git clone git@github.com:&lt;github username&gt;/&lt;repository name&gt;.git ano
 <img src="head-to-master.png" width=650 />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -906,7 +1110,7 @@ git clone git@github.com:&lt;github username&gt;/&lt;repository name&gt;.git ano
 git checkout new-feature
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -933,7 +1137,7 @@ git checkout new-feature
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git checkout main
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -960,7 +1164,7 @@ git checkout new-feature
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git branch -v
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -987,7 +1191,7 @@ git checkout new-feature
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git branch -d &lt;branch name&gt;
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1014,7 +1218,7 @@ git checkout new-feature
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git branch -m &lt;new branch name&gt;
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1043,7 +1247,7 @@ git checkout new-feature
 git merge feature-A
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1068,7 +1272,7 @@ git merge feature-A
 ;--lang:en-US;">
 <h1 id="merge-conflicts">Merge Conflicts</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1097,7 +1301,7 @@ git merge feature-A
 <img src="merge-conflict.png" width=700 />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1129,7 +1333,7 @@ git merge feature-A
 git checkout -b conflict-2
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1162,7 +1366,7 @@ Fast-forward
     1 file changed, 1 insertion(+), 1 deletion(-)
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1193,7 +1397,7 @@ CONFLICT (content): Merge conflict in hello.txt
 Automatic merge failed; fix conflicts and then commit the result.
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1233,7 +1437,7 @@ both modified:   hello.txt
 no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1267,7 +1471,7 @@ Farewell!
 <p>Top half: current content in branch</p>
 <p>Bottom half: content that is about to be merged</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1294,7 +1498,7 @@ Farewell!
 
 <p>Edit <code>hello.txt</code> as such...</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1322,7 +1526,7 @@ Farewell!
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">git commit
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1350,7 +1554,7 @@ Farewell!
 <p>In the meantime, try out the commands that you have learnt!</p>
 <p>Add new files, edit them, commit them, and stage them!</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1375,7 +1579,7 @@ Farewell!
 ;--lang:en-US;">
 <h1 id="collaborative-workflows">Collaborative Workflows</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1403,10 +1607,10 @@ Farewell!
 <li>Fork &amp; PR</li>
 <li>Branch &amp; PR</li>
 </ol>
-<p>This workshop focuses on the former - &quot;Fork &amp; PR&quot;</p>
+
 <p>The wiki contains more information about <a href="https://wiki.nushackers.org/orbital/git/collaborative-workflows/branch-and-pr-workflow">Branch &amp; PR</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1433,7 +1637,7 @@ Farewell!
 <p>Pull requests are like a Request for Comments for a set of changes made on a separate branch</p>
 <p>Allows developers and contributors to share their comments on the changes</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1466,34 +1670,7 @@ git push origin sample-pr
 </code></pre>
 <p>Visit GitHub to create the PR (<a href="https://wiki.nushackers.org/orbital/git/collaborative-workflows">screenshots on the wiki</a>)</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1rem;
-}
-
-.even-two-column {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.3rem;
-}
-" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1rem;
-}
-
-.even-two-column {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.3rem;
-}
-;--lang:en-US;">
-<h2 id="fork--pr-workflow">Fork &amp; PR workflow</h2>
-<p><strong>Forking:</strong> creating an at-the-time copy of a remote repository (only needs to be done once per remote repository)</p>
-<p><strong>Upstream:</strong> common name for the original repository</p>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="59" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1520,7 +1697,7 @@ git push origin sample-pr
 <p>Each member owns their copy of the repository locally (through cloning)</p>
 <p>When working on a new feature or bug fix, each member will</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="60" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1552,7 +1729,34 @@ git push origin sample-pr
 <li>Make a pull request of their feature/bug fix branch to the <code>main</code> branch (remote copy)</li>
 </ol>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="61" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+" data-lang="en-US" lang="en-US" class="modern" style="--class:modern;--theme:uncover;--style:.left-heavy-two-column {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.even-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+;--lang:en-US;">
+<h2 id="fork--pr-workflow">Fork &amp; PR workflow</h2>
+<p><strong>Forking:</strong> creating an at-the-time copy of a remote repository (only needs to be done once per remote repository)</p>
+<p><strong>Upstream:</strong> common name for the original repository</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="62" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1585,7 +1789,7 @@ git push origin sample-pr
 <li>Create PR through Github</li>
 </ol>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1611,7 +1815,7 @@ git push origin sample-pr
 <h1 id="intermission-1">Intermission!</h1>
 <p>5 minute break and Q&amp;A!</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="64" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1636,7 +1840,7 @@ git push origin sample-pr
 ;--lang:en-US;">
 <h2 id="additional-concepts">Additional concepts</h2>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="65" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1661,7 +1865,7 @@ git push origin sample-pr
 ;--lang:en-US;">
 <h2 id="commit-manipulation">Commit manipulation</h2>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="59" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="66" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1694,7 +1898,7 @@ git push origin sample-pr
 </code></pre>
 <p>Suppose we want to revert to commit <code>643aec6</code>.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="60" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="67" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1723,7 +1927,7 @@ git push origin sample-pr
     1 file changed, 1 insertion(+), 1 deletion(-)
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="61" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="68" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1765,7 +1969,7 @@ index f2ad6c7..6178079 100644
 +b
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="62" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="69" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1800,7 +2004,7 @@ index 7898192..6178079 100644
 +b
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="70" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1842,7 +2046,7 @@ Changes not staged for commit:
 no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="64" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="71" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1882,7 +2086,7 @@ On branch master
 nothing to commit, working tree clean
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="65" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="72" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1919,7 +2123,7 @@ Untracked files:
 nothing added to commit but untracked files present (use &quot;git add&quot; to track)
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="66" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="73" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1957,7 +2161,7 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 </code></pre>
 <p><code>.gitignore</code> should be committed.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="67" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="74" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -1992,7 +2196,7 @@ Ignored files:
 nothing to commit, working tree clean
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="68" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="75" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2026,7 +2230,7 @@ are usually derived from the human-authored code in the repository. E.g.</p>
 <li>personal configuration files e.g. of your IDE</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="69" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="76" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2060,7 +2264,7 @@ debug.log
 </code></pre>
 <p><a href="https://git-scm.com/docs/gitignore#_pattern_format">See the full pattern format.</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="70" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="77" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2093,7 +2297,7 @@ so that our users don't feel like we are being too informal. Blah blah blah blah
 Blah blah.
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="71" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="78" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2127,7 +2331,7 @@ Blah blah.
 <li><a href="https://www.atlassian.com/git/tutorials/syncing">Atlassian's collaboration guide</a></li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="72" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="79" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2157,7 +2361,7 @@ Blah blah.
 <li>Why stop at learning? <a href="https://github.com/codecrafters-io/build-your-own-x#build-your-own-git">Build your own Git!</a></li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="73" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="80" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2186,7 +2390,7 @@ Blah blah.
 <p>Recording: <a href="https://www.youtube.com/watch?v=pGAorBdZ6Y8">https://www.youtube.com/watch?v=pGAorBdZ6Y8</a></p>
 <p>Slides: <a href="https://hs2010-git.github.io/adv">https://hs2010-git.github.io/adv</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="74" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="81" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2215,7 +2419,7 @@ Blah blah.
 <p>Recording: Coming Soon!</p>
 <p>Wiki: <a href="https://wiki.nushackers.org/hackerschool/ci-cd-with-github-actions">https://wiki.nushackers.org/hackerschool/ci-cd-with-github-actions</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="75" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="82" data-class="modern" data-theme="uncover" data-style=".left-heavy-two-column {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
@@ -2241,10 +2445,20 @@ Blah blah.
 <h2 id="end">End</h2>
 </section>
 <script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{constructor(){super(),this.svgPreserveAspectRatio="xMinYMid meet";const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver(((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()}))}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){var t,s,o,r,a;this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=null!==(t=this.shadowRoot.querySelector(`div[${e}]`))&&void 0!==t?t:void 0;const l=this.svg;this.svg=null!==(o=null===(s=this.wrapper)||void 0===s?void 0:s.querySelector(`svg[${i}]`))&&void 0!==o?o:void 0,this.svg!==l&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=null!==(a=null===(r=this.svg)||void 0===r?void 0:r.querySelector(`span[${n}]`))&&void 0!==a?a:void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame((()=>{t.style.display=""})))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){var t,e,i,n,s,o,r;let a=Math.ceil(null!==(e=null===(t=this.containerSize)||void 0===t?void 0:t.width)&&void 0!==e?e:0);const l=Math.ceil(null!==(n=null===(i=this.containerSize)||void 0===i?void 0:i.height)&&void 0!==n?n:0);void 0!==this.dataset.downscaleOnly&&(a=Math.max(a,null!==(o=null===(s=this.wrapperSize)||void 0===s?void 0:s.width)&&void 0!==o?o:0));const c=null===(r=this.svg)||void 0===r?void 0:r.querySelector(":scope > foreignObject");if(null==c||c.setAttribute("width",`${a}`),null==c||c.setAttribute("height",`${l}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${a} ${l}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=a<=0||l<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const o=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this.attachShadow({mode:"open"})}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_update(){const t=i?`<style>:host { ${i} }</style>`:"";let e="<slot></slot>";const{autoScaling:n}=this.dataset;if(void 0!==n){e=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===n?"data-downscale-only":""}>${e}</marp-auto-scaling>`}this.shadowRoot.innerHTML=t+e}};let r;const a=Symbol();let l;const c="marpitSVGPolyfill:setZoomFactor,",d=Symbol(),g=Symbol();const h=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[u]:[],i={then:e=>(t?(async()=>{if(void 0===l){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise((t=>{i.addEventListener("load",(()=>t()))}));i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),l=e.getImageData(5,5,1,1).data[3]<128}return l})().then((t=>{null==e||e(t?[u]:[])})):null==e||e([]),i)};return Object.assign(e,i)};let p,m;function u(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[g]||(Object.defineProperty(window,g,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",(({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(c)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(m=i)}}catch(t){console.error(t)}})));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,s,o,r;t.style.transform||(t.style.transform="translateZ(0)");const a=i||m||t.currentScale||1;p!==a&&(p=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(r=null===(o=n.y)||void 0===o?void 0:o.baseVal.value)&&void 0!==r?r:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}})),!1!==n&&Array.from(e.querySelectorAll("iframe"),(({contentWindow:t})=>{null==t||t.postMessage(`${c}${n}`,"null"===window.origin?"*":window.origin)}))}function v({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[d])return t[d];let e=!0;const i=()=>{e=!1,delete t[d]};Object.defineProperty(t,d,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await h()}finally{s=!0}})();const o=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(o)};return o(),i}(e);return t?(i(),()=>{}):i}p=1,m=void 0;const b=Symbol(),w=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[a];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,a=t[n].proto();null!=r||(r=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is")),r&&a!==HTMLElement?i||customElements.define(s,o(a,{style:t[n].style}),{extends:n}):(i||customElements.define(s,o(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach((t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)})))}window[a]=!0})(e),e[b])return e[b];const i=v({target:e}),n=()=>{i(),delete e[b]},l=Object.assign(n,{cleanup:n,update:()=>w(e)});return Object.defineProperty(e,b,{configurable:!0,value:l}),l},y=document.currentScript;w(y?y.getRootNode():document)}();
-</script></foreignObject></svg></div><div class="bespoke-marp-note" data-index="0" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="6" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="7" tabindex="0"><p>![](snapshots.svg){.white-bg}</p></div><div class="bespoke-marp-note" data-index="13" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="20" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="21" tabindex="0"><p>&lt;div&gt;
+</script></foreignObject></svg></div><div class="bespoke-marp-note" data-index="0" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="13" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="14" tabindex="0"><p>![](snapshots.svg){.white-bg}</p></div><div class="bespoke-marp-note" data-index="20" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="23" tabindex="0"><p>•	Tells Git:
+“I’m ready to save this file in Git’s memory”
+	•	Staging Area = Shopping Cart
+(You can add many items/files before checkout/commit)</p></div><div class="bespoke-marp-note" data-index="24" tabindex="0"><p>•	Shows what Git sees right now:
+	•	Which files are ready to save
+	•	Which files are not yet tracked</p></div><div class="bespoke-marp-note" data-index="25" tabindex="0"><p>•	commit = Final save/check-out
+(like clicking “Save” in your document)
+	•	-m &quot;...&quot; is the message to describe what you saved
+(Always write meaningful messages so you know what this save was about)</p></div><div class="bespoke-marp-note" data-index="26" tabindex="0"><p>•	git status: Confirms your project is fully saved and clean
+	•	git log: Shows the history of saves (commits) you’ve made
+(You can go back in time if needed)</p></div><div class="bespoke-marp-note" data-index="27" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p>&lt;div&gt;
 &lt;img src=&quot;github-new.png&quot; width=1200&gt;
 &lt;img src=&quot;github-new-2.png&quot; width=400&gt;
-&lt;/div&gt;</p></div><div class="bespoke-marp-note" data-index="22" tabindex="0"><p>## Creating a new GitHub repository</p></div><div class="bespoke-marp-note" data-index="23" tabindex="0"><p>## Creating a new GitHub repository</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="37" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="44" tabindex="0"><p>TODO: MUST DEMO TO EXPLAIN</p></div><div class="bespoke-marp-note" data-index="47" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="56" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="74" tabindex="0"><p>## Feedback
+&lt;/div&gt;</p></div><div class="bespoke-marp-note" data-index="29" tabindex="0"><p>## Creating a new GitHub repository</p></div><div class="bespoke-marp-note" data-index="30" tabindex="0"><p>## Creating a new GitHub repository</p></div><div class="bespoke-marp-note" data-index="35" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="44" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="51" tabindex="0"><p>TODO: MUST DEMO TO EXPLAIN</p></div><div class="bespoke-marp-note" data-index="54" tabindex="0"><p>Jeya</p></div><div class="bespoke-marp-note" data-index="55" tabindex="0"><p>This workshop focuses on the former - &quot;Fork &amp; PR&quot;</p><p>The reason for this is Fork &amp; PR is mainly used to make changes on someone else's repo</p></div><div class="bespoke-marp-note" data-index="63" tabindex="0"><p>Leslie</p></div><div class="bespoke-marp-note" data-index="81" tabindex="0"><p>## Feedback
 
 Remember to give us feedback here: [https://bit.ly/orbital24-mc1-feedback](https://bit.ly/orbital24-mc1-feedback)
 
