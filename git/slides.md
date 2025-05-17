@@ -214,13 +214,10 @@ cd new-folder/
 git init
 ```
 
-    <!--
-
-• mkdir: Makes a new folder to work in
+<!-- • mkdir: Makes a new folder to work in
 • cd: Enters that folder
 • git init: Tells Git to start watching this folder for any file changes
-(You just created your first Git “project”)
--->
+(You just created your first Git “project”) -->
 
 ---
 
@@ -230,12 +227,9 @@ git init
 echo 'Hello world' >> hello.txt
 ```
 
-    <!--
-
-• Creates a file called hello.txt
+<!-- • Creates a file called hello.txt
 • Inside that file, it writes the text Hello world
-• This file now exists, but Git isn’t tracking it yet
--->
+• This file now exists, but Git isn’t tracking it yet -->
 
 ---
 
@@ -638,7 +632,6 @@ When working on a new feature or bug fix, each member will
 4. Push their local branch to the repository
 5. Make a pull request of their feature/bug fix branch to the `main` branch (remote copy)
 
-
 ---
 
 ## Fork & PR workflow
@@ -646,7 +639,6 @@ When working on a new feature or bug fix, each member will
 **Forking:** creating an at-the-time copy of a remote repository (only needs to be done once per remote repository)
 
 **Upstream:** common name for the original repository
-
 
 ---
 
