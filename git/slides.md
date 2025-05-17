@@ -32,6 +32,7 @@ PRESENTS
 
 Introduction to Git (and GitHub)
 17 May 2025
+
 <!-- Jeya -->
 
 ---
@@ -62,7 +63,67 @@ If you have any issues, refer to the [setup guide provided in the wiki.](https:/
 
 ---
 
+## Installation of Git
+
+```sh
+brew install git
+```
+
+### Verify Installation
+
+```sh
+git --version
+```
+
+---
+
 ## Config
+
+---
+
+## List your commit
+
+```sh
+git config --list
+```
+
+---
+
+## Set Your Email (The email should match your github)
+
+```sh
+git config --global user.email "your.email@example.com"
+```
+
+---
+
+# SSH Key
+
+---
+
+## Generate a new key:
+
+```sh
+ssh-keygen -t ed25519 -C "your.email@example.com"
+```
+
+---
+
+## Add your key to GitHub:
+
+```sh
+cat ~/.ssh/id_ed25519.pub
+```
+
+Paste it in GitHub > Settings > SSH and GPG keys
+
+---
+
+## Test connection:
+
+```sh
+ssh -T git@github.com
+```
 
 ---
 
@@ -79,6 +140,7 @@ to generate one.
 ---
 
 # Fundamental Concepts
+
 <!-- Leslie -->
 
 ---
@@ -139,6 +201,7 @@ to generate one.
 ---
 
 # Getting Started
+
 <!-- Jeya -->
 
 ---
@@ -151,6 +214,14 @@ cd new-folder/
 git init
 ```
 
+    <!--
+
+• mkdir: Makes a new folder to work in
+• cd: Enters that folder
+• git init: Tells Git to start watching this folder for any file changes
+(You just created your first Git “project”)
+-->
+
 ---
 
 ## Adding a file
@@ -158,6 +229,13 @@ git init
 ```sh
 echo 'Hello world' >> hello.txt
 ```
+
+    <!--
+
+• Creates a file called hello.txt
+• Inside that file, it writes the text Hello world
+• This file now exists, but Git isn’t tracking it yet
+-->
 
 ---
 
@@ -167,6 +245,12 @@ echo 'Hello world' >> hello.txt
 git add hello.txt
 ```
 
+<!--
+	•	Tells Git:
+“I’m ready to save this file in Git’s memory”
+	•	Staging Area = Shopping Cart
+(You can add many items/files before checkout/commit) -->
+
 ---
 
 ## Check status
@@ -175,6 +259,11 @@ git add hello.txt
 git status
 ```
 
+<!--
+	•	Shows what Git sees right now:
+	•	Which files are ready to save
+	•	Which files are not yet tracked -->
+
 ---
 
 ## Taking the snapshot
@@ -182,6 +271,12 @@ git status
 ```sh
 git commit -m "First commit"
 ```
+
+<!--
+	•	commit = Final save/check-out
+(like clicking “Save” in your document)
+	•	-m "..." is the message to describe what you saved
+(Always write meaningful messages so you know what this save was about) -->
 
 ---
 
@@ -192,9 +287,15 @@ git status
 git log
 ```
 
+<!--
+	•	git status: Confirms your project is fully saved and clean
+	•	git log: Shows the history of saves (commits) you’ve made
+(You can go back in time if needed) -->
+
 ---
 
 # Integrating Remote Repositories
+
 <!-- Leslie -->
 
 ---
@@ -265,6 +366,7 @@ git clone git@github.com:<github username>/<repository name>.git another-folder/
 ---
 
 # Branching
+
 <!-- Jeya -->
 
 ---
@@ -348,6 +450,7 @@ git merge feature-A
 ---
 
 # Merge Conflicts
+
 <!-- Leslie -->
 
 ---
@@ -451,6 +554,7 @@ Bottom half: content that is about to be merged
 ## Handling merge conflicts
 
 <!-- TODO: MUST DEMO TO EXPLAIN -->
+
 Edit `hello.txt` as such...
 
 ---
@@ -476,6 +580,7 @@ Add new files, edit them, commit them, and stage them!
 ---
 
 # Collaborative Workflows
+
 <!-- Jeya -->
 
 ---
@@ -559,6 +664,7 @@ When working on a new feature or bug fix, each member will
 ---
 
 ## Additional concepts
+
 <!-- Leslie -->
 
 ---
@@ -683,10 +789,11 @@ nothing to commit, working tree clean
 
 Sometimes we don\'t want Git to track a certain file
 
-~~~ {.bash-strong}
+```{.bash-strong}
 $ touch ignore-me
 $ git status
-~~~
+```
+
     On branch master
     Untracked files:
       (use "git add <file>..." to include in what will be committed)
@@ -694,16 +801,18 @@ $ git status
         ignore-me
 
     nothing added to commit but untracked files present (use "git add" to track)
+
 ---
 
 ## Ignoring files
 
 We can add it to `.gitignore`
 
-~~~ {.bash-strong}
+```{.bash-strong}
 $ echo "/ignore-me" >> .gitignore
 $ git status
-~~~
+```
+
     On branch master
     Untracked files:
       (use "git add <file>..." to include in what will be committed)
@@ -718,9 +827,10 @@ $ git status
 
 ## Viewing ignored files
 
-~~~ {.bash-strong}
+```{.bash-strong}
 $ git status --ignored
-~~~
+```
+
     On branch master
     Ignored files:
       (use "git add -f <file>..." to include in what will be committed)
@@ -736,11 +846,11 @@ $ git status --ignored
 Typically, we ignore files like build artifacts and generated files that
 are usually derived from the human-authored code in the repository. E.g.
 
--   dependency caches like `/node_modules`
--   compiled code like `.o`, `.pyc` files
--   build output directories like `/bin`, `/out`
--   runtime-generated files like log files
--   personal configuration files e.g. of your IDE
+- dependency caches like `/node_modules`
+- compiled code like `.o`, `.pyc` files
+- build output directories like `/bin`, `/out`
+- runtime-generated files like log files
+- personal configuration files e.g. of your IDE
 
 ---
 
@@ -764,7 +874,7 @@ First line: 80-character title, phrased imperatively
 
 Then if your change is complex, elaborate on the change in prose.
 
-``` font45
+```font45
 Change greeting from "Hi" to "Hello"
 
 "Hi" is a bit too informal for a greeting. We should change it to "Hello" instead,
@@ -777,13 +887,13 @@ Blah blah.
 ## Where to go from here?
 
 Additional readings:
+
 - [Git manual](https://git-scm.com/docs)
 - [Pro Git](https://git-scm.com/book/en/v2)
 - [NUS Hackers Git Cheatsheet](https://hckr.cc/ht-git-cs)
 - [NUS Hackers Git Wiki](https://wiki.nushackers.org/orbital/git)
 - Look into [Gitworkflows](https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#ch05-distributed-git)
 - [Atlassian\'s collaboration guide](https://www.atlassian.com/git/tutorials/syncing)
-
 
 ---
 
