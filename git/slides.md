@@ -590,7 +590,9 @@ Add new files, edit them, commit them, and stage them!
 1. Fork & PR
 2. Branch & PR
 
-This workshop focuses on the former - "Fork & PR"
+<!-- This workshop focuses on the former - "Fork & PR" -->
+
+<!-- The reason for this is Fork & PR is mainly used to make changes on someone else's repo -->
 
 The wiki contains more information about [Branch & PR](https://wiki.nushackers.org/orbital/git/collaborative-workflows/branch-and-pr-workflow)
 
@@ -620,14 +622,6 @@ Visit GitHub to create the PR ([screenshots on the wiki](https://wiki.nushackers
 
 ---
 
-## Fork & PR workflow
-
-**Forking:** creating an at-the-time copy of a remote repository (only needs to be done once per remote repository)
-
-**Upstream:** common name for the original repository
-
----
-
 ## Branch & PR Workflow
 
 Each member owns their copy of the repository locally (through cloning)
@@ -643,6 +637,16 @@ When working on a new feature or bug fix, each member will
 3. Edit the files in their respective branch
 4. Push their local branch to the repository
 5. Make a pull request of their feature/bug fix branch to the `main` branch (remote copy)
+
+
+---
+
+## Fork & PR workflow
+
+**Forking:** creating an at-the-time copy of a remote repository (only needs to be done once per remote repository)
+
+**Upstream:** common name for the original repository
+
 
 ---
 
