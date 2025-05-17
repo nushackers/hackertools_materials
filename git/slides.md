@@ -2,7 +2,7 @@
 marp: true
 theme: uncover
 class:
-    - modern
+  - modern
 style: |
   .left-heavy-two-column {
     display: grid;
@@ -15,6 +15,7 @@ style: |
     grid-template-columns: 1fr 1fr;
     gap: 0.3rem;
   }
+lang: en-US
 ---
 
 <script type="module">
@@ -32,6 +33,8 @@ PRESENTS
 Introduction to Git (and GitHub)
 17 May 2025
 
+<!-- Jeya -->
+
 ---
 
 ## References
@@ -40,6 +43,14 @@ These slides are complemented by the wiki so please refer to it for more details
 
 [Wiki](https://wiki.nushackers.org/orbital/git)
 [Slides](https://hckr.cc/orbital24-git-slides)
+
+---
+
+## Things you need
+
+[![](git-logo.svg)](https://git-scm.com)
+
+[![](github-logo.svg)](https://github.com)
 
 ---
 
@@ -52,15 +63,85 @@ If you have any issues, refer to the [setup guide provided in the wiki.](https:/
 
 ---
 
-## Things you need
+## Installation of Git
 
-[![](git-logo.svg)](https://git-scm.com)
+```sh
+brew install git
+```
 
-[![](github-logo.svg)](https://github.com)
+### Verify Installation
+
+```sh
+git --version
+```
+
+---
+
+## Config
+
+---
+
+## List your commit
+
+```sh
+git config --list
+```
+
+---
+
+## Set Your Email (The email should match your github)
+
+```sh
+git config --global user.email "your.email@example.com"
+```
+
+---
+
+# SSH Key
+
+---
+
+## Generate a new key:
+
+```sh
+ssh-keygen -t ed25519 -C "your.email@example.com"
+```
+
+---
+
+## Add your key to GitHub:
+
+```sh
+cat ~/.ssh/id_ed25519.pub
+```
+
+Paste it in GitHub > Settings > SSH and GPG keys
+
+---
+
+## Test connection:
+
+```sh
+ssh -T git@github.com
+```
+
+---
+
+## Accessing GitHub
+
+Using your GitHub password is no longer allowed after **August 13, 2021**. If you use HTTPS, you'll need to create a Personal Access Token (PAT).
+
+In your GitHub account, go to
+
+`Settings > Developer Settings > Personal Access Token`
+
+to generate one.
 
 ---
 
 # Fundamental Concepts
+
+<!-- Leslie -->
 
 ---
 
@@ -121,6 +202,8 @@ If you have any issues, refer to the [setup guide provided in the wiki.](https:/
 
 # Getting Started
 
+<!-- Jeya -->
+
 ---
 
 ## Creating a local repository
@@ -131,6 +214,14 @@ cd new-folder/
 git init
 ```
 
+    <!--
+
+• mkdir: Makes a new folder to work in
+• cd: Enters that folder
+• git init: Tells Git to start watching this folder for any file changes
+(You just created your first Git “project”)
+-->
+
 ---
 
 ## Adding a file
@@ -138,6 +229,13 @@ git init
 ```sh
 echo 'Hello world' >> hello.txt
 ```
+
+    <!--
+
+• Creates a file called hello.txt
+• Inside that file, it writes the text Hello world
+• This file now exists, but Git isn’t tracking it yet
+-->
 
 ---
 
@@ -147,6 +245,25 @@ echo 'Hello world' >> hello.txt
 git add hello.txt
 ```
 
+<!--
+	•	Tells Git:
+“I’m ready to save this file in Git’s memory”
+	•	Staging Area = Shopping Cart
+(You can add many items/files before checkout/commit) -->
+
+---
+
+## Check status
+
+```sh
+git status
+```
+
+<!--
+	•	Shows what Git sees right now:
+	•	Which files are ready to save
+	•	Which files are not yet tracked -->
+
 ---
 
 ## Taking the snapshot
@@ -155,9 +272,31 @@ git add hello.txt
 git commit -m "First commit"
 ```
 
+<!--
+	•	commit = Final save/check-out
+(like clicking “Save” in your document)
+	•	-m "..." is the message to describe what you saved
+(Always write meaningful messages so you know what this save was about) -->
+
+---
+
+## Check status
+
+```sh
+git status
+git log
+```
+
+<!--
+	•	git status: Confirms your project is fully saved and clean
+	•	git log: Shows the history of saves (commits) you’ve made
+(You can go back in time if needed) -->
+
 ---
 
 # Integrating Remote Repositories
+
+<!-- Leslie -->
 
 ---
 
@@ -165,22 +304,22 @@ git commit -m "First commit"
 
 Go to <https://github.com/new>
 
-<div>
+<!-- <div>
 <img src="github-new.png" width=1200>
 <img src="github-new-2.png" width=400>
-</div>
+</div> -->
 
 ---
 
-## Creating a new GitHub repository
+<!-- ## Creating a new GitHub repository -->
 
 <div>
-<img src="github-new-3.png" width=700>
+<img src="github-new-3.png" width=750>
 </div>
 
 ---
 
-## Creating a new GitHub repository
+<!-- ## Creating a new GitHub repository -->
 
 <div>
 <img src="github-new-4.png" width=750>
@@ -189,6 +328,8 @@ Go to <https://github.com/new>
 ---
 
 ## Connecting local repository to remote repository
+
+`origin` is used as the name for the remote (it's just convention).
 
 ```sh
 git remote add origin git@github.com:<github username>/<repository name>.git
@@ -205,6 +346,14 @@ git push -u orign main
 
 ---
 
+## Receiving remote repository snapshots
+
+```sh
+git pull origin main
+```
+
+---
+
 ## Cloning remote repositories
 
 Downloading a local copy of the repository
@@ -217,6 +366,8 @@ git clone git@github.com:<github username>/<repository name>.git another-folder/
 ---
 
 # Branching
+
+<!-- Jeya -->
 
 ---
 
@@ -269,11 +420,15 @@ git checkout main
 git branch -v
 ```
 
+---
+
 ## Deleting a branch
 
 ```sh
 git branch -d <branch name>
 ```
+
+---
 
 ## Renaming a branch
 
@@ -295,6 +450,8 @@ git merge feature-A
 ---
 
 # Merge Conflicts
+
+<!-- Leslie -->
 
 ---
 
@@ -397,6 +554,7 @@ Bottom half: content that is about to be merged
 ## Handling merge conflicts
 
 <!-- TODO: MUST DEMO TO EXPLAIN -->
+
 Edit `hello.txt` as such...
 
 ---
@@ -423,6 +581,8 @@ Add new files, edit them, commit them, and stage them!
 
 # Collaborative Workflows
 
+<!-- Jeya -->
+
 ---
 
 ## Common Workflows
@@ -430,7 +590,9 @@ Add new files, edit them, commit them, and stage them!
 1. Fork & PR
 2. Branch & PR
 
-This workshop focuses on the former - "Fork & PR"
+<!-- This workshop focuses on the former - "Fork & PR" -->
+
+<!-- The reason for this is Fork & PR is mainly used to make changes on someone else's repo -->
 
 The wiki contains more information about [Branch & PR](https://wiki.nushackers.org/orbital/git/collaborative-workflows/branch-and-pr-workflow)
 
@@ -460,11 +622,31 @@ Visit GitHub to create the PR ([screenshots on the wiki](https://wiki.nushackers
 
 ---
 
+## Branch & PR Workflow
+
+Each member owns their copy of the repository locally (through cloning)
+
+When working on a new feature or bug fix, each member will
+
+---
+
+## Branch & PR Workflow
+
+1. Pull the latest changes from the remote repository
+2. Create a branch per feature/bug fix on their local copy
+3. Edit the files in their respective branch
+4. Push their local branch to the repository
+5. Make a pull request of their feature/bug fix branch to the `main` branch (remote copy)
+
+
+---
+
 ## Fork & PR workflow
 
 **Forking:** creating an at-the-time copy of a remote repository (only needs to be done once per remote repository)
 
 **Upstream:** common name for the original repository
+
 
 ---
 
@@ -486,6 +668,8 @@ Visit GitHub to create the PR ([screenshots on the wiki](https://wiki.nushackers
 ---
 
 ## Additional concepts
+
+<!-- Leslie -->
 
 ---
 
@@ -515,6 +699,13 @@ Suppose we want to revert to commit `643aec6`.
 $ git revert 643aec6
 [master 7b73baf] Revert "Update file to c"
     1 file changed, 1 insertion(+), 1 deletion(-)
+```
+
+---
+
+## Revert
+
+```sh
 $ git show
 commit 7b73baf229e2b8db19bc594c450743b50adf649d (HEAD -> master)
 Author: Your Name <your@email.com>
@@ -535,9 +726,26 @@ index f2ad6c7..6178079 100644
 
 ---
 
+## Diff
+
+View difference betwen commits/branches
+
+```sh
+$ git diff
+diff --git a/file b/file
+index 7898192..6178079 100644
+--- a/file
++++ b/file
+@@ -1 +1 @@
+-a
++b
+```
+
+---
+
 ## Reset
 
-Undo `git add`.
+Undo `git add`
 
 ```
 $ git status
@@ -559,9 +767,9 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ---
 
-## Checkout
+## Restore
 
-Undo changes to a file in the working tree.
+Undo changes to a file in the working tree
 
 ```
 $ echo e > file
@@ -573,7 +781,7 @@ Changes not staged for commit:
     modified:   file
 
 no changes added to commit (use "git add" and/or "git commit -a")
-$ git checkout -- file
+$ git restore file
 $ git status
 On branch master
 nothing to commit, working tree clean
@@ -585,10 +793,11 @@ nothing to commit, working tree clean
 
 Sometimes we don\'t want Git to track a certain file
 
-~~~ {.bash-strong}
+```{.bash-strong}
 $ touch ignore-me
 $ git status
-~~~
+```
+
     On branch master
     Untracked files:
       (use "git add <file>..." to include in what will be committed)
@@ -596,16 +805,18 @@ $ git status
         ignore-me
 
     nothing added to commit but untracked files present (use "git add" to track)
+
 ---
 
 ## Ignoring files
 
 We can add it to `.gitignore`
 
-~~~ {.bash-strong}
+```{.bash-strong}
 $ echo "/ignore-me" >> .gitignore
 $ git status
-~~~
+```
+
     On branch master
     Untracked files:
       (use "git add <file>..." to include in what will be committed)
@@ -620,9 +831,10 @@ $ git status
 
 ## Viewing ignored files
 
-~~~ {.bash-strong}
+```{.bash-strong}
 $ git status --ignored
-~~~
+```
+
     On branch master
     Ignored files:
       (use "git add -f <file>..." to include in what will be committed)
@@ -638,11 +850,11 @@ $ git status --ignored
 Typically, we ignore files like build artifacts and generated files that
 are usually derived from the human-authored code in the repository. E.g.
 
--   dependency caches like `/node_modules`
--   compiled code like `.o`, `.pyc` files
--   build output directories like `/bin`, `/out`
--   runtime-generated files like log files
--   personal configuration files e.g. of your IDE
+- dependency caches like `/node_modules`
+- compiled code like `.o`, `.pyc` files
+- build output directories like `/bin`, `/out`
+- runtime-generated files like log files
+- personal configuration files e.g. of your IDE
 
 ---
 
@@ -660,58 +872,13 @@ are usually derived from the human-authored code in the repository. E.g.
 
 ---
 
-## HTTPS vs SSH
-
-It doesn\'t really matter.
-
-Use HTTPS if you don\'t have an SSH key set up with GitHub, or if it is
-a repository that you cannot write to.
-
-Use SSH if you have an SSH key set up, and you can write to the
-repository.
-
----
-
-## Or it kinda does
-
-Using your GitHub password is no longer allowed after **August 13, 2021**. If you use HTTPS, you'll need to create a Personal Access Token (PAT).
-
-In your GitHub account, go to
-
-`Settings > Developer Settings > Personal Access Token`
-
-to generate one.
-
----
-
-## Or does it?
-
-Some enteprise network/universities may block SSH connections. However, you can try using SSH over HTTPS port (443).
-
-    $ ssh -T -p 443 git@ssh.github.com
-    > Hi USERNAME! You've successfully authenticated, but GitHub does not
-    > provide shell access.
-
----
-
-## Or does it?
-
-If you get the success message, you can proceed to set SSH over HTTPS as a default connection by adding this to your `.ssh/config`
-
-    Host github.com
-    Hostname ssh.github.com
-    Port 443
-    User git
-
----
-
 ## Commit message discipline
 
 First line: 80-character title, phrased imperatively
 
 Then if your change is complex, elaborate on the change in prose.
 
-``` font45
+```font45
 Change greeting from "Hi" to "Hello"
 
 "Hi" is a bit too informal for a greeting. We should change it to "Hello" instead,
@@ -721,70 +888,16 @@ Blah blah.
 
 ---
 
-## Branch & PR Workflow
-
-Each member owns their copy of the repository locally (through cloning)
-
-When working on a new feature or bug fix, each member will
-
----
-
-## Branch & PR Workflow
-
-1. Pull the latest changes from the remote repository
-2. Create a branch per feature/bug fix on their local copy
-3. Edit the files in their respective branch
-4. Push their local branch to the repository
-5. Make a pull request of their feature/bug fix branch to the `main` branch (remote copy)
-
----
-
-## Commit message from the [Linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=37c0aead7902b1ddf1b668e1ab74c80b9a7fd183)
-
-<div style="font-size:12px">
-<code>
-net_sched: sch_fq: handle non connected flows
-
-FQ packet scheduler assumed that packets could be classified
-based on their owning socket.
-
-This means that if a UDP server uses one UDP socket to send
-packets to different destinations, packets all land
-in one FQ flow.
-
-This is unfair, since each TCP flow has a unique bucket, meaning
-that in case of pressure (fully utilised uplink), TCP flows
-have more share of the bandwidth.
-
-If we instead detect unconnected sockets, we can use a stochastic
-hash based on the 4-tuple hash.
-
-This also means a QUIC server using one UDP socket will properly
-spread the outgoing packets to different buckets, and in-kernel
-pacing based on EDT model will no longer risk having big rb-tree on
-one flow.
-
-Note that UDP application might provide the skb->hash in an
-ancillary message at sendmsg() time to avoid the cost of a dissection
-in fq packet scheduler.
-
-Signed-off-by: Eric Dumazet <edumazet@google.com>
-Signed-off-by: David S. Miller <davem@davemloft.net>
-</code>
-</div>
-
----
-
 ## Where to go from here?
 
 Additional readings:
+
 - [Git manual](https://git-scm.com/docs)
 - [Pro Git](https://git-scm.com/book/en/v2)
 - [NUS Hackers Git Cheatsheet](https://hckr.cc/ht-git-cs)
 - [NUS Hackers Git Wiki](https://wiki.nushackers.org/orbital/git)
 - Look into [Gitworkflows](https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#ch05-distributed-git)
 - [Atlassian\'s collaboration guide](https://www.atlassian.com/git/tutorials/syncing)
-
 
 ---
 
@@ -807,12 +920,23 @@ Slides: <https://hs2010-git.github.io/adv>
 
 ---
 
-## Feedback
+## Where to go from here?
+
+Check out Hackerschool: CI/CD with Github Actions\
+(last run on 1 Apr 2025)
+
+Recording: Coming Soon!
+
+Wiki: <https://wiki.nushackers.org/hackerschool/ci-cd-with-github-actions>
+
+---
+
+<!-- ## Feedback
 
 Remember to give us feedback here: [https://bit.ly/orbital24-mc1-feedback](https://bit.ly/orbital24-mc1-feedback)
 
 ![feedbackQr](feedbackQr.png)
 
----
+--- -->
 
 ## End
