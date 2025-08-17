@@ -46,8 +46,8 @@
 \setminted[bash]{fontsize=\small, tabsize=2, breaklines}
 
 \title{Hackerschool: \\Vim}
-\author{Chun Yu}
-\date{07 Feb 2024 \\ Slides at \url{https://hckr.cc/ht2425s2-w4-slides}}
+\author{Yadunand Prem}
+\date{15 Aug 2025 \\ Slides at \url{https://hckr.cc/ht2425s2-w4-slides}}
 
 \begin{document}
 
@@ -65,8 +65,6 @@
     \end{center}
 
     \begin{center}
-        \textbf{Hackers} Toolbox
-
         \textbf{Hack} \& Roll
 
         Friday \textbf{Hacks}
@@ -77,11 +75,11 @@
 \end{frame}
 
 \begin{frame}{About Me}
-    Hi, I'm Chun Yu!
+    Hi, I'm Yadunand!
 
-    Year 4 CS undergrad. I don't like anime.
+    Year 4 CS undergrad. I like anime.
 
-    I use vim for everything.
+    I've been using vim since \textbf{2017} and I use it for \textit{almost} everything.
 \end{frame}
 
 \begin{frame}{Required Software}
@@ -257,12 +255,6 @@
     keys to do anything.
 \end{frame}{}
 
-\begin{frame}{A simple vim config}
-    Notice that by default, vim looks pretty bad. Let's spice it up a bit with some simple configs.
-
-    Copy this config file to \keys{~/.vimrc}, or modify your existing config: \url{https://hckr.cc/ht-vim-vimrc}
-\end{frame}{}
-
 \begin{frame}{Normal Mode}
     \begin{tabular}{|c|c|}
         \hline
@@ -288,6 +280,13 @@
         \hline
     \end{tabular}{}
 \end{frame}{}
+
+\begin{frame}{A simple vim config}
+    Notice that by default, vim looks pretty bad. Let's spice it up a bit with some simple configs.
+
+    Copy this config file to \keys{~/.vimrc}, or modify your existing config: \url{https://hckr.cc/ht-vim-vimrc}
+\end{frame}{}
+
 
 \begin{frame}{Searching}
     Searching is slightly different in vim, there are two main ways to search something:
@@ -340,7 +339,7 @@
 
 \begin{frame}{Making small edits - misc. (1/2)}
     \begin{itemize}
-        \item \keys{y + modifier}, yank a certain portion and puts it in a put buffer (think of ctrl c)
+      \item \keys{y + modifier}, yank a certain portion and puts it in a put buffer (think of \keys{ctrl}/\keys{cmd} \keys{c})
         \item \keys{yy} - yank entire line
         \item \keys{yw} - yank word
         \item \keys{6yw} - yank 6 words
@@ -394,6 +393,22 @@
     \end{itemize}{}
 \end{frame}{}
 
+\begin{frame}{Registers}
+  Whenever you yank or delete text, Vim stores it in \emph{registers} (its clipboards).
+
+  \begin{itemize}
+    \item \keys{:registers} shows all registers and their contents.
+    \item Use \keys{"} to choose which register to target:
+      \begin{itemize}
+        \item \keys{"ayy} -- yank current line into register \texttt{a}
+        \item \keys{"ap} -- paste from register \texttt{a}
+      \end{itemize}
+    \item So this allows you to store multiple items in the clipboard, and choose what you want to paste next!
+    \item Registers hold not only text, but also macros (coming next).
+  \end{itemize}
+\end{frame}
+
+
 \begin{frame}{Macros}
     Macros are one of the really powerful features in vim that can significantly speed up your workflow.
     \begin{itemize}
@@ -427,6 +442,7 @@
        \item \url{https://github.com/preservim/nerdtree}
        \item \url{https://github.com/nvim-telescope/telescope.nvim}
        \item \url{https://github.com/itchyny/calendar.vim}
+       \item \url{https://github.com/neovim/neovim}
    \end{itemize}
    These plugins not only try to speed up your vim workflows, but also add additional functionality to vim.
 \end{frame}{}
