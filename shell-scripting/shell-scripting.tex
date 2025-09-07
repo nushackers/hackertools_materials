@@ -43,8 +43,8 @@
 \setminted[bash]{fontsize=\small, tabsize=2, breaklines}
 
 \title{Hacker Tools: \\Shell \& Scripting}
-\author{Taufiq}
-\date{10 Apr 2025 \\ Slides at \url{https://hckr.cc/ht-shell-slides} \\ (Materials developed by Julius)}
+\author{Sai}
+\date{9 Sep 2025 \\ Slides at \url{https://hckr.cc/ht-shell-slides} \\ (Materials developed by Julius)}
 
 \begin{document}
 
@@ -72,9 +72,9 @@
 \end{frame}
 
 \begin{frame}{About Me}
-  Hi! I'm Taufiq.
+  Hi! I'm Sai.
 
-  I'm a Year 3 Computer Science Undergraduate and I like music!
+  I'm a Year 2 Computer Science Undergraduate and I like playing video games!
   % I also enjoy being awesome
 
   I do watch anime.
@@ -92,11 +92,11 @@
 \begin{frame}{Required Software}
   Unix-like environment, either one of these:
   \begin{itemize}
-    \item Linux (you're good if you attended and installed Linux during our Linux Install Fest last week)
+    \item Linux
     \item macOS\footnote{Open Terminal, and run \mintinline{bash}{xcode-select --install} first}
     \item BSD
     \item Other Unix-like OS'es (Minix, Solaris, AIX, HP-UX, etc.)
-    \item WSL (Windows Subsystem for Linux) should also be alright, but no guarantee
+    \item WSL (Windows Subsystem for Linux)
   \end{itemize}
 \end{frame}
 
@@ -201,7 +201,7 @@
 echo something
 \end{minted}
   \begin{itemize}
-    \item Open an editor (for beginner, \mintinline{bash}{nano} is recommended), save the script as \texttt{example-script}
+    \item Open an editor (for beginners, \mintinline{bash}{nano/vim} is recommended), save the script as \texttt{example-script}
     \item On your shell, run \mintinline{bash}{chmod +x example-script}
     \item You can run your script as \mintinline{bash}{./example-script}
   \end{itemize}
@@ -279,8 +279,9 @@ echo something
 
 \subsection{Shell Syntax}
 \begin{frame}[fragile]{Running a command}
-  \begin{minted}{bash}echo Hello
-    \end{minted}
+  \begin{minted}{bash}
+    echo Hello
+  \end{minted}
   \begin{itemize}
     \item \mintinline{bash}{COMMAND ARG1 ARG2 ARG3}
   \end{itemize}
@@ -304,6 +305,7 @@ echo $name
   \begin{itemize}
     \item \mintinline{bash}{$?}: get exit code of the previous command %$
     \item \mintinline{bash}{$1} to \mintinline{bash}{$9}: arguments to a script %$
+    \item \mintinline{bash}{$10}...: even more arguments to a script %$
     \item \mintinline{bash}{$0}: name of the script itself %$
     \item \mintinline{bash}{$#}: number of arguments %$
     \item \mintinline{bash}{$$}: process ID of current shell %$
